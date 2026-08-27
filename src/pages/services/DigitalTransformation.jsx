@@ -4,16 +4,16 @@ import { digitalTransformationAreas, transformationJourney } from '../../data/se
 export default function DigitalTransformation() {
   return (
     <ServiceDetailPage
-      title="Digital Transformation"
+      title="Enterprise Digital Transformation"
       label="Digital Transformation"
-      heroTitle={<>Transform Your Business. <span className="gradient-text">Shape Your Future.</span></>}
-      heroDescription="Modernize processes, technology, data, and customer experiences with a comprehensive digital transformation strategy that creates lasting competitive advantage."
+      heroTitle={<>Reinvent Processes. Modernize Tech. <span className="gradient-text">Lead Your Market.</span></>}
+      heroDescription="Reimagine legacy business models with modern cloud architectures, intelligent automated workflows, and human-centered digital experiences engineered to establish lasting competitive advantage."
       services={digitalTransformationAreas}
       process={transformationJourney}
-      processTitle="Transformation Journey"
-      processDescription="A proven framework for navigating digital transformation — from assessment through implementation to continuous optimization."
-      ctaTitle="Ready to Transform?"
-      ctaDescription="Start your digital transformation journey with a partner who understands both the technology and the business side of change."
+      processTitle="Our 6-Step Transformation Framework"
+      processDescription="A proven roadmap for navigating complex enterprise change — from architectural assessment to scaled agile execution."
+      ctaTitle="Ready to Lead Your Digital Evolution?"
+      ctaDescription="Partner with OctaStar's transformation leaders to define and execute your strategic technology vision."
     />
   );
 }

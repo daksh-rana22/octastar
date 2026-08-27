@@ -4,22 +4,22 @@ import { dataAnalyticsServices } from '../../data/services';
 export default function DataAnalytics() {
   return (
     <ServiceDetailPage
-      title="Data & Analytics"
+      title="Data Engineering & Advanced Analytics"
       label="Data & Analytics"
-      heroTitle={<>Turn Data Into <span className="gradient-text">Your Greatest Asset.</span></>}
-      heroDescription="Build a data-driven organization with engineering, visualization, and predictive analytics solutions that transform raw data into actionable business intelligence."
+      heroTitle={<>Turn Complex Data Into <span className="gradient-text">Compounding Business Value.</span></>}
+      heroDescription="Architect modern cloud data platforms, real-time streaming pipelines, and AI-ready semantic layers using Snowflake, Databricks, BigQuery, and Power BI to empower fast, high-confidence decision making."
       services={dataAnalyticsServices}
       process={[
-        { step: '01', title: 'Discover', description: 'Assess your data landscape, sources, and analytics maturity.' },
-        { step: '02', title: 'Engineer', description: 'Build robust data pipelines and infrastructure.' },
-        { step: '03', title: 'Analyze', description: 'Apply analytics and modeling to extract insights.' },
-        { step: '04', title: 'Visualize', description: 'Create dashboards and reports that drive action.' },
-        { step: '05', title: 'Scale', description: 'Expand analytics capabilities across the organization.' },
+        { step: '01', title: 'Data Architecture Audit', description: 'Assess existing data silos, schemas, governance gaps, and analytics maturity.' },
+        { step: '02', title: 'Data Lakehouse Engineering', description: 'Design modern lakehouse architecture with automated ETL/ELT pipelines and dbt transformations.' },
+        { step: '03', title: 'Real-Time Streaming', description: 'Deploy event-driven pipelines via Kafka and Spark for sub-second telemetry ingestion.' },
+        { step: '04', title: 'Semantic Modeling & BI', description: 'Create unified semantic layers, executive KPI dashboards, and self-service analytics.' },
+        { step: '05', title: 'AI & Data Governance', description: 'Establish automated data lineage, cataloging, quality checks, and regulatory compliance.' },
       ]}
-      processTitle="Analytics Journey"
-      processDescription="From data discovery to organization-wide analytics adoption — a structured approach to becoming data-driven."
-      ctaTitle="Unlock the Power of Your Data"
-      ctaDescription="Let's build analytics solutions that give your organization the insights it needs to make better decisions faster."
+      processTitle="Our 5-Stage Data Modernization Lifecycle"
+      processDescription="From fragmented legacy silos to high-throughput enterprise intelligence platforms."
+      ctaTitle="Ready to Unlock Your Data Advantage?"
+      ctaDescription="Connect with our principal data architects to design your enterprise data roadmap and analytics strategy."
     />
   );
 }

@@ -1,10 +1,11 @@
-import { useParams } from 'react-router-dom';
-import { CheckCircle, ArrowRight } from 'lucide-react';
+import { useParams, Link } from 'react-router-dom';
+import { CheckCircle, ArrowRight, ShieldCheck, AlertCircle, Sparkles, CheckCircle2, Award } from 'lucide-react';
 import Hero from '../components/Hero';
 import Container from '../components/Container';
 import SectionHeading from '../components/SectionHeading';
 import AnimatedSection from '../components/AnimatedSection';
 import CTASection from '../components/CTASection';
+import Button from '../components/Button';
 import { industriesList } from '../data/industries';
 
 export default function IndustryDetail() {
@@ -13,10 +14,14 @@ export default function IndustryDetail() {
 
   if (!industry) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-text-primary mb-4">Industry Not Found</h1>
-          <p className="text-text-secondary">The industry page you're looking for doesn't exist.</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#0B132B] text-white px-4">
+        <div className="text-center max-w-md">
+          <div className="w-16 h-16 rounded-2xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center mx-auto mb-6 text-purple-300">
+            <AlertCircle size={32} />
+          </div>
+          <h1 className="text-3xl font-bold text-white mb-3">Industry Practice Not Found</h1>
+          <p className="text-slate-400 mb-8 text-sm">The industry practice you requested is not available.</p>
+          <Button to="/industries">Back to All Industries</Button>
         </div>
       </div>
     );
@@ -26,79 +31,114 @@ export default function IndustryDetail() {
 
   return (
     <>
-      <title>{industry.title} — OctaStar Group</title>
+      <title>{industry.title} Technology Solutions — OctaStar Group</title>
       <meta name="description" content={industry.heroDescription} />
 
+      {/* Hero */}
       <Hero
         compact
-        label={industry.title}
-        title={<>{industry.hero.replace('.', '')}.</>}
+        label={`${industry.title} Practice`}
+        title={<>{industry.hero.replace(/\.$/, '')} — <span className="gradient-text">Engineered for Scale.</span></>}
         description={industry.heroDescription}
-        primaryCta={{ label: 'Discuss Your Needs', to: '/contact' }}
-        secondaryCta={{ label: 'All Industries', to: '/industries' }}
+        primaryCta={{ label: 'Schedule an Industry Briefing', to: '/contact' }}
+        secondaryCta={{ label: 'All Industry Sectors', to: '/industries' }}
       />
 
-      {/* Challenges */}
-      <section className="py-20 md:py-28">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-            <div>
-              <SectionHeading
-                label="Industry Challenges"
-                title="Challenges We Solve"
-                align="left"
-                className="mb-8"
-              />
-              <div className="space-y-4">
-                {industry.challenges.map((challenge, index) => (
-                  <AnimatedSection key={index} delay={index * 100}>
-                    <div className="flex gap-3 p-4 rounded-lg bg-navy-800/50 border border-border/50">
-                      <CheckCircle size={18} className="text-accent-secondary flex-shrink-0 mt-0.5" />
-                      <p className="text-sm text-text-secondary leading-relaxed">{challenge}</p>
-                    </div>
-                  </AnimatedSection>
-                ))}
+      {/* Challenges vs Strategic Solutions - Deep Navy */}
+      <section className="py-16 md:py-24 relative overflow-hidden bg-navy-900">
+        <div className="absolute inset-0 geometric-dots opacity-20 pointer-events-none" />
+        <Container className="relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
+            {/* Left: Sector Challenges */}
+            <AnimatedSection>
+              <div className="h-full p-7 sm:p-9 rounded-2xl bg-navy-800/90 border border-border/80 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-xs font-mono font-bold tracking-wider uppercase text-rose-400 bg-rose-500/10 px-3 py-1 rounded-full border border-rose-500/20">
+                      Sector Friction
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-text-primary mb-6">
+                    Critical Challenges We Solve
+                  </h3>
+                  <div className="space-y-3.5">
+                    {industry.challenges.map((challenge, idx) => (
+                      <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-navy-900/60 border border-border/50">
+                        <AlertCircle size={17} className="text-rose-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-text-secondary leading-relaxed font-medium">{challenge}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
+            </AnimatedSection>
 
-            <div>
-              <SectionHeading
-                label="Our Approach"
-                title="How We Help"
-                align="left"
-                className="mb-8"
-              />
-              <AnimatedSection delay={200}>
-                <p className="text-text-secondary leading-relaxed mb-6">
-                  We combine deep {industry.title.toLowerCase()} domain expertise with proven technology solutions and an extensive talent network to address your most critical challenges.
-                </p>
-                <p className="text-text-secondary leading-relaxed">
-                  Our teams understand the regulatory requirements, competitive dynamics, and technology trends specific to your industry, ensuring every solution is contextually relevant and compliance-ready.
-                </p>
-              </AnimatedSection>
-            </div>
+            {/* Right: Purpose-Built Solutions */}
+            <AnimatedSection delay={200}>
+              <div className="h-full p-7 sm:p-9 rounded-2xl bg-navy-800/90 border border-accent-primary/50 shadow-xl shadow-accent-primary/10 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-xs font-mono font-bold tracking-wider uppercase text-accent-light bg-accent-primary/15 px-3 py-1 rounded-full border border-accent-primary/30">
+                      Target Architectures
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-text-primary mb-6">
+                    Tailored Technology Frameworks
+                  </h3>
+                  <div className="space-y-3.5">
+                    {industry.solutions.map((sol, idx) => (
+                      <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-navy-900/60 border border-accent-primary/20 hover:border-accent-primary/40 transition-colors">
+                        <CheckCircle size={17} className="text-accent-secondary flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-text-primary leading-relaxed font-semibold">{sol}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="mt-8 pt-4 border-t border-border/40 flex justify-end">
+                  <Button to="/contact" variant="text" size="sm" className="text-accent-light font-bold">
+                    Deploy for Your Enterprise →
+                  </Button>
+                </div>
+              </div>
+            </AnimatedSection>
           </div>
         </Container>
       </section>
 
-      {/* Capabilities */}
-      <section className="py-20 md:py-28 bg-navy-800/30">
-        <Container>
-          <SectionHeading
-            label="Capabilities"
-            title={`${industry.title} Capabilities`}
-            description="Specialized technology and talent solutions designed for your industry's unique requirements."
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {industry.capabilities.map((capability, index) => (
-              <AnimatedSection key={capability} delay={index * 100}>
-                <div className="group p-6 bg-navy-800 border border-border rounded-xl hover:border-accent-primary/30 transition-all duration-300">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-accent-primary/10 border border-accent-primary/20 mb-4">
-                    <Icon size={18} className="text-accent-secondary" />
+      {/* Capabilities - Vibrant Purple Container */}
+      <section className="py-16 md:py-24 relative overflow-hidden bg-[#5B3FA6] text-white">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-950/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
+
+        <Container className="relative z-10">
+          <AnimatedSection className="max-w-3xl mb-12 text-center mx-auto">
+            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-purple-200 mb-2">
+              Practice Capabilities
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-3 text-white">
+              End-to-End {industry.title} Engineering
+            </h2>
+            <p className="text-sm md:text-base text-purple-100/90 leading-relaxed">
+              Specialized squads, compliant cloud blueprints, and domain accelerators tailored to {industry.title.toLowerCase()}.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+            {industry.capabilities.map((cap, index) => (
+              <AnimatedSection key={cap} delay={index * 80} className="h-full">
+                <div className="h-full p-6 sm:p-7 bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/40 rounded-2xl backdrop-blur-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between">
+                  <div>
+                    <div className="w-12 h-12 rounded-xl bg-white/15 border border-white/25 flex items-center justify-center mb-5 text-white">
+                      <Icon size={22} />
+                    </div>
+                    <h4 className="text-lg font-bold text-white mb-2">
+                      {cap}
+                    </h4>
                   </div>
-                  <h4 className="text-base font-semibold text-text-primary group-hover:text-accent-secondary transition-colors">
-                    {capability}
-                  </h4>
+                  <div className="mt-4 pt-3 border-t border-white/15 text-xs text-purple-200 flex items-center gap-1.5 font-medium">
+                    <Sparkles size={12} /> Domain Standard Verified
+                  </div>
                 </div>
               </AnimatedSection>
             ))}
@@ -106,43 +146,30 @@ export default function IndustryDetail() {
         </Container>
       </section>
 
-      {/* Solutions */}
-      <section className="py-20 md:py-28">
-        <Container>
+      {/* Measurable Benefits - Crisp Clean White Section */}
+      <section className="py-20 md:py-28 relative overflow-hidden bg-white text-slate-900 border-y border-slate-200">
+        <Container className="relative z-10">
           <SectionHeading
-            label="Solutions"
-            title="Industry Solutions"
-            description="Purpose-built solutions that address the specific needs and challenges of your industry."
+            label="Quantifiable Impact"
+            title={`Why Market Leaders Choose OctaStar for ${industry.title}`}
+            description="Our domain frameworks deliver measurable acceleration, strict compliance posture, and tangible return on investment."
+            darkText={true}
+            className="mb-12 md:mb-16"
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {industry.solutions.map((solution, index) => (
-              <AnimatedSection key={solution} delay={index * 100}>
-                <div className="flex items-start gap-3 p-5 bg-navy-800 border border-border rounded-xl hover:border-accent-primary/30 transition-all duration-300">
-                  <div className="w-8 h-8 rounded-lg bg-accent-primary/10 flex items-center justify-center flex-shrink-0">
-                    <ArrowRight size={14} className="text-accent-secondary" />
-                  </div>
-                  <span className="text-sm font-medium text-text-primary mt-1">{solution}</span>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </Container>
-      </section>
 
-      {/* Benefits */}
-      <section className="py-20 md:py-28 bg-navy-800/30">
-        <Container>
-          <SectionHeading
-            label="Benefits"
-            title="Business Outcomes"
-            description="The measurable results our clients achieve through our industry-focused approach."
-          />
-          <div className="max-w-5xl mx-auto space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
             {industry.benefits.map((benefit, index) => (
-              <AnimatedSection key={benefit} delay={index * 100}>
-                <div className="flex items-center gap-4 p-5 bg-navy-800 border border-border rounded-xl">
-                  <CheckCircle size={20} className="text-accent-secondary flex-shrink-0" />
-                  <span className="text-text-primary">{benefit}</span>
+              <AnimatedSection key={benefit} delay={index * 80}>
+                <div className="group relative h-full flex flex-col p-6 sm:p-7 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-[#5B3FA6]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#5B3FA6]/10 hover:-translate-y-1">
+                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-purple-100 border border-purple-200 text-[#5B3FA6] group-hover:bg-[#5B3FA6] group-hover:text-white transition-all duration-300 mb-4">
+                    <Award size={20} />
+                  </div>
+                  <h4 className="text-base font-bold text-slate-900 mb-2 group-hover:text-[#5B3FA6] transition-colors">
+                    {benefit}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Backed by guaranteed SLA benchmarks, security telemetry, and dedicated enterprise account governance.
+                  </p>
                 </div>
               </AnimatedSection>
             ))}
@@ -150,9 +177,12 @@ export default function IndustryDetail() {
         </Container>
       </section>
 
+      {/* Signature CTA */}
       <CTASection
-        title={`Ready to Transform ${industry.title}?`}
-        description={`Let's discuss how our ${industry.title.toLowerCase()} expertise can help your organization achieve its technology and business goals.`}
+        title={`Accelerate Your ${industry.title} Roadmap`}
+        description={`Partner with OctaStar's dedicated ${industry.title.toLowerCase()} practice lead to design and execute your transformation.`}
+        primaryCta={{ label: 'Speak to Our Practice Lead', to: '/contact' }}
+        secondaryCta={{ label: 'Explore Related Services', to: '/services' }}
       />
     </>
   );

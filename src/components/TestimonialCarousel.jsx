@@ -31,59 +31,62 @@ export default function TestimonialCarousel() {
   const testimonial = testimonials[current];
 
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
-      <div className="absolute inset-0 bg-navy-800/30" />
+    <section className="relative py-12 md:py-16 overflow-hidden bg-[#ECEEF2] border-y border-slate-300/80">
+      {/* Soft top radial highlight */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/70 via-transparent to-transparent pointer-events-none" />
 
       <Container className="relative z-10" size="narrow">
         <AnimatedSection>
           <div className="text-center">
+            {/* Section Label */}
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-purple-700 mb-3 inline-block">
+              Client Feedback &bull; Verified Reviews
+            </span>
+
             {/* Quote icon */}
-            <div className="flex justify-center mb-8">
-              <div className="w-14 h-14 rounded-full bg-accent-primary/10 border border-accent-primary/20 flex items-center justify-center">
-                <Quote size={24} className="text-accent-secondary" />
+            <div className="flex justify-center mb-4">
+              <div className="w-10 h-10 rounded-full bg-purple-100 border border-purple-200 flex items-center justify-center shadow-xs">
+                <Quote size={18} className="text-purple-700" />
               </div>
             </div>
 
             {/* Quote */}
-            <blockquote className="text-lg md:text-xl lg:text-2xl text-text-primary font-light leading-relaxed mb-8 min-h-[120px] transition-all duration-500">
+            <blockquote className="text-base sm:text-lg md:text-xl text-slate-900 font-medium leading-relaxed mb-5 sm:mb-6 min-h-[60px] sm:min-h-[70px] transition-all duration-500 max-w-2xl mx-auto">
               &ldquo;{testimonial.quote}&rdquo;
             </blockquote>
 
             {/* Author */}
-            <div className="mb-10">
-              <div className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center text-white font-bold text-lg mx-auto mb-3">
+            <div className="mb-5 sm:mb-6">
+              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#5B3FA6] to-[#7C83FF] flex items-center justify-center text-white font-bold text-sm mx-auto mb-1.5 shadow-sm">
                 {testimonial.name.charAt(0)}
               </div>
-              <div className="text-base font-semibold text-text-primary">
+              <div className="text-sm sm:text-base font-bold text-slate-900 leading-tight">
                 {testimonial.name}
               </div>
-              <div className="text-sm text-text-secondary">
-                {testimonial.position}
-              </div>
-              <div className="text-sm text-accent-secondary">
-                {testimonial.company}
+              <div className="text-xs sm:text-sm text-slate-600">
+                {testimonial.position} &bull; <span className="font-semibold text-purple-700">{testimonial.company}</span>
               </div>
             </div>
 
             {/* Controls */}
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex items-center justify-center gap-3">
               <button
                 onClick={prev}
-                className="p-2 rounded-lg border border-border text-text-secondary hover:text-accent-secondary hover:border-accent-primary/40 transition-all duration-200"
+                className="p-1.5 sm:p-2 rounded-lg border border-slate-300 bg-white hover:bg-purple-50 text-slate-700 hover:text-purple-800 hover:border-purple-300 shadow-xs transition-all duration-200"
                 aria-label="Previous testimonial"
               >
-                <ChevronLeft size={20} />
+                <ChevronLeft size={16} />
               </button>
 
-              <div className="flex gap-2">
+              <div className="flex gap-1.5 items-center">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => goTo(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
                       index === current
-                        ? 'bg-accent-primary w-6'
-                        : 'bg-navy-500 hover:bg-accent-primary/40'
+                        ? 'bg-[#5B3FA6] w-5'
+                        : 'bg-slate-300 hover:bg-purple-300 w-1.5'
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
@@ -92,10 +95,10 @@ export default function TestimonialCarousel() {
 
               <button
                 onClick={next}
-                className="p-2 rounded-lg border border-border text-text-secondary hover:text-accent-secondary hover:border-accent-primary/40 transition-all duration-200"
+                className="p-1.5 sm:p-2 rounded-lg border border-slate-300 bg-white hover:bg-purple-50 text-slate-700 hover:text-purple-800 hover:border-purple-300 shadow-xs transition-all duration-200"
                 aria-label="Next testimonial"
               >
-                <ChevronRight size={20} />
+                <ChevronRight size={16} />
               </button>
             </div>
           </div>

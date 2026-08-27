@@ -4,21 +4,22 @@ import { cloudServices } from '../../data/services';
 export default function CloudService() {
   return (
     <ServiceDetailPage
-      title="Cloud Computing"
+      title="Cloud Computing & Modernization"
       label="Cloud Computing"
-      heroTitle={<>Scalable Cloud Solutions <span className="gradient-text">Built for Performance.</span></>}
-      heroDescription="Migrate, modernize, and optimize your cloud infrastructure with architecture designed for performance, security, and scalability across AWS, Azure, and GCP."
+      heroTitle={<>Scalable Cloud Infrastructure <span className="gradient-text">Built for Peak Performance.</span></>}
+      heroDescription="Migrate legacy workloads, modernize application architectures, and optimize multi-cloud operations across AWS, Microsoft Azure, and Google Cloud with guaranteed enterprise SLAs."
       services={cloudServices}
       process={[
-        { step: '01', title: 'Assess', description: 'Evaluate your current infrastructure and cloud readiness.' },
-        { step: '02', title: 'Architect', description: 'Design a cloud architecture optimized for your workloads.' },
-        { step: '03', title: 'Migrate', description: 'Execute migration with minimal disruption to business operations.' },
-        { step: '04', title: 'Optimize', description: 'Continuously tune performance, costs, and security posture.' },
+        { step: '01', title: 'Workload Assessment', description: 'Evaluate existing legacy topology, cloud readiness, security posture, and TCO cost models.' },
+        { step: '02', title: 'Architecture Blueprint', description: 'Design resilient, multi-region, cloud-native landing zones with automated infrastructure-as-code.' },
+        { step: '03', title: 'Zero-Downtime Migration', description: 'Execute phased workload migrations with continuous data synchronization and zero business disruption.' },
+        { step: '04', title: 'Cost & FinOps Optimization', description: 'Continuously tune resource right-sizing, auto-scaling policies, and reserved instance allocations.' },
+        { step: '05', title: 'Continuous Governance', description: 'Implement 24/7 security posture monitoring, automated patch pipelines, and compliance auditing.' },
       ]}
-      processTitle="Cloud Journey"
-      processDescription="A structured approach to cloud adoption that balances speed with stability and cost optimization."
-      ctaTitle="Ready for the Cloud?"
-      ctaDescription="Whether you're migrating your first workload or optimizing a multi-cloud environment, we can help."
+      processTitle="Our 5-Phase Cloud Transformation Roadmap"
+      processDescription="A proven framework designed to balance deployment speed with enterprise resilience, security, and FinOps efficiency."
+      ctaTitle="Ready to Accelerate Your Cloud Strategy?"
+      ctaDescription="Whether you are embarking on your initial migration or modernizing multi-cloud Kubernetes architectures, our cloud practice is ready."
     />
   );
 }

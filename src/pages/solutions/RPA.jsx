@@ -1,67 +1,126 @@
+import { useState } from 'react';
 import Hero from '../../components/Hero';
 import Container from '../../components/Container';
 import SectionHeading from '../../components/SectionHeading';
 import ProcessTimeline from '../../components/ProcessTimeline';
 import AnimatedSection from '../../components/AnimatedSection';
 import CTASection from '../../components/CTASection';
+import Button from '../../components/Button';
 import { rpaProcess } from '../../data/solutions';
-import { Bot, Zap, BarChart3, CheckCircle, TrendingUp, Clock } from 'lucide-react';
+import { Bot, Zap, BarChart3, CheckCircle, TrendingUp, Clock, Sparkles, FileSpreadsheet, ShieldAlert, Headphones, RefreshCw } from 'lucide-react';
 
 const benefits = [
-  { icon: Clock, title: 'Faster Processing', description: 'Reduce manual process time by up to 80% with intelligent automation.' },
-  { icon: CheckCircle, title: 'Higher Accuracy', description: 'Eliminate human errors in data entry, calculations, and rule-based decisions.' },
-  { icon: TrendingUp, title: 'Scalable Operations', description: 'Scale automation across departments without proportional headcount increases.' },
-  { icon: Zap, title: 'Immediate ROI', description: 'See measurable returns within weeks of deploying automation bots.' },
-  { icon: BarChart3, title: 'Better Analytics', description: 'Generate detailed process analytics and performance metrics automatically.' },
-  { icon: Bot, title: 'Employee Satisfaction', description: 'Free your team from repetitive tasks to focus on higher-value work.' },
+  { icon: Clock, title: '80% Faster Processing', description: 'Reduce manual document and data workflows from days to seconds with 24/7 unattended bots.' },
+  { icon: CheckCircle, title: '99.9% Execution Accuracy', description: 'Eliminate costly human errors in high-volume transaction processing, billing, and regulatory reporting.' },
+  { icon: TrendingUp, title: 'Elastic Operational Scale', description: 'Scale automation instances on demand during peak seasons without linear hiring costs.' },
+  { icon: Zap, title: 'Rapid 60-Day ROI', description: 'Realize measurable cost reductions and efficiency payback within 6 to 8 weeks of initial bot rollout.' },
+  { icon: BarChart3, title: 'Real-Time Process Telemetry', description: 'Gain complete visibility into throughput, bot utilization, and exception metrics via live dashboards.' },
+  { icon: Bot, title: 'Elevated Workforce Morale', description: 'Liberate knowledge workers from mundane data entry to focus on high-impact strategic initiatives.' },
+];
+
+const useCases = [
+  {
+    icon: FileSpreadsheet,
+    title: 'Finance & Accounting',
+    items: ['Invoice matching & 3-way reconciliation', 'Accounts payable & receivable automation', 'Month-end closing & financial reporting'],
+  },
+  {
+    icon: ShieldAlert,
+    title: 'Compliance & Claims',
+    items: ['Automated insurance claim intake & validation', 'KYC & AML identity verification checks', 'Audit trail generation & regulatory filing'],
+  },
+  {
+    icon: Headphones,
+    title: 'IT & Customer Operations',
+    items: ['User provisioning & credential management', 'Automated tier-1 ticket triaging', 'Order processing & CRM status sync'],
+  },
 ];
 
 export default function RPA() {
+  const [activeStep, setActiveStep] = useState(0);
+
   return (
     <>
-      <title>RPA & Automation — OctaStar Group</title>
-      <meta name="description" content="Transform repetitive tasks into intelligent automation with OctaStar Group's RPA and automation solutions." />
+      <title>RPA &amp; Intelligent Automation — OctaStar Group</title>
+      <meta name="description" content="Eliminate repetitive workflows and scale operational precision with OctaStar Group's end-to-end RPA and AI automation solutions." />
 
+      {/* Hero */}
       <Hero
         compact
-        label="RPA & Automation"
+        label="RPA &amp; Intelligent Automation"
         title={<>From Repetitive Tasks to <span className="gradient-text">Intelligent Automation.</span></>}
-        description="Eliminate manual, rule-based work with robotic process automation that increases speed, accuracy, and employee satisfaction across your organization."
-        primaryCta={{ label: 'Get Started', to: '/contact' }}
-        secondaryCta={{ label: 'All Solutions', to: '/solutions' }}
+        description="Eliminate manual, rule-based friction with AI-driven Robotic Process Automation. Accelerate processing speed, ensure error-free accuracy, and unlock enterprise-wide operational agility."
+        primaryCta={{ label: 'Schedule an Automation Audit', to: '/contact' }}
+        secondaryCta={{ label: 'View All Solutions', to: '/solutions' }}
       />
 
-      <section className="py-20 md:py-28">
-        <Container>
-          <SectionHeading
-            label="Automation Journey"
-            title="The Path to Intelligent Automation"
-            description="A structured approach that evolves from basic task automation to AI-powered intelligent processing."
-          />
-          <ProcessTimeline steps={rpaProcess} />
+      {/* Automation Journey - Vibrant Purple Container */}
+      <section className="py-16 md:py-24 relative overflow-hidden bg-[#5B3FA6] text-white">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-950/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
+
+        <Container className="relative z-10">
+          <AnimatedSection className="max-w-3xl mb-12 text-center mx-auto">
+            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-purple-200 mb-2">
+              Implementation Roadmap
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-3 text-white">
+              The Path to Autonomous Enterprise Workflows
+            </h2>
+            <p className="text-sm md:text-base text-purple-100/90 leading-relaxed">
+              A structured, low-risk framework designed to take your workflows from manual execution to intelligent cognitive automation.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 sm:gap-6">
+            {rpaProcess.map((step, idx) => (
+              <AnimatedSection key={step.step} delay={idx * 80} className="h-full">
+                <div className="h-full p-6 bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/40 rounded-2xl backdrop-blur-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between">
+                  <div>
+                    <span className="text-3xl font-extrabold font-mono text-purple-200 block mb-3">
+                      {step.step}
+                    </span>
+                    <h4 className="text-lg font-bold text-white mb-2">
+                      {step.title}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-purple-100/90 leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
         </Container>
       </section>
 
-      <section className="py-20 md:py-28 bg-navy-800/30">
-        <Container>
+      {/* Benefits - Crisp Clean White Section */}
+      <section className="py-20 md:py-28 relative overflow-hidden bg-white text-slate-900 border-y border-slate-200">
+        <Container className="relative z-10">
           <SectionHeading
-            label="Benefits"
-            title="The Impact of Automation"
-            description="Organizations implementing RPA and intelligent automation see transformative results across operations."
+            label="Automation Value"
+            title="Quantifiable Advantages of Enterprise Automation"
+            description="Organizations implementing OctaStar RPA frameworks see immediate improvements across operational efficiency and cost structures."
+            darkText={true}
+            className="mb-12 md:mb-16"
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
             {benefits.map((benefit, index) => {
               const Icon = benefit.icon;
               return (
-                <AnimatedSection key={benefit.title} delay={index * 100}>
-                  <div className="group p-6 bg-navy-800 border border-border rounded-xl hover:border-accent-primary/30 transition-all duration-300">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-accent-primary/10 border border-accent-primary/20 mb-4">
-                      <Icon size={22} className="text-accent-secondary" />
+                <AnimatedSection key={benefit.title} delay={index * 80}>
+                  <div className="group relative h-full flex flex-col p-6 sm:p-7 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-[#5B3FA6]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#5B3FA6]/10 hover:-translate-y-1">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-purple-100 border border-purple-200 text-[#5B3FA6] group-hover:bg-[#5B3FA6] group-hover:text-white transition-all duration-300 mb-5">
+                      <Icon size={22} />
                     </div>
-                    <h4 className="text-base font-semibold text-text-primary mb-2 group-hover:text-accent-secondary transition-colors">
+                    <h4 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-[#5B3FA6] transition-colors">
                       {benefit.title}
                     </h4>
-                    <p className="text-sm text-text-secondary leading-relaxed">{benefit.description}</p>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      {benefit.description}
+                    </p>
                   </div>
                 </AnimatedSection>
               );
@@ -70,9 +129,53 @@ export default function RPA() {
         </Container>
       </section>
 
+      {/* Key Enterprise Use Cases - Deep Navy */}
+      <section className="py-16 md:py-24 relative overflow-hidden bg-navy-900">
+        <div className="absolute inset-0 geometric-dots opacity-20 pointer-events-none" />
+        <Container className="relative z-10">
+          <SectionHeading
+            label="Applied Automation"
+            title="High-Impact Automation Use Cases"
+            description="Proven robotic and cognitive workflows ready for rapid deployment across key business functions."
+            className="mb-12 md:mb-16"
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+            {useCases.map((uc, idx) => {
+              const Icon = uc.icon;
+              return (
+                <AnimatedSection key={uc.title} delay={idx * 100} className="h-full">
+                  <div className="h-full p-7 sm:p-8 rounded-2xl bg-navy-800/90 border border-border/80 hover:border-accent-primary/60 transition-all duration-300 hover:shadow-xl hover:shadow-accent-primary/15 flex flex-col justify-between">
+                    <div>
+                      <div className="w-12 h-12 rounded-xl bg-accent-primary/15 border border-accent-primary/30 text-accent-secondary flex items-center justify-center mb-5">
+                        <Icon size={24} />
+                      </div>
+                      <h3 className="text-xl font-bold text-text-primary mb-4">
+                        {uc.title}
+                      </h3>
+                      <ul className="space-y-3">
+                        {uc.items.map((item) => (
+                          <li key={item} className="flex items-start gap-2.5 text-sm text-text-secondary">
+                            <CheckCircle size={16} className="text-accent-secondary flex-shrink-0 mt-0.5" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </AnimatedSection>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      {/* Signature CTA */}
       <CTASection
-        title="Ready to Automate?"
-        description="Let's identify the highest-impact automation opportunities in your organization and build a roadmap to intelligent automation."
+        title="Ready to Automate Your High-Friction Workflows?"
+        description="Schedule a 30-minute discovery call with our automation architects to identify your top 3 bot opportunities."
+        primaryCta={{ label: 'Start an Automation Assessment', to: '/contact' }}
+        secondaryCta={{ label: 'Explore AI & Machine Learning', to: '/services/ai-ml' }}
       />
     </>
   );

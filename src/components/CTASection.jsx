@@ -9,40 +9,34 @@ export default function CTASection({
   secondaryCta = { label: 'Explore Careers', to: '/careers' },
 }) {
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-navy-900" />
-      <div className="absolute inset-0 geometric-grid opacity-10" />
-
-      {/* Radial glow */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
-        style={{
-          background: 'radial-gradient(circle, rgba(88,101,242,0.12) 0%, transparent 70%)',
-        }}
-      />
-
-      {/* Compass lines */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-10">
-        <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-accent-primary to-transparent" />
-        <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent-primary to-transparent" />
-        <div className="absolute top-0 left-0 w-full h-full border border-accent-primary/20 rounded-full" />
-      </div>
+    <section className="relative py-16 md:py-24 overflow-hidden bg-[#5B3FA6] text-white border-t border-purple-400/20">
+      {/* Decorative background glows */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-950/40 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
 
       <Container className="relative z-10">
         <AnimatedSection>
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-5 text-balance">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 text-balance">
               {title}
             </h2>
-            <p className="text-base md:text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-purple-100/90 leading-relaxed mb-8 max-w-2xl mx-auto">
               {description}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <Button to={primaryCta.to} size="lg">
+              <Button
+                to={primaryCta.to}
+                size="lg"
+                className="bg-white hover:bg-purple-50 text-[#5B3FA6] hover:text-[#4B2F96] font-bold shadow-xl border-none hover:scale-105"
+              >
                 {primaryCta.label}
               </Button>
-              <Button to={secondaryCta.to} variant="secondary" size="lg">
+              <Button
+                to={secondaryCta.to}
+                size="lg"
+                className="bg-white/15 hover:bg-white/25 text-white border border-white/30 backdrop-blur-md hover:scale-105"
+              >
                 {secondaryCta.label}
               </Button>
             </div>
