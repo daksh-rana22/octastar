@@ -18,58 +18,58 @@ export default function Staffing() {
       processTitle="Our 5-Tier Talent Vetting Process"
       processDescription="A rigorous, technical screening lifecycle that delivers pre-screened talent within 48 hours without compromising quality."
       additionalContent={
-        <section className="py-16 md:py-24 relative overflow-hidden bg-navy-950 border-t border-border/40">
-          <Container>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <section className="py-12 md:py-16 relative overflow-hidden bg-white text-slate-900 border-y border-slate-200">
+          <Container className="relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
               <AnimatedSection>
-                <div className="p-8 sm:p-10 bg-navy-800/90 border border-border/80 hover:border-accent-primary/60 rounded-3xl transition-all duration-300 hover:shadow-2xl hover:shadow-accent-primary/10 flex flex-col justify-between h-full">
+                <div className="p-6 sm:p-7 bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-[#5B3FA6]/50 rounded-2xl transition-all duration-300 hover:shadow-xl flex flex-col justify-between h-full">
                   <div>
-                    <div className="w-13 h-13 rounded-2xl bg-accent-primary/15 border border-accent-primary/30 flex items-center justify-center mb-6 text-accent-secondary">
-                      <Building2 size={26} />
+                    <div className="w-11 h-11 rounded-xl bg-purple-100 border border-purple-200 flex items-center justify-center mb-4 text-[#5B3FA6]">
+                      <Building2 size={22} />
                     </div>
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-accent-light mb-2 block">
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#5B3FA6] mb-1.5 block">
                       For Enterprise Hiring Leaders
                     </span>
-                    <h3 className="text-2xl font-bold text-text-primary mb-4">
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">
                       Scale Engineering Capacity On Demand
                     </h3>
-                    <p className="text-sm sm:text-base text-text-secondary leading-relaxed mb-6">
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
                       Access a bench of over 1 million pre-screened technology professionals across cloud, AI, DevOps, data, and cybersecurity. We ensure precise technical evaluation and culture alignment.
                     </p>
-                    <ul className="space-y-2.5 mb-8 text-xs sm:text-sm text-text-secondary font-medium">
-                      <li className="flex items-center gap-2 text-text-primary"><Zap size={14} className="text-accent-secondary" /> 48-Hour Candidate Shortlist Guarantee</li>
-                      <li className="flex items-center gap-2 text-text-primary"><ShieldCheck size={14} className="text-accent-secondary" /> Risk-Free 2-Week Trial Period</li>
-                      <li className="flex items-center gap-2 text-text-primary"><Users size={14} className="text-accent-secondary" /> Direct Hire, Contract &amp; Executive Search</li>
+                    <ul className="space-y-2 mb-6 text-xs sm:text-sm text-slate-700 font-medium">
+                      <li className="flex items-center gap-2 text-slate-800"><Zap size={14} className="text-[#5B3FA6]" /> 48-Hour Candidate Shortlist Guarantee</li>
+                      <li className="flex items-center gap-2 text-slate-800"><ShieldCheck size={14} className="text-[#5B3FA6]" /> Risk-Free 2-Week Trial Period</li>
+                      <li className="flex items-center gap-2 text-slate-800"><Users size={14} className="text-[#5B3FA6]" /> Direct Hire, Contract &amp; Executive Search</li>
                     </ul>
                   </div>
-                  <Button to="/contact" size="lg" className="w-full sm:w-auto self-start">
+                  <Button to="/contact" variant="primary" size="sm" className="w-full sm:w-auto self-start">
                     Request Talent Briefing
                   </Button>
                 </div>
               </AnimatedSection>
 
               <AnimatedSection delay={150}>
-                <div className="p-8 sm:p-10 bg-navy-800/90 border border-border/80 hover:border-accent-primary/60 rounded-3xl transition-all duration-300 hover:shadow-2xl hover:shadow-accent-primary/10 flex flex-col justify-between h-full">
+                <div className="p-6 sm:p-7 bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-[#5B3FA6]/50 rounded-2xl transition-all duration-300 hover:shadow-xl flex flex-col justify-between h-full">
                   <div>
-                    <div className="w-13 h-13 rounded-2xl bg-accent-primary/15 border border-accent-primary/30 flex items-center justify-center mb-6 text-accent-secondary">
-                      <UserCheck size={26} />
+                    <div className="w-11 h-11 rounded-xl bg-purple-100 border border-purple-200 flex items-center justify-center mb-4 text-[#5B3FA6]">
+                      <UserCheck size={22} />
                     </div>
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-accent-light mb-2 block">
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#5B3FA6] mb-1.5 block">
                       For Technology Professionals
                     </span>
-                    <h3 className="text-2xl font-bold text-text-primary mb-4">
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">
                       Accelerate Your Engineering Career
                     </h3>
-                    <p className="text-sm sm:text-base text-text-secondary leading-relaxed mb-6">
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
                       Join high-performing squads working on mission-critical platforms for leading global enterprises. We connect top technology talent with roles that match your ambitions, compensation goals, and lifestyle.
                     </p>
-                    <ul className="space-y-2.5 mb-8 text-xs sm:text-sm text-text-secondary font-medium">
-                      <li className="flex items-center gap-2 text-text-primary"><Sparkles size={14} className="text-accent-secondary" /> Global Fortune 500 Projects</li>
-                      <li className="flex items-center gap-2 text-text-primary"><ShieldCheck size={14} className="text-accent-secondary" /> Continuous Upskilling &amp; Certifications</li>
-                      <li className="flex items-center gap-2 text-text-primary"><Users size={14} className="text-accent-secondary" /> Remote &amp; Hybrid High-Impact Roles</li>
+                    <ul className="space-y-2 mb-6 text-xs sm:text-sm text-slate-700 font-medium">
+                      <li className="flex items-center gap-2 text-slate-800"><Sparkles size={14} className="text-[#5B3FA6]" /> Global Fortune 500 Projects</li>
+                      <li className="flex items-center gap-2 text-slate-800"><ShieldCheck size={14} className="text-[#5B3FA6]" /> Continuous Upskilling &amp; Certifications</li>
+                      <li className="flex items-center gap-2 text-slate-800"><Users size={14} className="text-[#5B3FA6]" /> Remote &amp; Hybrid High-Impact Roles</li>
                     </ul>
                   </div>
-                  <Button to="/careers" variant="secondary" size="lg" className="w-full sm:w-auto self-start">
+                  <Button to="/careers" variant="outline" size="sm" className="w-full sm:w-auto self-start border-slate-300 !text-slate-800 hover:!text-slate-900 hover:bg-slate-100">
                     Explore Open Opportunities
                   </Button>
                 </div>

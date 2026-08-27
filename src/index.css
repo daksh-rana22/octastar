@@ -15,6 +15,18 @@
   --color-text-muted: #6B7394;
   --color-border: #263253;
   --color-border-hover: #5865F2;
+  --color-surface-light: #FFFFFF;
+  --color-surface-card: #F8FAFC;
+  --color-text-on-light: #0F172A;
+  --color-text-on-light-secondary: #475569;
+  --color-text-on-light-muted: #64748B;
+  --color-border-light: #E2E8F0;
+  --color-badge-bg: rgba(91, 63, 166, 0.1);
+  --color-badge-text: #5B3FA6;
+  --color-theme-container: #5B3FA6;
+  --color-theme-container-hover: #4B2F96;
+  --color-button-dark: #0F172A;
+  --color-button-dark-hover: #1E293B;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -27,11 +39,24 @@
   --color-accent-primary: #5865F2;
   --color-accent-secondary: #7C83FF;
   --color-accent-light: #A8B0FF;
+  --color-accent-glow: rgba(88, 101, 242, 0.2);
+  --color-theme-container: #5B3FA6;
+  --color-theme-container-hover: #4B2F96;
   --color-text-primary: #F8FAFF;
   --color-text-secondary: #A8B1C7;
   --color-text-muted: #6B7394;
   --color-border: #263253;
   --color-border-hover: #5865F2;
+  --color-surface-light: #FFFFFF;
+  --color-surface-card: #F8FAFC;
+  --color-text-on-light: #0F172A;
+  --color-text-on-light-secondary: #475569;
+  --color-text-on-light-muted: #64748B;
+  --color-border-light: #E2E8F0;
+  --color-badge-bg: rgba(91, 63, 166, 0.1);
+  --color-badge-text: #5B3FA6;
+  --color-button-dark: #0F172A;
+  --color-button-dark-hover: #1E293B;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -56,11 +81,12 @@
     color: var(--color-text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   ::selection {
-    background-color: rgba(88, 101, 242, 0.3);
-    color: #F8FAFF;
+    background-color: var(--color-accent-glow);
+    color: var(--color-text-primary);
   }
 
   ::-webkit-scrollbar {
@@ -99,41 +125,44 @@
 }
 
 @layer utilities {
+  /* ── Dynamic Gradient Utilities ── */
   .gradient-primary {
-    background: linear-gradient(135deg, #5865F2, #7C83FF);
+    background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
   }
 
   .gradient-bg {
-    background: linear-gradient(180deg, #0B132B 0%, #111C3D 50%, #172348 100%);
+    background: linear-gradient(180deg, var(--color-navy-900) 0%, var(--color-navy-800) 50%, var(--color-navy-700) 100%);
   }
 
   .gradient-highlight {
-    background: linear-gradient(135deg, #5865F2, #7C83FF, #A8B0FF);
+    background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary), var(--color-accent-light));
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #5865F2, #7C83FF, #A8B0FF);
+    background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary), var(--color-accent-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
+  /* ── Dynamic Glow Utilities ── */
   .glow-sm {
-    box-shadow: 0 0 15px rgba(88, 101, 242, 0.15);
+    box-shadow: 0 0 15px var(--color-accent-glow);
   }
 
   .glow-md {
-    box-shadow: 0 0 30px rgba(88, 101, 242, 0.2);
+    box-shadow: 0 0 30px var(--color-accent-glow);
   }
 
   .glow-lg {
-    box-shadow: 0 0 50px rgba(88, 101, 242, 0.25);
+    box-shadow: 0 0 50px var(--color-accent-glow);
   }
 
   .glow-border {
-    box-shadow: 0 0 0 1px rgba(88, 101, 242, 0.3), 0 0 20px rgba(88, 101, 242, 0.1);
+    box-shadow: 0 0 0 1px var(--color-accent-primary), 0 0 20px var(--color-accent-glow);
   }
 
+  /* ── Dynamic Card Base ── */
   .card-base {
     background: var(--color-navy-800);
     border: 1px solid var(--color-border);
@@ -143,20 +172,22 @@
 
   .card-base:hover {
     border-color: var(--color-accent-primary);
-    box-shadow: 0 0 30px rgba(88, 101, 242, 0.15);
+    box-shadow: 0 0 30px var(--color-accent-glow);
     transform: translateY(-4px);
   }
 
+  /* ── Pattern Utilities ── */
   .geometric-grid {
-    background-image:
-      linear-gradient(rgba(38, 50, 83, 0.3) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(38, 50, 83, 0.3) 1px, transparent 1px);
-    background-size: 60px 60px;
+    display: none;
   }
 
   .geometric-dots {
-    background-image: radial-gradient(rgba(88, 101, 242, 0.15) 1px, transparent 1px);
-    background-size: 30px 30px;
+    display: none;
+  }
+
+  .stats-gradient-bg {
+    background: linear-gradient(180deg, #CAD4E2 0%, #DFE6F0 30%, #E7EDF5 50%, #DFE6F0 70%, #C4CFDE 100%);
+    box-shadow: inset 0 6px 14px -4px rgba(15, 23, 42, 0.08), inset 0 -6px 14px -4px rgba(15, 23, 42, 0.09);
   }
 
   .text-balance {
@@ -164,7 +195,279 @@
   }
 }
 
-/* Animations */
+/* ================================================================
+   THEME-DYNAMIC OVERRIDES
+   These CSS rules make hardcoded Tailwind colors respond to
+   the active color theme. Scoped to <main> to avoid breaking
+   Navbar, Footer, and floating UI.
+   ================================================================ */
+
+/* ── Purple Container Sections → Theme Container ── */
+main .bg-\[\#5B3FA6\] {
+  background-color: var(--color-theme-container) !important;
+}
+main .hover\:bg-\[\#4B2F96\]:hover {
+  background-color: var(--color-theme-container-hover) !important;
+}
+main .text-\[\#5B3FA6\] {
+  color: var(--color-accent-primary) !important;
+}
+main .hover\:text-\[\#5B3FA6\]:hover {
+  color: var(--color-accent-secondary) !important;
+}
+main .border-\[\#5B3FA6\] {
+  border-color: var(--color-accent-primary) !important;
+}
+
+/* ── White / Light Section Surfaces ── */
+main .bg-white:not([class*="\/"]) {
+  background-color: var(--color-surface-light) !important;
+}
+main .hover\:bg-white:hover {
+  background-color: var(--color-surface-light) !important;
+}
+main .bg-slate-50 {
+  background-color: var(--color-surface-card) !important;
+}
+main .hover\:bg-slate-50:hover {
+  background-color: var(--color-surface-card) !important;
+}
+
+/* ── Text on Light Sections ── */
+main .text-slate-900 {
+  color: var(--color-text-on-light) !important;
+}
+main .text-slate-800 {
+  color: var(--color-text-on-light) !important;
+}
+main .text-slate-700 {
+  color: var(--color-text-on-light-secondary) !important;
+}
+main .text-slate-600 {
+  color: var(--color-text-on-light-secondary) !important;
+}
+main .text-slate-500 {
+  color: var(--color-text-on-light-muted) !important;
+}
+main .text-slate-400 {
+  color: var(--color-text-on-light-muted) !important;
+}
+
+/* ── Borders on Light Sections ── */
+main .border-slate-200 {
+  border-color: var(--color-border-light) !important;
+}
+main .border-slate-100 {
+  border-color: var(--color-border-light) !important;
+}
+main .border-y.border-slate-200 {
+  border-color: var(--color-border-light) !important;
+}
+main .divide-slate-200 > :not(:last-child) {
+  border-color: var(--color-border-light) !important;
+}
+
+/* ── Badges & Tags ── */
+main .bg-purple-100 {
+  background-color: var(--color-badge-bg) !important;
+}
+main .bg-purple-50 {
+  background-color: var(--color-badge-bg) !important;
+}
+main .text-purple-600 {
+  color: var(--color-accent-primary) !important;
+}
+main .text-purple-700 {
+  color: var(--color-accent-primary) !important;
+}
+main .text-purple-800 {
+  color: var(--color-accent-primary) !important;
+}
+main .bg-purple-600 {
+  background-color: var(--color-accent-primary) !important;
+}
+main .hover\:bg-purple-700:hover {
+  background-color: var(--color-accent-primary) !important;
+  filter: brightness(0.9);
+}
+
+/* ── Purple Text on Dark / Container Elements ── */
+main .text-purple-200 {
+  color: var(--color-accent-light) !important;
+}
+main .text-purple-200\/80 {
+  color: color-mix(in srgb, var(--color-accent-light) 80%, transparent) !important;
+}
+main .text-purple-300 {
+  color: var(--color-accent-secondary) !important;
+}
+main .text-purple-400 {
+  color: var(--color-accent-secondary) !important;
+}
+main .text-purple-500 {
+  color: var(--color-accent-primary) !important;
+}
+main .text-purple-100\/90 {
+  color: color-mix(in srgb, var(--color-accent-light) 90%, transparent) !important;
+}
+main .text-purple-100 {
+  color: var(--color-accent-light) !important;
+}
+
+/* ── Background Atmospheric Orbs in Containers ── */
+main .bg-purple-950\/40 {
+  background-color: color-mix(in srgb, var(--color-navy-900) 60%, transparent) !important;
+}
+main .bg-purple-900\/30 {
+  background-color: color-mix(in srgb, var(--color-accent-primary) 20%, transparent) !important;
+}
+main .bg-purple-500\/20 {
+  background-color: color-mix(in srgb, var(--color-accent-primary) 20%, transparent) !important;
+}
+main .bg-purple-300\/35 {
+  background-color: color-mix(in srgb, var(--color-accent-light) 35%, transparent) !important;
+}
+
+/* ── Group Hover Styles ── */
+main .group:hover .group-hover\:bg-\[\#5B3FA6\] {
+  background-color: var(--color-accent-primary) !important;
+}
+main .group:hover .group-hover\:text-\[\#5B3FA6\] {
+  color: var(--color-accent-primary) !important;
+}
+main .group-hover\:bg-\[\#5B3FA6\]:hover {
+  background-color: var(--color-accent-primary) !important;
+}
+main .group-hover\:text-\[\#5B3FA6\]:hover {
+  color: var(--color-accent-primary) !important;
+}
+
+/* ── Dark Buttons on Light Sections ── */
+main .bg-slate-900 {
+  background-color: var(--color-button-dark) !important;
+}
+main .hover\:bg-slate-800:hover {
+  background-color: var(--color-button-dark-hover) !important;
+}
+
+/* ── Ring & Focus Colors ── */
+main .ring-purple-500 {
+  --tw-ring-color: var(--color-accent-primary) !important;
+}
+main .focus\:ring-purple-500:focus {
+  --tw-ring-color: var(--color-accent-primary) !important;
+}
+
+/* ── Gradient Stops (from/to/via) ── */
+main .from-\[\#5B3FA6\] {
+  --tw-gradient-from: var(--color-theme-container) !important;
+}
+main .to-\[\#5B3FA6\] {
+  --tw-gradient-to: var(--color-theme-container) !important;
+}
+main .via-\[\#5B3FA6\] {
+  --tw-gradient-via: var(--color-theme-container) !important;
+}
+
+/* ── Shadow Accents ── */
+main .shadow-purple-500\/20 {
+  --tw-shadow-color: var(--color-accent-glow) !important;
+}
+main .shadow-purple-900\/20 {
+  --tw-shadow-color: var(--color-accent-glow) !important;
+}
+main .shadow-purple-900\/30 {
+  --tw-shadow-color: var(--color-accent-glow) !important;
+}
+main .shadow-purple-900\/40 {
+  --tw-shadow-color: var(--color-accent-glow) !important;
+}
+main .shadow-\[\#5B3FA6\]\/10 {
+  --tw-shadow-color: var(--color-accent-glow) !important;
+}
+main .hover\:shadow-\[\#5B3FA6\]\/10:hover {
+  --tw-shadow-color: var(--color-accent-glow) !important;
+}
+
+/* ── Additional Container / Button Variants ── */
+main .bg-\[\#4a328c\] {
+  background-color: var(--color-theme-container-hover) !important;
+}
+main .hover\:bg-\[\#4a328c\]:hover {
+  background-color: var(--color-theme-container-hover) !important;
+}
+main .hover\:bg-\[\#4B2F96\]:hover {
+  background-color: var(--color-theme-container-hover) !important;
+}
+main .text-\[\#4B2F96\] {
+  color: var(--color-accent-primary) !important;
+}
+main .hover\:text-\[\#4B2F96\]:hover {
+  color: var(--color-accent-secondary) !important;
+}
+
+/* ── Stats Section Light BG ── */
+main .bg-\[\#ECEEF2\] {
+  background-color: var(--color-surface-card) !important;
+}
+
+/* ── Border Purple Variants ── */
+main .border-purple-200 {
+  border-color: var(--color-border-light) !important;
+}
+main .border-purple-400\/20 {
+  border-color: color-mix(in srgb, var(--color-accent-primary) 20%, transparent) !important;
+}
+main .border-purple-500\/30 {
+  border-color: color-mix(in srgb, var(--color-accent-primary) 30%, transparent) !important;
+}
+main .hover\:border-\[\#5B3FA6\]\/50:hover {
+  border-color: color-mix(in srgb, var(--color-accent-primary) 50%, transparent) !important;
+}
+
+/* ── Focus State Accents ── */
+main .focus\:border-\[\#5B3FA6\]:focus {
+  border-color: var(--color-accent-primary) !important;
+}
+main .focus\:ring-\[\#5B3FA6\]\/20:focus {
+  --tw-ring-color: var(--color-accent-glow) !important;
+}
+
+/* ── CTA Button Hover ── */
+main .hover\:bg-purple-50:hover {
+  background-color: var(--color-surface-card) !important;
+}
+
+/* ── Slate Border Variants ── */
+main .border-slate-300 {
+  border-color: var(--color-border-light) !important;
+}
+main .border-slate-300\/80 {
+  border-color: color-mix(in srgb, var(--color-border-light) 80%, transparent) !important;
+}
+main .border-slate-200\/90 {
+  border-color: color-mix(in srgb, var(--color-border-light) 90%, transparent) !important;
+}
+
+/* ── Slate Background Variants ── */
+main .bg-slate-100 {
+  background-color: var(--color-surface-card) !important;
+}
+main .bg-slate-200 {
+  background-color: var(--color-surface-card) !important;
+}
+
+/* ── Placeholder Colors ── */
+main .placeholder-slate-400::placeholder {
+  color: var(--color-text-on-light-muted) !important;
+}
+
+
+
+/* ================================================================
+   ANIMATIONS
+   ================================================================ */
+
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -259,13 +562,13 @@
 
 @keyframes nodePulseRing {
   0% {
-    box-shadow: 0 0 0 0 rgba(88, 101, 242, 0.8), 0 0 15px rgba(124, 131, 255, 0.5);
+    box-shadow: 0 0 0 0 var(--color-accent-primary), 0 0 15px var(--color-accent-glow);
   }
   60% {
     box-shadow: 0 0 0 10px rgba(88, 101, 242, 0), 0 0 25px rgba(124, 131, 255, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(88, 101, 242, 0), 0 0 0 rgba(124, 131, 255, 0);
+    box-shadow: 0 0 0 0 var(--color-accent-primary), 0 0 0 rgba(124, 131, 255, 0);
   }
 }
 
@@ -348,8 +651,6 @@
   animation: starAuraPulse 3.5s ease-in-out infinite;
   will-change: transform, opacity;
 }
-
-
 
 /* Stagger animation delays */
 .stagger-1 { animation-delay: 0.1s; }

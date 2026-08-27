@@ -82,7 +82,7 @@ export default function Resources() {
                 <span className="text-xs text-purple-200 font-mono font-medium">
                   By {featuredInsight.author}
                 </span>
-                <Button to="/contact" className="bg-white hover:bg-purple-50 text-[#5B3FA6] font-bold shadow-lg border-none">
+                <Button to="/contact" variant="white" size="md">
                   Read Full Whitepaper →
                 </Button>
               </div>
@@ -109,11 +109,10 @@ export default function Resources() {
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
-                    activeCategory === category
+                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${activeCategory === category
                       ? 'bg-[#5B3FA6] text-white shadow-md shadow-purple-900/20 scale-105'
                       : 'bg-slate-100 text-slate-700 hover:bg-slate-200/80 hover:text-slate-900 border border-slate-200'
-                  }`}
+                    }`}
                 >
                   {category}
                 </button>

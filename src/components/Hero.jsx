@@ -2,9 +2,35 @@ import { useEffect, useRef } from 'react';
 import Container from './Container';
 import Button from './Button';
 import AnimatedSection from './AnimatedSection';
+import { useTheme } from '../context/ThemeContext';
+
+function hexToRgba(hex, alpha = 1) {
+  if (!hex) return `rgba(88, 101, 242, ${alpha})`;
+  if (hex.startsWith('rgba') || hex.startsWith('rgb')) return hex;
+  const cleanHex = hex.replace('#', '');
+  if (cleanHex.length === 3) {
+    const r = parseInt(cleanHex[0] + cleanHex[0], 16);
+    const g = parseInt(cleanHex[1] + cleanHex[1], 16);
+    const b = parseInt(cleanHex[2] + cleanHex[2], 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+  if (cleanHex.length >= 6) {
+    const r = parseInt(cleanHex.substring(0, 2), 16);
+    const g = parseInt(cleanHex.substring(2, 4), 16);
+    const b = parseInt(cleanHex.substring(4, 6), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+  return `rgba(88, 101, 242, ${alpha})`;
+}
 
 function HeroCanvas() {
   const canvasRef = useRef(null);
+  const { activeTheme } = useTheme();
+  const themeRef = useRef(activeTheme);
+
+  useEffect(() => {
+    themeRef.current = activeTheme;
+  }, [activeTheme]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -12,7 +38,6 @@ function HeroCanvas() {
     const ctx = canvas.getContext('2d');
     let animationId;
     let particles = [];
-    let connections = [];
 
     const resize = () => {
       canvas.width = canvas.offsetWidth * window.devicePixelRatio;
@@ -23,29 +48,30 @@ function HeroCanvas() {
     const createParticles = () => {
       const w = canvas.offsetWidth;
       const h = canvas.offsetHeight;
-      const count = Math.min(60, Math.floor((w * h) / 15000));
+      const count = Math.min(70, Math.floor((w * h) / 13000));
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        size: Math.random() * 2 + 1,
-        opacity: Math.random() * 0.5 + 0.2,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        size: Math.random() * 2.2 + 1,
+        opacity: Math.random() * 0.6 + 0.35,
       }));
     };
 
     const drawCompassShape = (time) => {
+      const currentTheme = themeRef.current || { primary: '#3B82F6', secondary: '#68A9E8', light: '#A0D2EB' };
       const w = canvas.offsetWidth;
       const h = canvas.offsetHeight;
       const cx = w * 0.65;
       const cy = h * 0.5;
-      const radius = Math.min(w, h) * 0.25;
+      const radius = Math.min(w, h) * 0.27;
 
       ctx.save();
       ctx.translate(cx, cy);
       ctx.rotate(time * 0.0001);
 
-      // Draw compass/star points
+      // Draw compass/star points with bright luminous gradient
       const points = 8;
       const innerR = radius * 0.3;
       for (let i = 0; i < points; i++) {
@@ -56,10 +82,10 @@ function HeroCanvas() {
         ctx.moveTo(0, 0);
         ctx.lineTo(Math.cos(angle) * outerR, Math.sin(angle) * outerR);
         const grad = ctx.createLinearGradient(0, 0, Math.cos(angle) * outerR, Math.sin(angle) * outerR);
-        grad.addColorStop(0, 'rgba(88, 101, 242, 0.15)');
-        grad.addColorStop(1, 'rgba(88, 101, 242, 0)');
+        grad.addColorStop(0, hexToRgba(currentTheme.light || currentTheme.primary, 0.35));
+        grad.addColorStop(1, hexToRgba(currentTheme.secondary, 0));
         ctx.strokeStyle = grad;
-        ctx.lineWidth = i % 2 === 0 ? 1.5 : 0.8;
+        ctx.lineWidth = i % 2 === 0 ? 1.8 : 1.0;
         ctx.stroke();
       }
 
@@ -67,32 +93,35 @@ function HeroCanvas() {
       for (let r = 1; r <= 3; r++) {
         ctx.beginPath();
         ctx.arc(0, 0, innerR + (radius - innerR) * (r / 3), 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(88, 101, 242, ${0.08 - r * 0.02})`;
-        ctx.lineWidth = 0.5;
+        ctx.strokeStyle = hexToRgba(currentTheme.light || currentTheme.primary, 0.15 - r * 0.03);
+        ctx.lineWidth = 0.8;
         ctx.stroke();
       }
 
-      // Center glow
-      const glow = ctx.createRadialGradient(0, 0, 0, 0, 0, radius * 0.15);
-      glow.addColorStop(0, 'rgba(88, 101, 242, 0.2)');
-      glow.addColorStop(1, 'rgba(88, 101, 242, 0)');
+      // Center bright radiant core
+      const glow = ctx.createRadialGradient(0, 0, 0, 0, 0, radius * 0.22);
+      glow.addColorStop(0, hexToRgba('#FFFFFF', 0.45));
+      glow.addColorStop(0.3, hexToRgba(currentTheme.light || currentTheme.primary, 0.35));
+      glow.addColorStop(0.7, hexToRgba(currentTheme.secondary, 0.15));
+      glow.addColorStop(1, hexToRgba(currentTheme.primary, 0));
       ctx.fillStyle = glow;
       ctx.beginPath();
-      ctx.arc(0, 0, radius * 0.15, 0, Math.PI * 2);
+      ctx.arc(0, 0, radius * 0.22, 0, Math.PI * 2);
       ctx.fill();
 
       ctx.restore();
     };
 
     const animate = (time) => {
+      const currentTheme = themeRef.current || { primary: '#3B82F6', secondary: '#68A9E8', light: '#A0D2EB' };
       const w = canvas.offsetWidth;
       const h = canvas.offsetHeight;
       ctx.clearRect(0, 0, w, h);
 
-      // Draw compass
+      // Draw compass star
       drawCompassShape(time);
 
-      // Update and draw particles
+      // Update and draw glowing particles
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
@@ -103,27 +132,9 @@ function HeroCanvas() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(88, 101, 242, ${p.opacity})`;
+        ctx.fillStyle = hexToRgba(currentTheme.light || currentTheme.secondary, p.opacity);
         ctx.fill();
       });
-
-      // Draw connections
-      const maxDist = 120;
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < maxDist) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(88, 101, 242, ${0.15 * (1 - dist / maxDist)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
-      }
 
       animationId = requestAnimationFrame(animate);
     };
@@ -132,22 +143,24 @@ function HeroCanvas() {
     createParticles();
     animate(0);
 
-    window.addEventListener('resize', () => {
+    const handleResize = () => {
       resize();
       createParticles();
-    });
+    };
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', resize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full"
-      style={{ opacity: 0.6 }}
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      style={{ opacity: 0.85 }}
     />
   );
 }
@@ -174,7 +187,7 @@ export default function Hero({
         compact ? 'pt-32 pb-16 md:pt-40 md:pb-24' : 'pt-28 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32'
       }`}
     >
-      {/* Background Video (if provided) */}
+      {/* ── Background Video Layer (if provided) ── */}
       {videoBg && (
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <video
@@ -182,37 +195,51 @@ export default function Hero({
             loop
             muted
             playsInline
-            className="w-full h-full object-cover object-right md:object-[82%_center] translate-x-6 md:translate-x-[10%] lg:translate-x-[14%] xl:translate-x-[18%] opacity-90 filter brightness-105 contrast-105 transition-transform duration-700"
+            className="w-full h-full object-cover object-right md:object-[82%_center] translate-x-6 md:translate-x-[10%] lg:translate-x-[14%] xl:translate-x-[18%] opacity-95 filter brightness-115 contrast-105 transition-transform duration-700"
           >
             <source src={videoBg} type="video/mp4" />
           </video>
-          {/* Subtle Dark Navy Overlay for crisp text contrast */}
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/60 to-transparent" />
-          <div className="absolute inset-0 bg-navy-900/10" />
+          {/* Lighter, clearer ambient gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-900/80 via-navy-900/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-navy-900/20" />
         </div>
       )}
 
-      {/* Background Gradients */}
+      {/* ── Background Base & Mesh Atmosphere ── */}
       {!videoBg && <div className="absolute inset-0 gradient-bg" />}
-      <div className="absolute inset-0 geometric-dots opacity-30" />
 
-      {/* Radial glow effects */}
+      {/* Top luminous ambient light wash */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] pointer-events-none blur-[120px] opacity-40 transition-colors duration-500"
         style={{
-          background: 'radial-gradient(circle, rgba(88,101,242,0.12) 0%, rgba(124,131,255,0.04) 40%, transparent 70%)',
-        }}
-      />
-      <div
-        className="absolute top-1/4 right-1/4 w-[400px] h-[400px] rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(168,176,255,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at 50% 0%, var(--color-accent-light) 0%, var(--color-accent-primary) 35%, transparent 75%)',
         }}
       />
 
-      {/* Animated Canvas Visualization (Active on all pages) */}
+      {/* Bright glowing aurora orbs */}
+      <div
+        className="absolute top-1/4 -left-10 w-[600px] md:w-[750px] h-[600px] md:h-[750px] rounded-full pointer-events-none blur-[110px] opacity-50 transition-colors duration-500"
+        style={{
+          background: 'radial-gradient(circle, var(--color-accent-light) 0%, var(--color-accent-primary) 40%, transparent 70%)',
+        }}
+      />
+      <div
+        className="absolute -top-16 right-0 w-[550px] md:w-[700px] h-[550px] md:h-[700px] rounded-full pointer-events-none blur-[120px] opacity-45 transition-colors duration-500"
+        style={{
+          background: 'radial-gradient(circle, #FFFFFF 0%, var(--color-accent-secondary) 30%, var(--color-accent-light) 60%, transparent 75%)',
+        }}
+      />
+      <div
+        className="absolute bottom-10 right-1/4 w-[450px] h-[450px] rounded-full pointer-events-none blur-[90px] opacity-35 transition-colors duration-500"
+        style={{
+          background: 'radial-gradient(circle, var(--color-accent-secondary) 0%, transparent 70%)',
+        }}
+      />
+
+      {/* Animated Canvas Visualization (Constellation & Compass Star) */}
       {showVisualization && <HeroCanvas />}
 
+      {/* ── Content ── */}
       <Container className="relative z-10">
         <div className={isHome ? 'lg:max-w-[58%]' : 'max-w-4xl mx-auto text-center'}>
           <AnimatedSection>
@@ -221,7 +248,7 @@ export default function Hero({
                 {label}
               </span>
             )}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight mb-5 md:mb-6 text-text-primary text-balance">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight mb-5 md:mb-6 text-text-primary text-balance drop-shadow-sm">
               {title}
             </h1>
           </AnimatedSection>
@@ -260,7 +287,7 @@ export default function Hero({
         </div>
       </Container>
 
-      {/* Bottom fade into navy background */}
+      {/* Bottom fade into canvas background */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-navy-900 to-transparent pointer-events-none" />
     </section>
   );

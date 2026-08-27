@@ -53,11 +53,10 @@ export default function Contact() {
             <AnimatedSection>
               <div
                 onClick={() => setActivePathway('enterprise')}
-                className={`cursor-pointer p-7 sm:p-8 rounded-2xl border transition-all duration-300 backdrop-blur-md relative overflow-hidden ${
-                  activePathway === 'enterprise'
+                className={`cursor-pointer p-7 sm:p-8 rounded-2xl border transition-all duration-300 backdrop-blur-md relative overflow-hidden ${activePathway === 'enterprise'
                     ? 'bg-white/20 border-white shadow-2xl scale-[1.02]'
                     : 'bg-white/10 hover:bg-white/15 border-white/20 hover:border-white/40'
-                }`}
+                  }`}
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-13 h-13 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center text-white">
@@ -84,11 +83,10 @@ export default function Contact() {
             <AnimatedSection delay={150}>
               <div
                 onClick={() => setActivePathway('candidate')}
-                className={`cursor-pointer p-7 sm:p-8 rounded-2xl border transition-all duration-300 backdrop-blur-md relative overflow-hidden ${
-                  activePathway === 'candidate'
+                className={`cursor-pointer p-7 sm:p-8 rounded-2xl border transition-all duration-300 backdrop-blur-md relative overflow-hidden ${activePathway === 'candidate'
                     ? 'bg-white/20 border-white shadow-2xl scale-[1.02]'
                     : 'bg-white/10 hover:bg-white/15 border-white/20 hover:border-white/40'
-                }`}
+                  }`}
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-13 h-13 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center text-white">

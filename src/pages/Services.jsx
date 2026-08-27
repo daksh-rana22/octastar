@@ -74,70 +74,86 @@ export default function Services() {
         secondaryCta={{ label: 'Explore Solutions', to: '/solutions' }}
       />
 
-      {/* Service Ecosystem Grid - Deep Navy */}
-      <section className="py-16 md:py-24 relative overflow-hidden bg-navy-900">
-        <div className="absolute inset-0 geometric-dots opacity-20 pointer-events-none" />
-        <Container className="relative z-10">
-          <SectionHeading
-            label="Service Ecosystem"
-            title="Engineered for Scalable Enterprise Impact"
-            description="Every capability is architected to deliver measurable business outcomes — accelerating velocity, reducing risk, and optimizing costs."
-            className="mb-12 md:mb-16"
-          />
+      {/* 1. Service Ecosystem Grid - 1st: Proven Scale & Performance Container bg (stats-gradient-bg) */}
+      <section className="py-12 md:py-16 relative overflow-hidden stats-gradient-bg border-y border-slate-350">
+        {/* Subtle Dark Edge Vignette Fades */}
+        <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-b from-slate-900/[0.08] to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-slate-900/[0.10] to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.45)_0%,_transparent_65%,_rgba(15,23,42,0.06)_100%)] pointer-events-none" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+        <Container className="relative z-10">
+          <AnimatedSection className="max-w-3xl mb-8 md:mb-10 text-center mx-auto">
+            <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-accent-primary mb-1.5 drop-shadow-sm">
+              Service Ecosystem
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold leading-tight mb-2 text-slate-900">
+              Engineered for Scalable Enterprise Impact
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl mx-auto">
+              Every capability is architected to deliver measurable business outcomes — accelerating velocity, reducing risk, and optimizing costs.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {servicesList.map((service, index) => (
-              <ServiceCard key={service.id} service={service} index={index} />
+              <ServiceCard key={service.id} service={service} index={index} variant="light" />
             ))}
           </div>
         </Container>
       </section>
 
-      {/* Engagement Models - Crisp Clean White Section */}
-      <section className="py-20 md:py-28 relative overflow-hidden bg-white text-slate-900 border-y border-slate-200">
-        <Container className="relative z-10">
-          <SectionHeading
-            label="Engagement Models"
-            title="Tailored Delivery Frameworks for Any Scale"
-            description="Whether you need on-demand specialist talent or full-lifecycle managed engineering squads, our engagement models adapt to your exact operational requirements."
-            darkText={true}
-            className="mb-12 md:mb-16"
-          />
+      {/* 2. Engagement Models - 2nd: Vibrant Purple Container */}
+      <section className="py-12 md:py-16 relative overflow-hidden bg-[#5B3FA6] text-white">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-950/40 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 items-stretch">
+        <Container className="relative z-10">
+          <AnimatedSection className="max-w-3xl mb-8 md:mb-10 text-center mx-auto">
+            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-purple-200 mb-1.5">
+              Engagement Models
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold leading-tight mb-2 text-white">
+              Tailored Delivery Frameworks for Any Scale
+            </h2>
+            <p className="text-xs sm:text-sm text-purple-100/90 leading-relaxed max-w-2xl mx-auto">
+              Whether you need on-demand specialist talent or full-lifecycle managed engineering squads, our engagement models adapt to your exact operational requirements.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-stretch">
             {engagementModels.map((model, idx) => (
               <AnimatedSection key={model.title} delay={idx * 100} className="h-full">
-                <div className="group h-full flex flex-col justify-between p-7 sm:p-8 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-[#5B3FA6]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#5B3FA6]/10 hover:-translate-y-1">
+                <div className="group h-full flex flex-col justify-between p-5 sm:p-6 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/40 backdrop-blur-md transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5">
                   <div>
-                    <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-100 text-[#5B3FA6] border border-purple-200">
+                    <div className="flex items-center justify-between gap-2 mb-2.5">
+                      <span className="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-bold uppercase tracking-wider bg-white/15 text-white border border-white/25">
                         {model.tag}
                       </span>
-                      <span className="text-xs font-mono font-bold text-slate-400">
+                      <span className="text-xs font-mono font-bold text-purple-200/60">
                         Model 0{idx + 1}
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#5B3FA6] transition-colors">
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-purple-100 transition-colors">
                       {model.title}
                     </h3>
 
-                    <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                    <p className="text-xs sm:text-sm text-purple-100/90 leading-relaxed mb-4">
                       {model.description}
                     </p>
 
-                    <div className="space-y-2.5 pt-4 border-t border-slate-200/70">
+                    <div className="space-y-2 pt-3 border-t border-white/15">
                       {model.points.map((pt) => (
-                        <div key={pt} className="flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-700">
-                          <CheckCircle2 size={16} className="text-[#5B3FA6] flex-shrink-0" />
+                        <div key={pt} className="flex items-center gap-2 text-xs sm:text-sm font-medium text-purple-100">
+                          <CheckCircle2 size={15} className="text-purple-200 flex-shrink-0" />
                           <span>{pt}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="mt-8 pt-4 flex items-center justify-end">
-                    <Button to="/contact" variant="text" size="sm" className="text-[#5B3FA6] font-bold">
+                  <div className="mt-5 pt-3 flex items-center justify-end">
+                    <Button to="/contact" variant="text" size="sm" className="!text-white hover:!text-purple-200 font-bold !text-xs">
                       Discuss This Model →
                     </Button>
                   </div>
@@ -148,43 +164,35 @@ export default function Services() {
         </Container>
       </section>
 
-      {/* Technology Ecosystem - Vibrant Purple Container */}
-      <section className="py-16 md:py-24 relative overflow-hidden bg-[#5B3FA6] text-white">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-950/40 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
-
+      {/* 3. Technology Ecosystem - 3rd: Crisp Clean White Container */}
+      <section className="py-14 md:py-20 relative overflow-hidden bg-white text-slate-900 border-y border-slate-200">
         <Container className="relative z-10">
-          <AnimatedSection className="max-w-3xl mb-12 text-center mx-auto">
-            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-purple-200 mb-2">
-              Technology Stack
-            </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-3 text-white">
-              Enterprise Technology &amp; Toolchain Mastery
-            </h2>
-            <p className="text-sm md:text-base text-purple-100/90 leading-relaxed">
-              We leverage modern architectures, battle-tested cloud frameworks, and cutting-edge toolchains to build scalable, resilient platforms.
-            </p>
-          </AnimatedSection>
+          <SectionHeading
+            label="Technology Stack"
+            title="Enterprise Technology &amp; Toolchain Mastery"
+            description="We leverage modern architectures, battle-tested cloud frameworks, and cutting-edge toolchains to build scalable, resilient platforms."
+            darkText={true}
+            className="mb-8 md:mb-10"
+          />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 items-stretch">
             {techStack.map((stack, idx) => {
               const Icon = stack.icon;
               return (
                 <AnimatedSection key={stack.category} delay={idx * 80} className="h-full">
-                  <div className="h-full p-6 bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/40 rounded-2xl backdrop-blur-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between">
+                  <div className="h-full p-4.5 sm:p-5 rounded-xl bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-[#5B3FA6]/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 flex flex-col justify-between">
                     <div>
-                      <div className="w-12 h-12 rounded-xl bg-white/15 border border-white/25 flex items-center justify-center mb-4 text-white">
-                        <Icon size={22} />
+                      <div className="w-9 h-9 rounded-lg bg-purple-100 border border-purple-200 flex items-center justify-center mb-3 text-[#5B3FA6]">
+                        <Icon size={18} />
                       </div>
-                      <h4 className="text-base font-bold text-white mb-4">
+                      <h4 className="text-sm sm:text-base font-bold text-slate-900 mb-3">
                         {stack.category}
                       </h4>
                       <div className="flex flex-wrap gap-1.5">
                         {stack.items.map((item) => (
                           <span
                             key={item}
-                            className="px-2.5 py-1 text-xs font-medium bg-white/15 text-white rounded-lg border border-white/20"
+                            className="px-2 py-0.5 text-[11px] font-medium bg-slate-100 text-slate-700 rounded-md border border-slate-200/80"
                           >
                             {item}
                           </span>
@@ -199,7 +207,7 @@ export default function Services() {
         </Container>
       </section>
 
-      {/* Signature CTA */}
+      {/* 4. Signature CTA - Vibrant Purple Container */}
       <CTASection
         title="Need a Custom Technology Solution?"
         description="Every organization has unique technical complexities and scaling goals. Let's design a custom delivery model tailored to your exact roadmap."

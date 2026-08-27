@@ -177,18 +177,16 @@ export default function About() {
                   delay={index * 100}
                   animation={index % 2 === 0 ? 'fade-right' : 'fade-left'}
                 >
-                  <div className={`relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 ${
-                    index % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'
-                  }`}>
+                  <div className={`relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 ${index % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'
+                    }`}>
                     {/* Node on Line */}
                     <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-navy-900 border-2 border-accent-primary items-center justify-center z-10 shadow-lg shadow-accent-primary/30">
                       <div className="w-2.5 h-2.5 rounded-full bg-accent-secondary animate-pulse" />
                     </div>
 
                     {/* Timeline Card */}
-                    <div className={`w-full sm:w-[calc(50%-2rem)] p-6 sm:p-7 rounded-2xl bg-navy-800/90 border border-border/80 hover:border-accent-primary/60 transition-all duration-300 hover:shadow-xl hover:shadow-accent-primary/15 ${
-                      index % 2 === 0 ? 'sm:text-right' : 'sm:text-left'
-                    }`}>
+                    <div className={`w-full sm:w-[calc(50%-2rem)] p-6 sm:p-7 rounded-2xl bg-navy-800/90 border border-border/80 hover:border-accent-primary/60 transition-all duration-300 hover:shadow-xl hover:shadow-accent-primary/15 ${index % 2 === 0 ? 'sm:text-right' : 'sm:text-left'
+                      }`}>
                       <span className="inline-block px-3 py-1 rounded-full text-xs font-mono font-bold bg-accent-primary/15 text-accent-light border border-accent-primary/30 mb-2">
                         {item.year}
                       </span>

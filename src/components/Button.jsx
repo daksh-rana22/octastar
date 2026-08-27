@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 const variants = {
   primary: 'gradient-primary text-white hover:shadow-lg hover:shadow-accent-primary/25 hover:scale-[1.02]',
   secondary: 'bg-navy-700 text-text-primary border border-border hover:border-accent-primary hover:bg-navy-600',
+  white: 'bg-white hover:bg-slate-100 text-slate-900 font-bold shadow-xl border-none hover:scale-105',
+  glass: 'bg-white/15 hover:bg-white/25 text-white border border-white/30 backdrop-blur-md hover:scale-105',
+  dark: 'bg-navy-900 hover:bg-navy-800 text-white font-bold shadow-md hover:scale-[1.02]',
   outline: 'bg-transparent text-accent-secondary border border-accent-primary/40 hover:bg-accent-primary/10 hover:border-accent-primary',
   ghost: 'bg-transparent text-accent-secondary hover:text-accent-light hover:bg-navy-700/50',
   text: 'bg-transparent text-accent-secondary hover:text-accent-light',

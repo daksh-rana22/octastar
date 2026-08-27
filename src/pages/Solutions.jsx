@@ -89,7 +89,7 @@ export default function Solutions() {
 
                     <div>
                       <div className="flex items-center justify-between mb-5">
-                        <div className="flex items-center justify-center w-13 h-13 rounded-xl bg-accent-primary/15 border border-accent-primary/30 text-accent-secondary group-hover:bg-[#5865F2] group-hover:text-white group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-accent-primary/30 transition-all duration-300">
+                        <div className="flex items-center justify-center w-13 h-13 rounded-xl bg-accent-primary/15 border border-accent-primary/30 text-accent-secondary group-hover:bg-accent-primary group-hover:text-white group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-accent-primary/30 transition-all duration-300">
                           <Icon size={24} />
                         </div>
                         <span className="text-xs font-mono font-semibold text-accent-light/80 bg-accent-primary/10 px-2.5 py-1 rounded-full border border-accent-primary/20">

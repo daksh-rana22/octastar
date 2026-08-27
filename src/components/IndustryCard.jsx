@@ -12,13 +12,13 @@ export default function IndustryCard({ industry, index = 0 }) {
         className="group relative flex flex-col justify-between h-full bg-navy-800/90 hover:bg-navy-700/80 border border-border/80 hover:border-accent-primary/60 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-accent-primary/15 hover:-translate-y-1.5 backdrop-blur-md"
       >
         {/* Top Gradient Accent Bar */}
-        <div className="h-1.5 w-full bg-gradient-to-r from-accent-primary via-purple-500 to-indigo-400 opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="h-1.5 w-full bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-light opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
 
         {/* Card Body */}
         <div className="p-6 sm:p-7 flex flex-col flex-1">
           {/* Top Row: Icon & Category Indicator */}
           <div className="flex items-center justify-between mb-5">
-            <div className="flex items-center justify-center w-13 h-13 rounded-xl bg-accent-primary/15 border border-accent-primary/30 text-accent-secondary group-hover:bg-[#5865F2] group-hover:text-white group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-accent-primary/25 transition-all duration-300">
+            <div className="flex items-center justify-center w-13 h-13 rounded-xl bg-accent-primary/15 border border-accent-primary/30 text-accent-secondary group-hover:bg-accent-primary group-hover:text-white group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-accent-primary/25 transition-all duration-300">
               <Icon size={24} />
             </div>
             <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-accent-light/80 bg-accent-primary/10 px-2.5 py-1 rounded-full border border-accent-primary/20">

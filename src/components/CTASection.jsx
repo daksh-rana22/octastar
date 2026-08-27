@@ -28,14 +28,16 @@ export default function CTASection({
               <Button
                 to={primaryCta.to}
                 size="lg"
-                className="bg-white hover:bg-purple-50 text-[#5B3FA6] hover:text-[#4B2F96] font-bold shadow-xl border-none hover:scale-105"
+                variant="white"
+                className="hover:scale-105 transition-transform"
               >
                 {primaryCta.label}
               </Button>
               <Button
                 to={secondaryCta.to}
                 size="lg"
-                className="bg-white/15 hover:bg-white/25 text-white border border-white/30 backdrop-blur-md hover:scale-105"
+                variant="glass"
+                className="hover:scale-105 transition-transform"
               >
                 {secondaryCta.label}
               </Button>

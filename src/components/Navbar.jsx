@@ -53,11 +53,10 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
             ? 'bg-navy-900/95 backdrop-blur-xl border-b border-border shadow-lg shadow-navy-900/50'
             : 'bg-transparent'
-        }`}
+          }`}
       >
         <Container>
           <div className="flex items-center justify-between h-16 md:h-20">
@@ -77,19 +76,17 @@ export default function Navbar() {
                 >
                   <Link
                     to={item.path}
-                    className={`flex items-center gap-1 px-3 xl:px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                      isActive(item.path)
-                        ? 'text-accent-secondary'
+                    className={`flex items-center gap-1 px-3 xl:px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${isActive(item.path)
+                        ? 'text-accent-secondary font-semibold'
                         : 'text-text-secondary hover:text-text-primary'
-                    }`}
+                      }`}
                   >
                     {item.label}
                     {item.children && (
                       <ChevronDown
                         size={14}
-                        className={`transition-transform duration-200 ${
-                          activeDropdown === item.label ? 'rotate-180' : ''
-                        }`}
+                        className={`transition-transform duration-200 ${activeDropdown === item.label ? 'rotate-180' : ''
+                          }`}
                       />
                     )}
                   </Link>
@@ -141,46 +138,45 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Desktop CTA */}
+            {/* Desktop Actions */}
             <div className="hidden lg:flex items-center gap-3">
               <Button to="/contact" size="sm">
                 Partner With Us
               </Button>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="lg:hidden relative z-10 p-2 text-text-primary hover:text-accent-secondary transition-colors"
-              aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
-            >
-              {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {/* Mobile Actions */}
+            <div className="flex items-center gap-2 lg:hidden">
+              <button
+                onClick={() => setIsMobileOpen(!isMobileOpen)}
+                className="relative z-10 p-2 text-text-primary hover:text-accent-secondary transition-colors"
+                aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
+              >
+                {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
         </Container>
       </nav>
 
       {/* Mobile Drawer */}
       <div
-        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${
-          isMobileOpen ? 'visible' : 'invisible'
-        }`}
+        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${isMobileOpen ? 'visible' : 'invisible'
+          }`}
       >
         {/* Backdrop */}
         <div
-          className={`absolute inset-0 bg-navy-900/80 backdrop-blur-sm transition-opacity duration-300 ${
-            isMobileOpen ? 'opacity-100' : 'opacity-0'
-          }`}
+          className={`absolute inset-0 bg-navy-900/80 backdrop-blur-sm transition-opacity duration-300 ${isMobileOpen ? 'opacity-100' : 'opacity-0'
+            }`}
           onClick={() => setIsMobileOpen(false)}
         />
 
         {/* Drawer */}
         <div
-          className={`absolute top-0 right-0 h-full w-full max-w-sm bg-navy-800 border-l border-border shadow-2xl transition-transform duration-300 overflow-y-auto ${
-            isMobileOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+          className={`absolute top-0 right-0 h-full w-full max-w-sm bg-navy-800 border-l border-border shadow-2xl transition-transform duration-300 overflow-y-auto ${isMobileOpen ? 'translate-x-0' : 'translate-x-full'
+            }`}
         >
-          <div className="pt-20 pb-8 px-6">
+          <div className="pt-20 pb-8 px-6 flex flex-col justify-between min-h-full">
             <div className="space-y-1">
               {navigation.map((item) => (
                 <div key={item.label}>
@@ -190,18 +186,16 @@ export default function Navbar() {
                         onClick={() =>
                           setMobileExpanded(mobileExpanded === item.label ? null : item.label)
                         }
-                        className={`flex items-center justify-between w-full px-4 py-3 text-base font-medium rounded-lg transition-colors duration-200 ${
-                          isActive(item.path)
+                        className={`flex items-center justify-between w-full px-4 py-3 text-base font-medium rounded-lg transition-colors duration-200 ${isActive(item.path)
                             ? 'text-accent-secondary bg-navy-700/50'
                             : 'text-text-primary hover:bg-navy-700/50'
-                        }`}
+                          }`}
                       >
                         {item.label}
                         <ChevronDown
                           size={18}
-                          className={`transition-transform duration-200 ${
-                            mobileExpanded === item.label ? 'rotate-180' : ''
-                          }`}
+                          className={`transition-transform duration-200 ${mobileExpanded === item.label ? 'rotate-180' : ''
+                            }`}
                         />
                       </button>
                       {mobileExpanded === item.label && (
@@ -227,11 +221,10 @@ export default function Navbar() {
                   ) : (
                     <Link
                       to={item.path}
-                      className={`block px-4 py-3 text-base font-medium rounded-lg transition-colors duration-200 ${
-                        isActive(item.path)
+                      className={`block px-4 py-3 text-base font-medium rounded-lg transition-colors duration-200 ${isActive(item.path)
                           ? 'text-accent-secondary bg-navy-700/50'
                           : 'text-text-primary hover:bg-navy-700/50'
-                      }`}
+                        }`}
                     >
                       {item.label}
                     </Link>
@@ -240,7 +233,7 @@ export default function Navbar() {
               ))}
             </div>
 
-            <div className="mt-8 pt-6 border-t border-border">
+            <div className="mt-8 pt-6 border-t border-border space-y-4">
               <Button to="/contact" className="w-full" size="lg">
                 Partner With Us
               </Button>

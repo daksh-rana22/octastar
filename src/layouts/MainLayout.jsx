@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
+import FloatingThemeCustomizer from '../components/FloatingThemeCustomizer';
 
 export default function MainLayout() {
   const { pathname } = useLocation();
@@ -19,6 +20,7 @@ export default function MainLayout() {
       </main>
       <Footer />
       <ScrollToTop />
+      <FloatingThemeCustomizer />
     </div>
   );
 }

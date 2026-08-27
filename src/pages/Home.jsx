@@ -205,10 +205,10 @@ export default function Home() {
                   We combine deep industry expertise with a vast network of technology talent and proven delivery frameworks to help organizations navigate complexity, accelerate growth, and stay ahead of change.
                 </p>
                 <div className="flex flex-wrap gap-3.5">
-                  <Button to="/about" className="bg-[#0B132B] hover:bg-[#15224e] text-white border-none shadow-md">
+                  <Button to="/about" variant="dark">
                     Learn About Our Approach
                   </Button>
-                  <Button to="/contact" className="border border-slate-300 hover:bg-slate-100 text-slate-800 bg-transparent">
+                  <Button to="/contact" variant="outline" className="border-slate-300 hover:bg-slate-100 !text-slate-800 hover:!text-slate-900 bg-transparent">
                     Talk to an Expert
                   </Button>
                 </div>
@@ -251,9 +251,8 @@ export default function Home() {
           {howWeWork.map((item, idx) => (
             <div
               key={item.bgImage || idx}
-              className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-                idx === activeProcessStep ? 'opacity-35 scale-100' : 'opacity-0 scale-105'
-              }`}
+              className={`absolute inset-0 transition-all duration-1000 ease-in-out ${idx === activeProcessStep ? 'opacity-35 scale-100' : 'opacity-0 scale-105'
+                }`}
             >
               <img
                 src={item.bgImage}

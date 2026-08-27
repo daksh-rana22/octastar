@@ -144,8 +144,8 @@ export default function ProcessTimeline({
             className="absolute top-8 left-[8%] h-[2px] rounded-full transition-all duration-100 ease-linear pointer-events-none z-0"
             style={{
               width: `${progress * 0.84}%`,
-              background: `linear-gradient(90deg, #4F46E5 0%, #5865F2 40%, #7C83FF 75%, #A8B0FF 100%)`,
-              boxShadow: `0 0 10px rgba(124, 131, 255, 0.7), 0 0 20px rgba(88, 101, 242, 0.5)`,
+              background: `linear-gradient(90deg, var(--color-accent-primary) 0%, var(--color-accent-secondary) 50%, var(--color-accent-light) 100%)`,
+              boxShadow: `0 0 12px var(--color-accent-glow), 0 0 24px var(--color-accent-glow)`,
             }}
           />
 
@@ -158,66 +158,88 @@ export default function ProcessTimeline({
           >
             <div className="relative flex items-center justify-center">
               <div className="w-4 h-4 rounded-full bg-accent-secondary/60 animate-ping opacity-75 pointer-events-none absolute" />
-              <div className="w-3.5 h-3.5 rounded-full bg-white border-2 border-accent-secondary shadow-[0_0_12px_#ffffff,0_0_20px_#7C83FF]" />
+              <div className="w-2.5 h-2.5 rounded-full bg-white shadow-lg shadow-accent-primary/80 ring-2 ring-accent-primary z-10" />
             </div>
           </div>
 
-          {/* Step Nodes - Elevated above the laser beam (z-10) with solid backdrop */}
-          <div className="relative z-10 flex items-start justify-between">
-            {items.map((item, index) => {
-              const Icon = item.icon || Search;
-              const isActive = index === activeStep;
-              const isPassed = index <= activeStep;
-              const stepPositionPercent = (index / (totalSteps - 1)) * 100;
-              const isCurrentOrPassed = progress >= stepPositionPercent - 2;
+          {/* Nodes Grid */}
+          <div
+            className="grid gap-3 relative z-10"
+            style={{ gridTemplateColumns: `repeat(${items.length}, minmax(0, 1fr))` }}
+          >
+            {items.map((step, index) => {
+              const isPassed = activeStep > index;
+              const isCurrent = activeStep === index;
+              const Icon = step.icon || Search;
 
               return (
                 <div
-                  key={item.title || index}
+                  key={step.title || index}
                   onClick={() => handleStepClick(index)}
-                  className="relative z-10 flex-1 flex flex-col items-center text-center px-1.5 cursor-pointer select-none"
+                  className="cursor-pointer group flex flex-col items-center text-center select-none"
                 >
-                  {/* Node Circle */}
-                  <div className="relative mb-3.5 flex items-center justify-center">
-                    {/* Active Halo Ring */}
-                    <div
-                      className={`absolute -inset-2.5 rounded-full transition-all duration-500 pointer-events-none border-2 border-accent-secondary/60 ${
-                        isActive
-                          ? 'opacity-100 scale-110 shadow-[0_0_25px_rgba(124,131,255,0.6)] animate-pulse'
-                          : 'opacity-0'
-                      }`}
-                    />
+                  {/* Step Node Icon Container */}
+                  <div className="relative mb-5 flex items-center justify-center">
+                    {/* Pulsing ring on active node */}
+                    {isCurrent && (
+                      <div className="absolute inset-0 rounded-full animate-ping opacity-25 bg-accent-primary pointer-events-none scale-150" />
+                    )}
 
-                    {/* Circle Node with solid background so the beam passes BEHIND */}
                     <div
-                      className={`relative z-10 w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 ${
-                        isActive
-                          ? 'bg-gradient-to-br from-accent-primary to-accent-secondary text-white scale-110 ring-4 ring-offset-4 ring-offset-navy-950 ring-accent-primary/50 shadow-[0_0_25px_rgba(88,101,242,0.7)]'
-                          : isCurrentOrPassed
-                          ? 'bg-navy-900 text-accent-secondary border-2 border-accent-primary/60 shadow-lg'
-                          : 'bg-navy-900 text-text-muted border border-border/90 shadow-md'
+                      className={`w-16 h-16 rounded-2xl flex items-center justify-center border-2 transition-all duration-300 relative z-10 ${
+                        isCurrent
+                          ? 'bg-navy-800 border-accent-primary shadow-xl shadow-accent-primary/40 scale-110 -translate-y-1'
+                          : isPassed
+                          ? 'bg-navy-800/90 border-accent-secondary/80 text-accent-light'
+                          : 'bg-navy-800/60 border-border/70 text-text-muted group-hover:border-border-hover group-hover:text-text-secondary group-hover:bg-navy-700/60'
                       }`}
                     >
-                      <Icon size={28} className="stroke-[2.2]" />
+                      <Icon
+                        size={24}
+                        className={`transition-colors duration-300 ${
+                          isCurrent
+                            ? 'text-accent-light scale-110 animate-pulse'
+                            : isPassed
+                            ? 'text-accent-secondary'
+                            : 'text-text-muted group-hover:text-text-secondary'
+                        }`}
+                      />
+
+                      {/* Step Number Badge */}
+                      <span
+                        className={`absolute -top-2 -right-2 w-5 h-5 rounded-full text-[10px] font-mono font-bold flex items-center justify-center border ${
+                          isCurrent
+                            ? 'bg-accent-primary text-white border-white/40 shadow-sm'
+                            : isPassed
+                            ? 'bg-navy-700 text-accent-light border-accent-secondary/50'
+                            : 'bg-navy-800 text-text-muted border-border'
+                        }`}
+                      >
+                        {step.step || index + 1}
+                      </span>
                     </div>
                   </div>
 
-                  {/* Step Title & Description */}
-                  <div className="flex items-center gap-1 mb-1">
-                    <span className={`text-[11px] font-mono font-bold ${isActive ? 'text-accent-secondary' : 'text-text-muted'}`}>
-                      {item.step || `0${index + 1}`}
+                  {/* Title & Phase */}
+                  <div className="px-1 max-w-[170px]">
+                    <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-accent-secondary block mb-1">
+                      {step.phase || step.tag || `Phase ${index + 1}`}
                     </span>
+                    <h4
+                      className={`text-sm font-bold leading-snug transition-colors duration-200 mb-1.5 ${
+                        isCurrent
+                          ? 'text-text-primary'
+                          : isPassed
+                          ? 'text-text-secondary'
+                          : 'text-text-muted group-hover:text-text-secondary'
+                      }`}
+                    >
+                      {step.title}
+                    </h4>
+                    <p className="text-[11px] text-text-muted leading-relaxed line-clamp-2">
+                      {step.description}
+                    </p>
                   </div>
-                  <h4
-                    className={`text-sm font-bold mb-1 transition-colors duration-200 ${
-                      isActive ? 'text-white scale-105' : 'text-text-primary'
-                    }`}
-                  >
-                    {item.title}
-                  </h4>
-                  <p className="text-[11px] text-text-secondary leading-normal max-w-[155px]">
-                    {item.description}
-                  </p>
                 </div>
               );
             })}
@@ -225,28 +247,28 @@ export default function ProcessTimeline({
         </div>
       </div>
 
-      {/* Mobile/Tablet: Vertical Interactive Timeline */}
+      {/* Mobile: Vertical Process Stepper */}
       <div className="lg:hidden relative z-10">
-        <div className="relative pl-14 pr-2">
-          {/* Base Vertical Track - Behind nodes (z-0) */}
-          <div className="absolute top-4 bottom-4 left-[24px] w-[2px] bg-navy-700/80 rounded-full z-0" />
+        <div className="relative pl-6 space-y-6">
+          {/* Vertical Base Track Line */}
+          <div className="absolute left-[39px] top-6 bottom-6 w-[2px] bg-navy-750/90 rounded-full z-0" />
 
-          {/* Active Vertical Track - Behind nodes (z-0) */}
+          {/* Vertical Progress Fill */}
           <div
-            className="absolute top-4 left-[24px] w-[2px] rounded-full transition-all duration-100 ease-linear pointer-events-none z-0"
+            className="absolute left-[39px] top-6 w-[2px] rounded-full transition-all duration-100 ease-linear pointer-events-none z-0"
             style={{
-              height: `${progress}%`,
-              background: `linear-gradient(180deg, #4F46E5 0%, #5865F2 40%, #7C83FF 75%, #A8B0FF 100%)`,
-              boxShadow: `0 0 10px rgba(124, 131, 255, 0.5)`,
+              height: `${progress * 0.9}%`,
+              background: `linear-gradient(180deg, var(--color-accent-primary) 0%, var(--color-accent-secondary) 50%, var(--color-accent-light) 100%)`,
+              boxShadow: `0 0 10px var(--color-accent-glow)`,
             }}
           />
 
           {/* Traveling Vertical Bullet - Behind nodes (z-0) */}
           <div
-            className="absolute left-[24px] z-0 transition-all duration-100 ease-linear pointer-events-none -translate-x-1/2 -translate-y-1/2"
-            style={{ top: `${4 + progress * 0.92}%` }}
+            className="absolute left-[39px] z-0 transition-all duration-100 ease-linear pointer-events-none -translate-x-1/2 -translate-y-1/2"
+            style={{ top: `${6 + progress * 0.88}%` }}
           >
-            <div className="w-3 h-3 rounded-full bg-white shadow-[0_0_10px_#ffffff,0_0_15px_#7C83FF]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-white shadow-lg shadow-accent-primary/80 ring-2 ring-accent-primary" />
           </div>
 
           <div className="space-y-6 relative z-10">
