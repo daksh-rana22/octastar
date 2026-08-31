@@ -20,6 +20,8 @@ const whatWeDo = [
     description: 'Find the right people for the right opportunity. Our talent network spans industries and skill sets to deliver the workforce your organization needs.',
     tags: ['Direct Hire', 'Contract Staffing', 'Executive Search'],
     link: '/services/staffing',
+    image: '/services-talent-staffing.jpg',
+    descriptor: 'AI-Powered • Global Talent & Agile Squads Engine',
   },
   {
     icon: Server,
@@ -28,6 +30,8 @@ const whatWeDo = [
     description: 'Transform your business with scalable technology solutions. From cloud and AI to cybersecurity and DevOps, we deliver end-to-end technology services.',
     tags: ['Cloud & DevOps', 'AI & Machine Learning', 'Cybersecurity'],
     link: '/services',
+    image: '/services-technology.jpg',
+    descriptor: 'Cloud-Native • Advanced AI & Digital Engineering',
   },
   {
     icon: Layers,
@@ -36,6 +40,8 @@ const whatWeDo = [
     description: 'Reliable technology operations designed around your business. We manage your IT environment so you can focus on growth and innovation.',
     tags: ['24/7 IT Support', 'Infrastructure Ops', 'SLA Management'],
     link: '/services/managed-services',
+    image: '/services-managed.jpg',
+    descriptor: '24/7 Operations • SLA Telemetry & Infrastructure Ops',
   },
 ];
 
@@ -61,6 +67,7 @@ const howWeWork = [
 
 export default function Home() {
   const [activeProcessStep, setActiveProcessStep] = useState(0);
+  const [activeWhatWeDo, setActiveWhatWeDo] = useState(0);
 
   return (
     <>
@@ -102,47 +109,81 @@ export default function Home() {
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-            {/* Left: Mirrored Robot Hand & Glowing Star with floating/flowing motion */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-stretch">
+            {/* Left: Dynamic Interactive Showcase Image for the 3 Services */}
             <AnimatedSection delay={100} className="lg:col-span-5 h-full flex flex-col justify-center items-center">
-              <div className="relative w-full h-full min-h-[340px] lg:min-h-[390px] flex flex-col items-center justify-center group select-none">
-                {/* Radiant Ambient Floating Glow Behind Star Hand */}
+              <div className="relative w-full h-full min-h-[340px] lg:min-h-[400px] flex flex-col items-center justify-center select-none">
+                {/* Radiant Ambient Floating Glow Behind Showcase Image */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-300/35 rounded-full blur-3xl pointer-events-none animate-star-aura" />
                 <div className="absolute top-12 left-1/2 -translate-x-1/2 w-44 h-44 bg-indigo-300/40 rounded-full blur-2xl pointer-events-none animate-pulse" />
 
-                {/* Direct Mirrored Image with floating flow animation */}
-                <div className="relative z-10 w-full h-full flex items-center justify-center py-1">
-                  <img
-                    src="/ChatGPT Image Aug 26, 2026, 02_48_07 PM.png"
-                    alt="OctaStar Technology & Talent Ecosystem"
-                    className="w-full h-auto max-h-[340px] sm:max-h-[370px] lg:max-h-[390px] object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.45)] transition-all duration-700 animate-hand-flow"
-                  />
+                {/* Dynamic Crossfade Image Container */}
+                <div className="relative z-10 w-full h-[320px] sm:h-[350px] lg:h-[370px] rounded-2xl overflow-hidden shadow-2xl border border-white/25 backdrop-blur-md bg-black/20 group">
+                  {whatWeDo.map((item, idx) => (
+                    <div
+                      key={item.title}
+                      className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+                        idx === activeWhatWeDo
+                          ? 'opacity-100 scale-100 z-10'
+                          : 'opacity-0 scale-105 pointer-events-none z-0'
+                      }`}
+                    >
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover object-center transition-transform duration-700"
+                      />
+
+                      {/* In-image title overlay pill */}
+                      <div className="absolute top-4 left-4 z-20 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[11px] font-mono font-bold text-white uppercase tracking-wider flex items-center gap-1.5 shadow-lg">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                        {item.badge}
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
-                {/* Subtle descriptor below image */}
-                <div className="text-center mt-1.5 relative z-10">
-                  <p className="text-[11px] font-mono tracking-widest text-purple-200 uppercase font-semibold">
-                    AI-Powered &bull; Talent &amp; Technology Engine
+                {/* Subtle dynamic descriptor below image */}
+                <div className="text-center mt-3 relative z-10">
+                  <p className="text-[11px] font-mono tracking-widest text-purple-200 uppercase font-semibold transition-all duration-300">
+                    {whatWeDo[activeWhatWeDo]?.descriptor}
                   </p>
                 </div>
               </div>
             </AnimatedSection>
 
-            {/* Right: The 3 Service Cards on Purple */}
+            {/* Right: The 3 Service Cards with Interactive Hover State */}
             <div className="lg:col-span-7 flex flex-col gap-3 sm:gap-3.5 justify-between h-full">
               {whatWeDo.map((item, index) => {
                 const Icon = item.icon;
+                const isActive = activeWhatWeDo === index;
                 return (
                   <AnimatedSection key={item.title} delay={index * 120 + 150} className="h-full">
                     <Link
                       to={item.link}
-                      className="group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 sm:p-5 h-full bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/40 rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 backdrop-blur-md overflow-hidden"
+                      onMouseEnter={() => setActiveWhatWeDo(index)}
+                      onFocus={() => setActiveWhatWeDo(index)}
+                      className={`group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 sm:p-5 h-full rounded-xl transition-all duration-300 backdrop-blur-md overflow-hidden ${
+                        isActive
+                          ? 'bg-white/20 border-white/50 shadow-2xl shadow-purple-950/40 -translate-y-0.5'
+                          : 'bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/40 hover:shadow-xl hover:-translate-y-0.5'
+                      }`}
                     >
                       {/* Left white accent bar */}
-                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div
+                        className={`absolute left-0 top-0 bottom-0 w-1.5 bg-white transition-opacity duration-300 ${
+                          isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'
+                        }`}
+                      />
 
                       {/* Icon */}
-                      <div className="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-lg bg-white/15 border border-white/25 group-hover:bg-white group-hover:text-[#5B3FA6] text-white group-hover:scale-105 transition-all duration-300">
+                      <div
+                        className={`flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-lg border transition-all duration-300 ${
+                          isActive
+                            ? 'bg-white text-[#5B3FA6] border-white scale-105 shadow-md'
+                            : 'bg-white/15 border-white/25 text-white group-hover:bg-white group-hover:text-[#5B3FA6] group-hover:scale-105'
+                        }`}
+                      >
                         <Icon size={20} />
                       </div>
 
@@ -164,7 +205,11 @@ export default function Home() {
                           {item.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="px-2 py-0.5 text-[11px] font-medium bg-white/15 text-white rounded-md border border-white/20 group-hover:bg-white/25 transition-colors"
+                              className={`px-2 py-0.5 text-[11px] font-medium rounded-md border transition-colors ${
+                                isActive
+                                  ? 'bg-white/25 text-white border-white/35 font-semibold'
+                                  : 'bg-white/15 text-white border-white/20 group-hover:bg-white/25'
+                              }`}
                             >
                               {tag}
                             </span>
@@ -175,7 +220,13 @@ export default function Home() {
                       {/* Learn More Arrow */}
                       <div className="self-end sm:self-center flex-shrink-0 flex items-center gap-1 text-xs font-semibold text-white group-hover:text-purple-100 transition-colors">
                         <span className="hidden md:inline text-[11px] font-medium">Learn More</span>
-                        <div className="w-7 h-7 rounded-full bg-white/20 border border-white/30 flex items-center justify-center group-hover:bg-white group-hover:text-[#5B3FA6] transition-all duration-200">
+                        <div
+                          className={`w-7 h-7 rounded-full border flex items-center justify-center transition-all duration-200 ${
+                            isActive
+                              ? 'bg-white text-[#5B3FA6] border-white shadow-sm'
+                              : 'bg-white/20 border-white/30 group-hover:bg-white group-hover:text-[#5B3FA6]'
+                          }`}
+                        >
                           <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
                         </div>
                       </div>

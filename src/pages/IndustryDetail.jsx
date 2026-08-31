@@ -44,28 +44,32 @@ export default function IndustryDetail() {
         secondaryCta={{ label: 'All Industry Sectors', to: '/industries' }}
       />
 
-      {/* Challenges vs Strategic Solutions - Deep Navy */}
-      <section className="py-16 md:py-24 relative overflow-hidden bg-navy-900">
-        <div className="absolute inset-0 geometric-dots opacity-20 pointer-events-none" />
+      {/* Challenges vs Strategic Solutions - Crisp stats-gradient-bg */}
+      <section className="py-12 md:py-16 relative overflow-hidden stats-gradient-bg border-y border-slate-350">
+        {/* Subtle Dark Edge Vignette Fades */}
+        <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-b from-slate-900/[0.08] to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-slate-900/[0.10] to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.45)_0%,_transparent_65%,_rgba(15,23,42,0.06)_100%)] pointer-events-none" />
+
         <Container className="relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
             {/* Left: Sector Challenges */}
             <AnimatedSection>
-              <div className="h-full p-7 sm:p-9 rounded-2xl bg-navy-800/90 border border-border/80 flex flex-col justify-between">
+              <div className="h-full p-6 sm:p-8 rounded-2xl bg-white/85 border border-slate-300/80 shadow-sm flex flex-col justify-between backdrop-blur-sm">
                 <div>
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xs font-mono font-bold tracking-wider uppercase text-rose-400 bg-rose-500/10 px-3 py-1 rounded-full border border-rose-500/20">
+                    <span className="text-xs font-mono font-bold tracking-wider uppercase text-rose-600 bg-rose-50 px-3 py-1 rounded-full border border-rose-200">
                       Sector Friction
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-text-primary mb-6">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-5">
                     Critical Challenges We Solve
                   </h3>
-                  <div className="space-y-3.5">
+                  <div className="space-y-3">
                     {industry.challenges.map((challenge, idx) => (
-                      <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-navy-900/60 border border-border/50">
-                        <AlertCircle size={17} className="text-rose-400 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-text-secondary leading-relaxed font-medium">{challenge}</span>
+                      <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                        <AlertCircle size={17} className="text-rose-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">{challenge}</span>
                       </div>
                     ))}
                   </div>
@@ -75,27 +79,27 @@ export default function IndustryDetail() {
 
             {/* Right: Purpose-Built Solutions */}
             <AnimatedSection delay={200}>
-              <div className="h-full p-7 sm:p-9 rounded-2xl bg-navy-800/90 border border-accent-primary/50 shadow-xl shadow-accent-primary/10 flex flex-col justify-between">
+              <div className="h-full p-6 sm:p-8 rounded-2xl bg-white border border-purple-300/90 shadow-md shadow-purple-900/5 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xs font-mono font-bold tracking-wider uppercase text-accent-light bg-accent-primary/15 px-3 py-1 rounded-full border border-accent-primary/30">
+                    <span className="text-xs font-mono font-bold tracking-wider uppercase text-[#5B3FA6] bg-purple-100 px-3 py-1 rounded-full border border-purple-200">
                       Target Architectures
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-text-primary mb-6">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-5">
                     Tailored Technology Frameworks
                   </h3>
-                  <div className="space-y-3.5">
+                  <div className="space-y-3">
                     {industry.solutions.map((sol, idx) => (
-                      <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-navy-900/60 border border-accent-primary/20 hover:border-accent-primary/40 transition-colors">
-                        <CheckCircle size={17} className="text-accent-secondary flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-text-primary leading-relaxed font-semibold">{sol}</span>
+                      <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-purple-50/60 border border-purple-200/70 hover:border-[#5B3FA6]/40 transition-colors">
+                        <CheckCircle size={17} className="text-[#5B3FA6] flex-shrink-0 mt-0.5" />
+                        <span className="text-xs sm:text-sm text-slate-900 leading-relaxed font-semibold">{sol}</span>
                       </div>
                     ))}
                   </div>
                 </div>
-                <div className="mt-8 pt-4 border-t border-border/40 flex justify-end">
-                  <Button to="/contact" variant="text" size="sm" className="text-accent-light font-bold">
+                <div className="mt-6 pt-4 border-t border-slate-200 flex justify-end">
+                  <Button to="/contact" variant="text" size="sm" className="!text-[#5B3FA6] hover:!text-[#4a328c] font-bold">
                     Deploy for Your Enterprise →
                   </Button>
                 </div>
@@ -108,7 +112,7 @@ export default function IndustryDetail() {
       {/* Capabilities - Vibrant Purple Container */}
       <section className="py-16 md:py-24 relative overflow-hidden bg-[#5B3FA6] text-white">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-950/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
 
         <Container className="relative z-10">

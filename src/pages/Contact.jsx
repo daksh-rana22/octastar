@@ -32,7 +32,7 @@ export default function Contact() {
       {/* Dual Pathway Selector - Vibrant Purple Container */}
       <section className="py-16 md:py-20 relative overflow-hidden bg-[#5B3FA6] text-white">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-950/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
 
         <Container className="relative z-10">
@@ -204,33 +204,38 @@ export default function Contact() {
         </Container>
       </section>
 
-      {/* Global Delivery Hubs - Deep Navy Container */}
-      <section className="py-16 md:py-24 relative overflow-hidden bg-navy-900">
-        <div className="absolute inset-0 geometric-dots opacity-20 pointer-events-none" />
+      {/* Global Delivery Hubs - Crisp stats-gradient-bg */}
+      <section className="py-12 md:py-16 relative overflow-hidden stats-gradient-bg border-y border-slate-350">
+        {/* Subtle Dark Edge Vignette Fades */}
+        <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-b from-slate-900/[0.08] to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-slate-900/[0.10] to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.45)_0%,_transparent_65%,_rgba(15,23,42,0.06)_100%)] pointer-events-none" />
+
         <Container className="relative z-10">
           <SectionHeading
             label="Global Reach"
             title="Worldwide Delivery &amp; Support Centers"
             description="Our distributed squads provide round-the-clock continuity across major tech hubs."
-            className="mb-12 md:mb-16"
+            darkText={true}
+            className="mb-8 md:mb-10"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
             {locations.map((loc, idx) => (
               <AnimatedSection key={loc.city} delay={idx * 80} className="h-full">
-                <div className="h-full p-6 sm:p-7 rounded-2xl bg-navy-800/90 border border-border/80 hover:border-accent-primary/60 transition-all duration-300 hover:shadow-xl hover:shadow-accent-primary/15 flex flex-col justify-between">
+                <div className="h-full p-6 sm:p-7 rounded-2xl bg-white/85 hover:bg-white border border-slate-300/80 hover:border-[#5B3FA6]/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between backdrop-blur-sm">
                   <div>
-                    <div className="w-10 h-10 rounded-xl bg-accent-primary/15 border border-accent-primary/30 text-accent-secondary flex items-center justify-center mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-purple-100 border border-purple-200 text-[#5B3FA6] flex items-center justify-center mb-4">
                       <Globe size={20} />
                     </div>
-                    <span className="text-xs font-mono font-semibold uppercase tracking-wider text-accent-light block mb-1">
+                    <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#5B3FA6] block mb-1">
                       {loc.region}
                     </span>
-                    <h4 className="text-lg font-bold text-text-primary mb-2">{loc.city}</h4>
-                    <p className="text-xs text-text-secondary mb-4">{loc.contact}</p>
+                    <h4 className="text-lg font-bold text-slate-900 mb-2">{loc.city}</h4>
+                    <p className="text-xs text-slate-600 mb-4">{loc.contact}</p>
                   </div>
-                  <div className="pt-3 border-t border-border/40 text-xs font-medium text-emerald-400 flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> {loc.coverage}
+                  <div className="pt-3 border-t border-slate-200/80 text-xs font-medium text-emerald-700 flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> {loc.coverage}
                   </div>
                 </div>
               </AnimatedSection>

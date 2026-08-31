@@ -12,7 +12,7 @@ export default function CTASection({
     <section className="relative py-16 md:py-24 overflow-hidden bg-[#5B3FA6] text-white border-t border-purple-400/20">
       {/* Decorative background glows */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-950/40 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
 
       <Container className="relative z-10">

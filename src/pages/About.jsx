@@ -47,67 +47,66 @@ export default function About() {
         secondaryCta={{ label: 'Explore Services', to: '/services' }}
       />
 
-      {/* Mission & Vision - Vibrant Purple Section */}
-      <section className="py-16 md:py-24 relative overflow-hidden bg-[#5B3FA6] text-white">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-950/40 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
+      {/* Mission & Vision - Crisp stats-gradient-bg Section */}
+      <section className="py-12 md:py-16 relative overflow-hidden stats-gradient-bg border-y border-slate-350">
+        {/* Subtle Dark Edge Vignette Fades */}
+        <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-b from-slate-900/[0.08] to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-slate-900/[0.10] to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.45)_0%,_transparent_65%,_rgba(15,23,42,0.06)_100%)] pointer-events-none" />
 
         <Container className="relative z-10">
-          <AnimatedSection className="max-w-3xl mb-12 text-center mx-auto">
-            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-purple-200 mb-2">
+          <AnimatedSection className="max-w-3xl mb-8 md:mb-10 text-center mx-auto">
+            <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-accent-primary mb-1.5 drop-shadow-sm">
               Our Guiding Compass
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-3 text-white">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-2 text-slate-900">
               Purpose-Driven Transformation
             </h2>
-            <p className="text-sm md:text-base text-purple-100/90 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl mx-auto">
               We empower modern enterprises to solve complex technological challenges, scale engineering capacity, and navigate digital disruption with confidence.
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
             <AnimatedSection delay={100} className="h-full">
-              <div className="group relative p-8 sm:p-10 bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/40 rounded-2xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 h-full flex flex-col justify-between overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-xl pointer-events-none" />
+              <div className="group relative p-7 sm:p-9 bg-white/85 hover:bg-white border border-slate-300/80 hover:border-accent-primary/60 rounded-2xl backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full flex flex-col justify-between overflow-hidden">
                 <div>
-                  <div className="w-14 h-14 rounded-xl bg-white/15 border border-white/25 flex items-center justify-center mb-6 text-white group-hover:bg-white group-hover:text-[#5B3FA6] group-hover:scale-105 transition-all duration-300">
-                    <Target size={28} />
+                  <div className="w-14 h-14 rounded-xl bg-purple-100 border border-purple-200 flex items-center justify-center mb-5 text-[#5B3FA6] group-hover:bg-[#5B3FA6] group-hover:text-white group-hover:scale-105 transition-all duration-300">
+                    <Target size={26} />
                   </div>
-                  <span className="inline-block text-xs font-bold tracking-widest uppercase text-purple-200 mb-2">
+                  <span className="inline-block text-xs font-mono font-bold tracking-widest uppercase text-[#5B3FA6] mb-2">
                     Our Mission
                   </span>
-                  <h3 className="text-2xl font-bold text-white mb-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#5B3FA6] transition-colors">
                     Empowering Organizations Through Elite Tech &amp; Talent
                   </h3>
-                  <p className="text-sm sm:text-base text-purple-100/90 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     To connect high-growth organizations with exceptional technology professionals and innovative digital solutions. We bridge the critical gap between technological aspiration and measurable business execution.
                   </p>
                 </div>
-                <div className="mt-8 pt-6 border-t border-white/15 flex items-center gap-2 text-xs font-semibold text-purple-200">
+                <div className="mt-6 pt-5 border-t border-slate-200/80 flex items-center gap-2 text-xs font-semibold text-[#5B3FA6]">
                   <Sparkles size={14} /> Delivering measurable outcomes on every engagement
                 </div>
               </div>
             </AnimatedSection>
 
             <AnimatedSection delay={200} className="h-full">
-              <div className="group relative p-8 sm:p-10 bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/40 rounded-2xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 h-full flex flex-col justify-between overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-xl pointer-events-none" />
+              <div className="group relative p-7 sm:p-9 bg-white/85 hover:bg-white border border-slate-300/80 hover:border-accent-primary/60 rounded-2xl backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full flex flex-col justify-between overflow-hidden">
                 <div>
-                  <div className="w-14 h-14 rounded-xl bg-white/15 border border-white/25 flex items-center justify-center mb-6 text-white group-hover:bg-white group-hover:text-[#5B3FA6] group-hover:scale-105 transition-all duration-300">
-                    <Eye size={28} />
+                  <div className="w-14 h-14 rounded-xl bg-purple-100 border border-purple-200 flex items-center justify-center mb-5 text-[#5B3FA6] group-hover:bg-[#5B3FA6] group-hover:text-white group-hover:scale-105 transition-all duration-300">
+                    <Eye size={26} />
                   </div>
-                  <span className="inline-block text-xs font-bold tracking-widest uppercase text-purple-200 mb-2">
+                  <span className="inline-block text-xs font-mono font-bold tracking-widest uppercase text-[#5B3FA6] mb-2">
                     Our Vision
                   </span>
-                  <h3 className="text-2xl font-bold text-white mb-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#5B3FA6] transition-colors">
                     The Premier Catalyst for Scalable Digital Evolution
                   </h3>
-                  <p className="text-sm sm:text-base text-purple-100/90 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     To be the world’s most trusted technology staffing, cloud engineering, and digital transformation partner. We set the benchmark for engineering excellence, rapid adaptability, and human-centric client collaboration.
                   </p>
                 </div>
-                <div className="mt-8 pt-6 border-t border-white/15 flex items-center gap-2 text-xs font-semibold text-purple-200">
+                <div className="mt-6 pt-5 border-t border-slate-200/80 flex items-center gap-2 text-xs font-semibold text-[#5B3FA6]">
                   <CheckCircle size={14} /> Long-term partnerships built on transparency &amp; trust
                 </div>
               </div>
@@ -116,30 +115,38 @@ export default function About() {
         </Container>
       </section>
 
-      {/* Core Values - Crisp Clean White Section */}
-      <section className="py-20 md:py-28 relative overflow-hidden bg-white text-slate-900 border-y border-slate-200">
+      {/* Core Values - Vibrant Purple Container */}
+      <section className="py-16 md:py-24 relative overflow-hidden bg-[#5B3FA6] text-white">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
+
         <Container className="relative z-10">
-          <SectionHeading
-            label="Core Values"
-            title="The Principles That Drive Our Work"
-            description="Our values guide every technical architecture decision, client engagement, and talent relationship we build."
-            darkText={true}
-            className="mb-12 md:mb-16"
-          />
+          <AnimatedSection className="max-w-3xl mb-12 text-center mx-auto">
+            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-purple-200 mb-2">
+              Core Values
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-3 text-white">
+              The Principles That Drive Our Work
+            </h2>
+            <p className="text-sm md:text-base text-purple-100/90 leading-relaxed">
+              Our values guide every technical architecture decision, client engagement, and talent relationship we build.
+            </p>
+          </AnimatedSection>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
             {values.map((value, index) => {
               const Icon = value.icon;
               return (
                 <AnimatedSection key={value.title} delay={index * 80}>
-                  <div className="group relative h-full flex flex-col p-6 sm:p-7 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-[#5B3FA6]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#5B3FA6]/10 hover:-translate-y-1">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-purple-100 border border-purple-200 text-[#5B3FA6] group-hover:bg-[#5B3FA6] group-hover:text-white transition-all duration-300 mb-5">
+                  <div className="group relative h-full flex flex-col p-6 sm:p-7 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/40 backdrop-blur-md transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/15 border border-white/25 text-white group-hover:bg-white group-hover:text-[#5B3FA6] group-hover:scale-105 transition-all duration-300 mb-5">
                       <Icon size={22} />
                     </div>
-                    <h4 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-[#5B3FA6] transition-colors">
+                    <h4 className="text-lg font-bold text-white mb-2 group-hover:text-purple-100 transition-colors">
                       {value.title}
                     </h4>
-                    <p className="text-sm text-slate-600 leading-relaxed">
+                    <p className="text-sm text-purple-100/90 leading-relaxed">
                       {value.description}
                     </p>
                   </div>
@@ -150,7 +157,7 @@ export default function About() {
         </Container>
       </section>
 
-      {/* Stats Banner */}
+      {/* Stats Banner - Crisp stats-gradient-bg Container */}
       <Stats />
 
       {/* Our Journey & Milestones - Deep Navy Section */}

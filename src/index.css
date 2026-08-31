@@ -186,8 +186,8 @@
   }
 
   .stats-gradient-bg {
-    background: linear-gradient(180deg, #CAD4E2 0%, #DFE6F0 30%, #E7EDF5 50%, #DFE6F0 70%, #C4CFDE 100%);
-    box-shadow: inset 0 6px 14px -4px rgba(15, 23, 42, 0.08), inset 0 -6px 14px -4px rgba(15, 23, 42, 0.09);
+    background: linear-gradient(180deg, #D6D2E8 0%, #E8E5F6 30%, #F1EEFC 50%, #E8E5F6 70%, #D1CCE4 100%);
+    box-shadow: inset 0 6px 14px -4px rgba(91, 63, 166, 0.08), inset 0 -6px 14px -4px rgba(91, 63, 166, 0.09);
   }
 
   .text-balance {
@@ -316,13 +316,16 @@ main .text-purple-100 {
 
 /* ── Background Atmospheric Orbs in Containers ── */
 main .bg-purple-950\/40 {
-  background-color: color-mix(in srgb, var(--color-navy-900) 60%, transparent) !important;
+  background-color: color-mix(in srgb, var(--color-accent-light) 20%, transparent) !important;
 }
 main .bg-purple-900\/30 {
   background-color: color-mix(in srgb, var(--color-accent-primary) 20%, transparent) !important;
 }
 main .bg-purple-500\/20 {
   background-color: color-mix(in srgb, var(--color-accent-primary) 20%, transparent) !important;
+}
+main .bg-purple-400\/20 {
+  background-color: color-mix(in srgb, var(--color-accent-light) 20%, transparent) !important;
 }
 main .bg-purple-300\/35 {
   background-color: color-mix(in srgb, var(--color-accent-light) 35%, transparent) !important;

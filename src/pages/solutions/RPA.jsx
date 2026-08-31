@@ -57,7 +57,7 @@ export default function RPA() {
       {/* Automation Journey - Vibrant Purple Container */}
       <section className="py-16 md:py-24 relative overflow-hidden bg-[#5B3FA6] text-white">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-950/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
 
         <Container className="relative z-10">
@@ -129,34 +129,39 @@ export default function RPA() {
         </Container>
       </section>
 
-      {/* Key Enterprise Use Cases - Deep Navy */}
-      <section className="py-16 md:py-24 relative overflow-hidden bg-navy-900">
-        <div className="absolute inset-0 geometric-dots opacity-20 pointer-events-none" />
+      {/* Key Enterprise Use Cases - Crisp stats-gradient-bg */}
+      <section className="py-12 md:py-16 relative overflow-hidden stats-gradient-bg border-y border-slate-350">
+        {/* Subtle Dark Edge Vignette Fades */}
+        <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-b from-slate-900/[0.08] to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-slate-900/[0.10] to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.45)_0%,_transparent_65%,_rgba(15,23,42,0.06)_100%)] pointer-events-none" />
+
         <Container className="relative z-10">
           <SectionHeading
             label="Applied Automation"
             title="High-Impact Automation Use Cases"
             description="Proven robotic and cognitive workflows ready for rapid deployment across key business functions."
-            className="mb-12 md:mb-16"
+            darkText={true}
+            className="mb-8 md:mb-10"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
             {useCases.map((uc, idx) => {
               const Icon = uc.icon;
               return (
                 <AnimatedSection key={uc.title} delay={idx * 100} className="h-full">
-                  <div className="h-full p-7 sm:p-8 rounded-2xl bg-navy-800/90 border border-border/80 hover:border-accent-primary/60 transition-all duration-300 hover:shadow-xl hover:shadow-accent-primary/15 flex flex-col justify-between">
+                  <div className="h-full p-6 sm:p-7 rounded-2xl bg-white/85 hover:bg-white border border-slate-300/80 hover:border-[#5B3FA6]/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between backdrop-blur-sm">
                     <div>
-                      <div className="w-12 h-12 rounded-xl bg-accent-primary/15 border border-accent-primary/30 text-accent-secondary flex items-center justify-center mb-5">
-                        <Icon size={24} />
+                      <div className="w-11 h-11 rounded-xl bg-purple-100 border border-purple-200 text-[#5B3FA6] flex items-center justify-center mb-4">
+                        <Icon size={22} />
                       </div>
-                      <h3 className="text-xl font-bold text-text-primary mb-4">
+                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-3">
                         {uc.title}
                       </h3>
-                      <ul className="space-y-3">
+                      <ul className="space-y-2.5">
                         {uc.items.map((item) => (
-                          <li key={item} className="flex items-start gap-2.5 text-sm text-text-secondary">
-                            <CheckCircle size={16} className="text-accent-secondary flex-shrink-0 mt-0.5" />
+                          <li key={item} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600">
+                            <CheckCircle size={15} className="text-[#5B3FA6] flex-shrink-0 mt-0.5" />
                             <span>{item}</span>
                           </li>
                         ))}

@@ -70,50 +70,63 @@ export default function Industries() {
         secondaryCta={{ label: 'Explore Services', to: '/services' }}
       />
 
-      {/* Industry Sector Grid - Deep Navy */}
-      <section className="py-16 md:py-24 relative overflow-hidden bg-navy-900">
-        <div className="absolute inset-0 geometric-dots opacity-20 pointer-events-none" />
+      {/* Industry Sector Grid - Crisp stats-gradient-bg matching Services.jsx */}
+      <section className="py-12 md:py-16 relative overflow-hidden stats-gradient-bg border-y border-slate-350">
+        {/* Subtle Dark Edge Vignette Fades */}
+        <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-b from-slate-900/[0.08] to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-slate-900/[0.10] to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.45)_0%,_transparent_65%,_rgba(15,23,42,0.06)_100%)] pointer-events-none" />
+
         <Container className="relative z-10">
           <SectionHeading
             label="Industry Practices"
             title="Vertical Solutions Built for Specific Demands"
             description="Proven engineering blueprints and domain talent tailored to solve sector-specific complexities."
-            className="mb-12 md:mb-16"
+            darkText={true}
+            className="mb-8 md:mb-10"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {industriesList.map((industry, index) => (
-              <IndustryCard key={industry.id} industry={industry} index={index} />
+              <IndustryCard key={industry.id} industry={industry} index={index} variant="light" />
             ))}
           </div>
         </Container>
       </section>
 
-      {/* Cross-Industry Standards - Crisp Clean White Section */}
-      <section className="py-20 md:py-28 relative overflow-hidden bg-white text-slate-900 border-y border-slate-200">
+      {/* Enterprise Standards - Vibrant Purple Container */}
+      <section className="py-16 md:py-24 relative overflow-hidden bg-[#5B3FA6] text-white">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
+
         <Container className="relative z-10">
-          <SectionHeading
-            label="Enterprise Standards"
-            title="Governance, Compliance &amp; Domain Rigor"
-            description="Regardless of your sector, our engineering squads operate under the highest standards of enterprise security and regulatory precision."
-            darkText={true}
-            className="mb-12 md:mb-16"
-          />
+          <AnimatedSection className="max-w-3xl mb-12 text-center mx-auto">
+            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-purple-200 mb-2">
+              Enterprise Standards
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-3 text-white">
+              Governance, Compliance &amp; Domain Rigor
+            </h2>
+            <p className="text-sm md:text-base text-purple-100/90 leading-relaxed">
+              Regardless of your sector, our engineering squads operate under the highest standards of enterprise security and regulatory precision.
+            </p>
+          </AnimatedSection>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
             {compliancePillars.map((item, idx) => {
               const Icon = item.icon;
               return (
                 <AnimatedSection key={item.title} delay={idx * 80} className="h-full">
-                  <div className="h-full p-6 sm:p-7 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-[#5B3FA6]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#5B3FA6]/10 flex flex-col justify-between">
+                  <div className="h-full p-6 sm:p-7 bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/40 rounded-2xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between">
                     <div>
-                      <div className="w-12 h-12 rounded-xl bg-purple-100 border border-purple-200 text-[#5B3FA6] flex items-center justify-center mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-white/15 border border-white/25 text-white flex items-center justify-center mb-4">
                         <Icon size={22} />
                       </div>
-                      <h4 className="text-base font-bold text-slate-900 mb-2">
+                      <h4 className="text-base font-bold text-white mb-2">
                         {item.title}
                       </h4>
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-purple-100/90 leading-relaxed">
                         {item.desc}
                       </p>
                     </div>
@@ -125,37 +138,29 @@ export default function Industries() {
         </Container>
       </section>
 
-      {/* Sector Transformation Highlights - Vibrant Purple Container */}
-      <section className="py-16 md:py-24 relative overflow-hidden bg-[#5B3FA6] text-white">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-950/40 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
-
+      {/* Sector Transformation Highlights - Crisp Clean White Section */}
+      <section className="py-20 md:py-28 relative overflow-hidden bg-white text-slate-900 border-y border-slate-200">
         <Container className="relative z-10">
-          <AnimatedSection className="max-w-3xl mb-12 text-center mx-auto">
-            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-purple-200 mb-2">
-              Demonstrated Impact
-            </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-3 text-white">
-              Proven Delivery Across Regulated Sectors
-            </h2>
-            <p className="text-sm md:text-base text-purple-100/90 leading-relaxed">
-              Real-world velocity, modernization, and compliance breakthroughs delivered for enterprise clients worldwide.
-            </p>
-          </AnimatedSection>
+          <SectionHeading
+            label="Demonstrated Impact"
+            title="Proven Delivery Across Regulated Sectors"
+            description="Real-world velocity, modernization, and compliance breakthroughs delivered for enterprise clients worldwide."
+            darkText={true}
+            className="mb-12 md:mb-16"
+          />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
             {industryHighlights.map((item, idx) => (
               <AnimatedSection key={item.sector} delay={idx * 80} className="h-full">
-                <div className="h-full p-6 sm:p-7 bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/40 rounded-2xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between">
+                <div className="h-full p-6 sm:p-7 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-[#5B3FA6]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#5B3FA6]/10 flex flex-col justify-between">
                   <div>
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-purple-200 block mb-1">
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#5B3FA6] block mb-1">
                       {item.sector}
                     </span>
-                    <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono block mb-2">
+                    <span className="text-3xl sm:text-4xl font-extrabold text-[#5B3FA6] font-mono block mb-2">
                       {item.metric}
                     </span>
-                    <p className="text-xs sm:text-sm text-purple-100/90 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                       {item.desc}
                     </p>
                   </div>

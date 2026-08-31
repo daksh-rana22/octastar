@@ -121,7 +121,7 @@ export default function ServiceDetailPage({
       {process && (
         <section className="py-12 md:py-16 relative overflow-hidden bg-[#5B3FA6] text-white">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-950/40 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
 
           <Container className="relative z-10">
             <AnimatedSection className="max-w-3xl mb-8 md:mb-10 text-center mx-auto">

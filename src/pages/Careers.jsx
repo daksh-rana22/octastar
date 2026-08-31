@@ -60,7 +60,7 @@ export default function Careers() {
       {/* Why Work With Us - Vibrant Purple Container */}
       <section className="py-16 md:py-24 relative overflow-hidden bg-[#5B3FA6] text-white">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-950/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
 
         <Container className="relative z-10">
@@ -191,29 +191,34 @@ export default function Careers() {
         </Container>
       </section>
 
-      {/* Hiring Process - Deep Navy Container */}
-      <section className="py-16 md:py-24 relative overflow-hidden bg-navy-900">
-        <div className="absolute inset-0 geometric-dots opacity-20 pointer-events-none" />
+      {/* Hiring Process - Crisp stats-gradient-bg */}
+      <section className="py-12 md:py-16 relative overflow-hidden stats-gradient-bg border-y border-slate-350">
+        {/* Subtle Dark Edge Vignette Fades */}
+        <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-b from-slate-900/[0.08] to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-slate-900/[0.10] to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.45)_0%,_transparent_65%,_rgba(15,23,42,0.06)_100%)] pointer-events-none" />
+
         <Container className="relative z-10">
           <SectionHeading
             label="Transparent Process"
             title="Our 4-Step Hiring Roadmap"
             description="We respect your time. Our hiring framework is streamlined, transparent, and structured for swift decisions."
-            className="mb-12 md:mb-16"
+            darkText={true}
+            className="mb-8 md:mb-10"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {hiringSteps.map((step, idx) => (
               <AnimatedSection key={step.step} delay={idx * 80} className="h-full">
-                <div className="h-full p-6 sm:p-7 rounded-2xl bg-navy-800/90 border border-border/80 hover:border-accent-primary/60 transition-all duration-300 hover:shadow-xl hover:shadow-accent-primary/15 flex flex-col justify-between">
+                <div className="h-full p-5 sm:p-6 rounded-2xl bg-white/85 hover:bg-white border border-slate-300/80 hover:border-[#5B3FA6]/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between backdrop-blur-sm">
                   <div>
-                    <span className="text-3xl font-extrabold font-mono text-accent-light block mb-3">
+                    <span className="text-3xl font-extrabold font-mono text-[#5B3FA6] block mb-2">
                       {step.step}
                     </span>
-                    <h4 className="text-lg font-bold text-text-primary mb-2">
+                    <h4 className="text-base sm:text-lg font-bold text-slate-900 mb-2">
                       {step.title}
                     </h4>
-                    <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                       {step.desc}
                     </p>
                   </div>

@@ -52,7 +52,7 @@ export default function Resources() {
       {/* Featured Insight Spotlight - Vibrant Purple Container */}
       <section className="py-16 md:py-20 relative overflow-hidden bg-[#5B3FA6] text-white">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-950/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
 
         <Container className="relative z-10">
@@ -157,28 +157,32 @@ export default function Resources() {
         </Container>
       </section>
 
-      {/* Newsletter Subscription - Deep Navy Container */}
-      <section className="py-16 md:py-24 relative overflow-hidden bg-navy-900">
-        <div className="absolute inset-0 geometric-dots opacity-20 pointer-events-none" />
+      {/* Newsletter Subscription - Crisp stats-gradient-bg */}
+      <section className="py-12 md:py-16 relative overflow-hidden stats-gradient-bg border-y border-slate-350">
+        {/* Subtle Dark Edge Vignette Fades */}
+        <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-b from-slate-900/[0.08] to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-slate-900/[0.10] to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.45)_0%,_transparent_65%,_rgba(15,23,42,0.06)_100%)] pointer-events-none" />
+
         <Container size="narrow" className="relative z-10">
           <AnimatedSection className="text-center">
-            <div className="p-8 sm:p-12 rounded-3xl bg-navy-800/90 border border-border/80 relative overflow-hidden shadow-2xl">
-              <div className="w-14 h-14 rounded-2xl bg-accent-primary/15 border border-accent-primary/30 flex items-center justify-center mx-auto mb-5 text-accent-secondary">
+            <div className="p-8 sm:p-12 rounded-3xl bg-white/90 border border-slate-300/80 relative overflow-hidden shadow-xl backdrop-blur-sm">
+              <div className="w-14 h-14 rounded-2xl bg-purple-100 border border-purple-200 flex items-center justify-center mx-auto mb-4 text-[#5B3FA6]">
                 <BookOpen size={26} />
               </div>
-              <span className="text-xs font-mono font-bold tracking-widest text-accent-light uppercase block mb-2">
+              <span className="text-xs font-mono font-bold tracking-widest text-[#5B3FA6] uppercase block mb-2">
                 Executive Tech Briefing
               </span>
-              <h3 className="text-2xl sm:text-3xl font-bold text-text-primary mb-3">
+              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">
                 Stay Ahead of Digital Disruption
               </h3>
-              <p className="text-sm text-text-secondary leading-relaxed max-w-lg mx-auto mb-8">
+              <p className="text-sm text-slate-600 leading-relaxed max-w-lg mx-auto mb-8">
                 Subscribe to our monthly executive briefing on emerging enterprise technologies, cloud benchmarks, and AI workforce strategies.
               </p>
 
               {subscribed ? (
-                <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-sm font-semibold">
-                  <CheckCircle2 size={18} /> Thank you for subscribing to the OctaStar briefing!
+                <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-semibold">
+                  <CheckCircle2 size={18} className="text-emerald-600" /> Thank you for subscribing to the OctaStar briefing!
                 </div>
               ) : (
                 <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
@@ -188,9 +192,9 @@ export default function Resources() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your corporate email"
-                    className="flex-1 bg-navy-700/80 border border-border rounded-xl px-4 py-3 text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-accent-primary focus:ring-1 focus:ring-accent-primary"
+                    className="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#5B3FA6] focus:ring-2 focus:ring-[#5B3FA6]/20 transition-all"
                   />
-                  <Button type="submit" className="whitespace-nowrap">
+                  <Button type="submit" className="whitespace-nowrap bg-[#5B3FA6] hover:bg-[#4b2f96] text-white">
                     Subscribe <Send size={14} className="ml-1" />
                   </Button>
                 </form>

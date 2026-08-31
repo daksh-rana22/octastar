@@ -45,16 +45,27 @@ function AnimatedCounter({ value, suffix = '', duration = 2000 }) {
   );
 }
 
-export default function Stats({ lightBg = true }) {
+export default function Stats({ lightBg = true, variant }) {
+  const isPurple = variant === 'purple';
+  const isLight = !isPurple && (variant === 'light' || (lightBg && variant !== 'dark'));
+
   return (
     <section
       className={`relative py-16 md:py-20 overflow-hidden ${
-        lightBg
+        isPurple
+          ? 'bg-[#5B3FA6] text-white border-t border-purple-400/20'
+          : isLight
           ? 'stats-gradient-bg border-y border-slate-350'
           : 'bg-navy-800/80 border-y border-border'
       }`}
     >
-      {lightBg ? (
+      {isPurple ? (
+        <>
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
+        </>
+      ) : isLight ? (
         <>
           {/* Subtle Dark Edge Vignette Fades */}
           <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-slate-900/[0.08] to-transparent pointer-events-none" />
@@ -74,14 +85,22 @@ export default function Stats({ lightBg = true }) {
         <div className="text-center mb-10 md:mb-12">
           <span
             className={`text-xs font-bold uppercase tracking-[0.25em] ${
-              lightBg ? 'text-accent-primary' : 'text-accent-secondary'
+              isPurple
+                ? 'text-purple-200'
+                : isLight
+                ? 'text-accent-primary'
+                : 'text-accent-secondary'
             }`}
           >
             Proven Scale &amp; Performance
           </span>
           <h3
             className={`text-2xl md:text-3xl font-bold mt-1.5 ${
-              lightBg ? 'text-slate-900' : 'text-text-primary'
+              isPurple
+                ? 'text-white'
+                : isLight
+                ? 'text-slate-900'
+                : 'text-text-primary'
             }`}
           >
             Engineered for high load
@@ -94,21 +113,33 @@ export default function Stats({ lightBg = true }) {
               <div className="text-center">
                 <div
                   className={`text-4xl md:text-5xl lg:text-6xl font-extrabold mb-2 ${
-                    lightBg ? 'text-accent-primary' : 'gradient-text'
+                    isPurple
+                      ? 'text-white'
+                      : isLight
+                      ? 'text-accent-primary'
+                      : 'gradient-text'
                   } drop-shadow-sm`}
                 >
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </div>
                 <div
                   className={`text-sm md:text-base font-bold mb-1 ${
-                    lightBg ? 'text-slate-800' : 'text-text-primary'
+                    isPurple
+                      ? 'text-white'
+                      : isLight
+                      ? 'text-slate-800'
+                      : 'text-text-primary'
                   }`}
                 >
                   {stat.label}
                 </div>
                 <div
                   className={`text-xs ${
-                    lightBg ? 'text-slate-600' : 'text-text-muted'
+                    isPurple
+                      ? 'text-purple-100/90'
+                      : isLight
+                      ? 'text-slate-600'
+                      : 'text-text-muted'
                   } hidden md:block max-w-[200px] mx-auto leading-relaxed`}
                 >
                   {stat.description}
