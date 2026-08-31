@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Target, Eye, Heart, Lightbulb, Users, Globe, Award, Sparkles, CheckCircle, ArrowRight, Shield, Rocket } from 'lucide-react';
 import Hero from '../components/Hero';
 import Container from '../components/Container';
@@ -8,12 +9,42 @@ import Stats from '../components/Stats';
 import Button from '../components/Button';
 
 const values = [
-  { icon: Target, title: 'Engineering Precision', description: 'We deliver with uncompromising accuracy, technical rigor, and enterprise standards across every sprint and engagement.' },
-  { icon: Eye, title: 'Radical Transparency', description: 'Open communication, real-time SLA telemetry, and clear milestones form the bedrock of our client partnerships.' },
-  { icon: Heart, title: 'Human-Centered Delivery', description: 'Technology accelerates change, but elite people drive transformation. We cultivate talent and engineer genuine partnerships.' },
-  { icon: Lightbulb, title: 'Continuous Innovation', description: 'We actively evolve our frameworks using the latest in AI, cloud-native architectures, and agile execution.' },
-  { icon: Users, title: 'Collaborative Squads', description: 'Seamlessly embedding into your existing teams, workflows, and culture to operate as unified high-velocity units.' },
-  { icon: Globe, title: 'Enterprise Integrity', description: 'Upholding strict security compliance, data confidentiality, and ethical governance across global operations.' },
+  {
+    icon: Target,
+    title: 'Engineering Precision',
+    description: 'We deliver with uncompromising accuracy, technical rigor, and enterprise standards across every sprint and engagement.',
+    image: '/hover-devops.jpg',
+  },
+  {
+    icon: Eye,
+    title: 'Radical Transparency',
+    description: 'Open communication, real-time SLA telemetry, and clear milestones form the bedrock of our client partnerships.',
+    image: '/hover-data.jpg',
+  },
+  {
+    icon: Heart,
+    title: 'Human-Centered Delivery',
+    description: 'Technology accelerates change, but elite people drive transformation. We cultivate talent and engineer genuine partnerships.',
+    image: '/hover-talent.jpg',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Continuous Innovation',
+    description: 'We actively evolve our frameworks using the latest in AI, cloud-native architectures, and agile execution.',
+    image: '/hover-cloud.jpg',
+  },
+  {
+    icon: Users,
+    title: 'Collaborative Squads',
+    description: 'Seamlessly embedding into your existing teams, workflows, and culture to operate as unified high-velocity units.',
+    image: '/services-talent-staffing.jpg',
+  },
+  {
+    icon: Globe,
+    title: 'Enterprise Integrity',
+    description: 'Upholding strict security compliance, data confidentiality, and ethical governance across global operations.',
+    image: '/hover-cyber.jpg',
+  },
 ];
 
 const timeline = [
@@ -32,6 +63,14 @@ const pillars = [
 ];
 
 export default function About() {
+  const [hoveredValue, setHoveredValue] = useState(null);
+
+  const columns = [
+    { top: values[0], topIdx: 0, bottom: values[3], bottomIdx: 3 },
+    { top: values[1], topIdx: 1, bottom: values[4], bottomIdx: 4 },
+    { top: values[2], topIdx: 2, bottom: values[5], bottomIdx: 5 },
+  ];
+
   return (
     <>
       <title>About Us — OctaStar Group</title>
@@ -43,6 +82,8 @@ export default function About() {
         label="About OctaStar Group"
         title={<>Technology Expertise. <span className="gradient-text">Human Connection.</span></>}
         description="We believe the most transformative technology outcomes happen when deep technical mastery meets authentic human partnership. Our approach unites specialized industry knowledge, a vast talent network, and agile delivery frameworks."
+        image="/ChatGPT Image Aug 26, 2026, 02_48_07 PM.png"
+        imageAlt="OctaStar Cybernetic Hand and Luminous Emblem"
         primaryCta={{ label: 'Partner With Us', to: '/contact' }}
         secondaryCta={{ label: 'Explore Services', to: '/services' }}
       />
@@ -71,8 +112,8 @@ export default function About() {
             <AnimatedSection delay={100} className="h-full">
               <div className="group relative p-7 sm:p-9 bg-white/85 hover:bg-white border border-slate-300/80 hover:border-accent-primary/60 rounded-2xl backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full flex flex-col justify-between overflow-hidden">
                 <div>
-                  <div className="w-14 h-14 rounded-xl bg-purple-100 border border-purple-200 flex items-center justify-center mb-5 text-[#5B3FA6] group-hover:bg-[#5B3FA6] group-hover:text-white group-hover:scale-105 transition-all duration-300">
-                    <Target size={26} />
+                  <div className="w-14 h-14 rounded-xl bg-[var(--color-badge-bg)] border border-[var(--color-border-light)] flex items-center justify-center mb-5 text-[var(--color-badge-text)] group-hover:bg-[var(--color-theme-container)] group-hover:!text-white group-hover:scale-105 transition-all duration-300">
+                    <Target size={26} className="transition-colors duration-300 group-hover:text-white" />
                   </div>
                   <span className="inline-block text-xs font-mono font-bold tracking-widest uppercase text-[#5B3FA6] mb-2">
                     Our Mission
@@ -93,8 +134,8 @@ export default function About() {
             <AnimatedSection delay={200} className="h-full">
               <div className="group relative p-7 sm:p-9 bg-white/85 hover:bg-white border border-slate-300/80 hover:border-accent-primary/60 rounded-2xl backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full flex flex-col justify-between overflow-hidden">
                 <div>
-                  <div className="w-14 h-14 rounded-xl bg-purple-100 border border-purple-200 flex items-center justify-center mb-5 text-[#5B3FA6] group-hover:bg-[#5B3FA6] group-hover:text-white group-hover:scale-105 transition-all duration-300">
-                    <Eye size={26} />
+                  <div className="w-14 h-14 rounded-xl bg-[var(--color-badge-bg)] border border-[var(--color-border-light)] flex items-center justify-center mb-5 text-[var(--color-badge-text)] group-hover:bg-[var(--color-theme-container)] group-hover:!text-white group-hover:scale-105 transition-all duration-300">
+                    <Eye size={26} className="transition-colors duration-300 group-hover:text-white" />
                   </div>
                   <span className="inline-block text-xs font-mono font-bold tracking-widest uppercase text-[#5B3FA6] mb-2">
                     Our Vision
@@ -115,45 +156,153 @@ export default function About() {
         </Container>
       </section>
 
-      {/* Core Values - Vibrant Purple Container */}
-      <section className="py-16 md:py-24 relative overflow-hidden bg-[#5B3FA6] text-white">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
-
-        <Container className="relative z-10">
-          <AnimatedSection className="max-w-3xl mb-12 text-center mx-auto">
-            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-purple-200 mb-2">
+      {/* Core Values - Unified Editorial Container */}
+      <section className="py-16 md:py-24 lg:py-28 relative overflow-hidden bg-[#5853A9] text-white">
+        <Container className="relative z-10 max-w-6xl">
+          {/* Header */}
+          <AnimatedSection className="max-w-3xl mb-12 md:mb-16 text-center mx-auto">
+            <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-purple-200 mb-3 drop-shadow-sm">
               Core Values
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-3 text-white">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-extrabold tracking-tight leading-tight mb-4 text-white font-sans">
               The Principles That Drive Our Work
             </h2>
-            <p className="text-sm md:text-base text-purple-100/90 leading-relaxed">
+            <p className="text-sm sm:text-base text-purple-100/90 leading-relaxed max-w-2xl mx-auto font-normal">
               Our values guide every technical architecture decision, client engagement, and talent relationship we build.
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-            {values.map((value, index) => {
-              const Icon = value.icon;
-              return (
-                <AnimatedSection key={value.title} delay={index * 80}>
-                  <div className="group relative h-full flex flex-col p-6 sm:p-7 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/40 backdrop-blur-md transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/15 border border-white/25 text-white group-hover:bg-white group-hover:text-[#5B3FA6] group-hover:scale-105 transition-all duration-300 mb-5">
-                      <Icon size={22} />
+          {/* Unified 6-Panel Container */}
+          <AnimatedSection delay={150}>
+            <div className="relative rounded-[22px] sm:rounded-[28px] bg-[#4D4899] border border-white/20 overflow-hidden shadow-2xl">
+              {/* Subtle top inner highlight line */}
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-white/20 pointer-events-none z-10" />
+
+              {/* Crystal Clear Container Background Image Layer */}
+              <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+                <img
+                  src="/hover-talent.jpg"
+                  alt="Teamwork & Core Values"
+                  className="w-full h-full object-cover object-center filter brightness-100 contrast-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/35 to-black/55" />
+              </div>
+
+              {/* Responsive 3-Column Accordion Grid */}
+              <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/15 min-h-[460px] sm:min-h-[490px]">
+                {columns.map((col, colIdx) => {
+                  const TopIcon = col.top.icon;
+                  const BottomIcon = col.bottom.icon;
+                  const isTopHovered = hoveredValue === col.topIdx;
+                  const isBottomHovered = hoveredValue === col.bottomIdx;
+
+                  return (
+                    <div key={colIdx} className="flex flex-col h-full divide-y divide-white/15">
+                      {/* Top Card */}
+                      <div
+                        onMouseEnter={() => setHoveredValue(col.topIdx)}
+                        onMouseLeave={() => setHoveredValue(null)}
+                        className={`group/panel relative p-6 sm:p-7 lg:p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 ease-out cursor-default ${
+                          isTopHovered
+                            ? 'flex-[1.65] bg-white/[0.12]'
+                            : isBottomHovered
+                            ? 'flex-[0.65] opacity-65'
+                            : 'flex-1 hover:bg-white/[0.06]'
+                        }`}
+                      >
+                        {/* Top Bar: Icon Badge ONLY (Numbering removed) */}
+                        <div className="relative z-10 flex items-center justify-between mb-3">
+                          <div
+                            className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl border backdrop-blur-md flex items-center justify-center transition-all duration-300 ${
+                              isTopHovered
+                                ? 'bg-white border-white text-[#5853A9] scale-105 shadow-[0_0_22px_rgba(255,255,255,0.45)]'
+                                : 'bg-white/10 border-white/25 text-white'
+                            }`}
+                          >
+                            <TopIcon size={22} className="transition-colors duration-300" />
+                          </div>
+                        </div>
+
+                        {/* Content Area: Title + Expandable Description */}
+                        <div className="relative z-10 mt-auto">
+                          <h4
+                            className={`text-base sm:text-lg lg:text-xl font-bold text-white tracking-tight leading-snug transition-all duration-300 ${
+                              isBottomHovered ? 'text-white/80' : 'text-white'
+                            }`}
+                          >
+                            {col.top.title}
+                          </h4>
+
+                          {/* Description (Hidden by default, smoothly revealed when this card is hovered) */}
+                          <div
+                            className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out ${
+                              isTopHovered ? 'grid-rows-[1fr] opacity-100 mt-2.5' : 'grid-rows-[0fr] opacity-0'
+                            }`}
+                          >
+                            <div className="overflow-hidden">
+                              <p className="text-xs sm:text-sm text-purple-100/90 leading-relaxed">
+                                {col.top.description}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Bottom Card */}
+                      <div
+                        onMouseEnter={() => setHoveredValue(col.bottomIdx)}
+                        onMouseLeave={() => setHoveredValue(null)}
+                        className={`group/panel relative p-6 sm:p-7 lg:p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 ease-out cursor-default ${
+                          isBottomHovered
+                            ? 'flex-[1.65] bg-white/[0.12]'
+                            : isTopHovered
+                            ? 'flex-[0.65] opacity-65'
+                            : 'flex-1 hover:bg-white/[0.06]'
+                        }`}
+                      >
+                        {/* Top Bar: Icon Badge ONLY (Numbering removed) */}
+                        <div className="relative z-10 flex items-center justify-between mb-3">
+                          <div
+                            className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl border backdrop-blur-md flex items-center justify-center transition-all duration-300 ${
+                              isBottomHovered
+                                ? 'bg-white border-white text-[#5853A9] scale-105 shadow-[0_0_22px_rgba(255,255,255,0.45)]'
+                                : 'bg-white/10 border-white/25 text-white'
+                            }`}
+                          >
+                            <BottomIcon size={22} className="transition-colors duration-300" />
+                          </div>
+                        </div>
+
+                        {/* Content Area: Title + Expandable Description */}
+                        <div className="relative z-10 mt-auto">
+                          <h4
+                            className={`text-base sm:text-lg lg:text-xl font-bold text-white tracking-tight leading-snug transition-all duration-300 ${
+                              isTopHovered ? 'text-white/80' : 'text-white'
+                            }`}
+                          >
+                            {col.bottom.title}
+                          </h4>
+
+                          {/* Description (Hidden by default, smoothly revealed when this card is hovered) */}
+                          <div
+                            className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out ${
+                              isBottomHovered ? 'grid-rows-[1fr] opacity-100 mt-2.5' : 'grid-rows-[0fr] opacity-0'
+                            }`}
+                          >
+                            <div className="overflow-hidden">
+                              <p className="text-xs sm:text-sm text-purple-100/90 leading-relaxed">
+                                {col.bottom.description}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <h4 className="text-lg font-bold text-white mb-2 group-hover:text-purple-100 transition-colors">
-                      {value.title}
-                    </h4>
-                    <p className="text-sm text-purple-100/90 leading-relaxed">
-                      {value.description}
-                    </p>
-                  </div>
-                </AnimatedSection>
-              );
-            })}
-          </div>
+                  );
+                })}
+              </div>
+            </div>
+          </AnimatedSection>
         </Container>
       </section>
 

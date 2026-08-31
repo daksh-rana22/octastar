@@ -52,11 +52,21 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Full-Page Backdrop Blur Overlay when dropdown is open (Soft Apple-style) */}
+      <div
+        className={`fixed inset-0 z-40 bg-navy-950/25 backdrop-blur-[6px] transition-all duration-300 hidden lg:block ${
+          activeDropdown ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'
+        }`}
+        onClick={() => setActiveDropdown(null)}
+        onMouseEnter={handleMouseLeave}
+      />
+
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled || activeDropdown
             ? 'bg-navy-900/95 backdrop-blur-xl border-b border-border shadow-lg shadow-navy-900/50'
             : 'bg-transparent'
-          }`}
+        }`}
       >
         <Container>
           <div className="flex items-center justify-between h-16 md:h-20">
@@ -76,17 +86,19 @@ export default function Navbar() {
                 >
                   <Link
                     to={item.path}
-                    className={`flex items-center gap-1 px-3 xl:px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${isActive(item.path)
+                    className={`flex items-center gap-1 px-3 xl:px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                      isActive(item.path)
                         ? 'text-accent-secondary font-semibold'
                         : 'text-text-secondary hover:text-text-primary'
-                      }`}
+                    }`}
                   >
                     {item.label}
                     {item.children && (
                       <ChevronDown
                         size={14}
-                        className={`transition-transform duration-200 ${activeDropdown === item.label ? 'rotate-180' : ''
-                          }`}
+                        className={`transition-transform duration-200 ${
+                          activeDropdown === item.label ? 'rotate-180' : ''
+                        }`}
                       />
                     )}
                   </Link>
@@ -95,38 +107,38 @@ export default function Navbar() {
                   {item.children && activeDropdown === item.label && (
                     <div
                       ref={dropdownRef}
-                      className="absolute top-full left-0 mt-1 w-72 bg-navy-800/95 backdrop-blur-xl border border-border rounded-xl shadow-2xl shadow-navy-900/50 overflow-hidden animate-fade-in"
+                      className="absolute top-full left-0 mt-2 w-80 bg-navy-900/95 backdrop-blur-2xl border border-white/15 rounded-2xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden animate-fade-in z-50"
                       onMouseEnter={() => handleMouseEnter(item.label)}
                       onMouseLeave={handleMouseLeave}
                     >
-                      <div className="p-2">
+                      <div className="p-2.5">
                         {item.children.map((child) => (
                           <Link
                             key={child.label}
                             to={child.path}
-                            className="flex items-start gap-3 px-4 py-3 rounded-lg hover:bg-navy-700/50 transition-colors duration-200 group"
+                            className="flex items-start gap-3 px-4 py-3 rounded-xl hover:bg-white/[0.08] transition-colors duration-200 group"
                           >
                             <div className="flex-1">
-                              <div className="text-sm font-medium text-text-primary group-hover:text-accent-secondary transition-colors">
+                              <div className="text-sm font-semibold text-text-primary group-hover:text-accent-secondary transition-colors">
                                 {child.label}
                               </div>
                               {child.description && (
-                                <div className="text-xs text-text-muted mt-0.5">
+                                <div className="text-xs text-text-muted mt-0.5 leading-relaxed">
                                   {child.description}
                                 </div>
                               )}
                             </div>
                             <ArrowRight
                               size={14}
-                              className="mt-1 text-text-muted opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
+                              className="mt-1 text-text-muted opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 text-accent-secondary"
                             />
                           </Link>
                         ))}
                       </div>
-                      <div className="border-t border-border p-2">
+                      <div className="border-t border-white/10 p-2 bg-navy-950/40">
                         <Link
                           to={item.path}
-                          className="flex items-center justify-between px-4 py-2.5 rounded-lg text-sm font-medium text-accent-secondary hover:bg-accent-primary/10 transition-colors duration-200"
+                          className="flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-medium text-accent-secondary hover:bg-accent-primary/15 transition-colors duration-200"
                         >
                           View All {item.label}
                           <ArrowRight size={14} />

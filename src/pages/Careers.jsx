@@ -57,8 +57,8 @@ export default function Careers() {
         secondaryCta={{ label: 'General Application', to: '/contact' }}
       />
 
-      {/* Why Work With Us - Vibrant Purple Container */}
-      <section className="py-16 md:py-24 relative overflow-hidden bg-[#5B3FA6] text-white">
+      {/* Why Work With Us - Vibrant Container */}
+      <section className="py-16 md:py-24 relative overflow-hidden bg-[#5853A9] text-white">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />

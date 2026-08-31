@@ -176,10 +176,14 @@ export default function Hero({
   videoBg,
   align = 'center',
   compact = false,
+  image,
+  imageAlt = 'Hero visual',
+  rightElement,
   children,
 }) {
-  const isHome = !compact && !label;
-  const isCentered = !isHome || align === 'center';
+  const isHome = !compact && !label && !image && !rightElement;
+  const hasSideContent = Boolean(image || rightElement);
+  const isCentered = !isHome && !hasSideContent && align === 'center';
 
   return (
     <section
@@ -241,50 +245,118 @@ export default function Hero({
 
       {/* ── Content ── */}
       <Container className="relative z-10">
-        <div className={isHome ? 'lg:max-w-[58%]' : 'max-w-4xl mx-auto text-center'}>
-          <AnimatedSection>
-            {label && (
-              <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent-secondary mb-4 md:mb-5">
-                {label}
-              </span>
-            )}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight mb-5 md:mb-6 text-text-primary text-balance drop-shadow-sm">
-              {title}
-            </h1>
-          </AnimatedSection>
-
-          <AnimatedSection delay={150}>
-            <p className={`text-base sm:text-lg md:text-xl text-text-secondary leading-relaxed mb-8 md:mb-10 ${isHome ? 'max-w-2xl' : 'max-w-2xl mx-auto'}`}>
-              {description}
-            </p>
-          </AnimatedSection>
-
-          {(primaryCta || secondaryCta) && (
-            <AnimatedSection delay={300}>
-              <div className={`flex flex-wrap items-center gap-4 ${isHome ? '' : 'justify-center'}`}>
-                {primaryCta && (
-                  <Button to={primaryCta.to} size="lg">
-                    {primaryCta.label}
-                  </Button>
+        {hasSideContent ? (
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-center">
+            {/* Left: Text & CTA */}
+            <div className="lg:col-span-7 text-left">
+              <AnimatedSection>
+                {label && (
+                  <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent-secondary mb-4 md:mb-5">
+                    {label}
+                  </span>
                 )}
-                {secondaryCta && (
-                  <Button to={secondaryCta.to} variant="secondary" size="lg">
-                    {secondaryCta.label}
-                  </Button>
-                )}
-              </div>
-              {tertiaryLink && (
-                <div className={`mt-5 ${isHome ? '' : 'text-center'}`}>
-                  <Button to={tertiaryLink.to} variant="text" size="sm">
-                    {tertiaryLink.label} →
-                  </Button>
-                </div>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold leading-[1.15] tracking-tight mb-5 md:mb-6 text-text-primary text-balance drop-shadow-sm">
+                  {title}
+                </h1>
+              </AnimatedSection>
+
+              <AnimatedSection delay={150}>
+                <p className="text-base sm:text-lg md:text-xl text-text-secondary leading-relaxed mb-8 md:mb-10 max-w-2xl">
+                  {description}
+                </p>
+              </AnimatedSection>
+
+              {(primaryCta || secondaryCta) && (
+                <AnimatedSection delay={300}>
+                  <div className="flex flex-wrap items-center gap-4">
+                    {primaryCta && (
+                      <Button to={primaryCta.to} size="lg">
+                        {primaryCta.label}
+                      </Button>
+                    )}
+                    {secondaryCta && (
+                      <Button to={secondaryCta.to} variant="secondary" size="lg">
+                        {secondaryCta.label}
+                      </Button>
+                    )}
+                  </div>
+                  {tertiaryLink && (
+                    <div className="mt-5">
+                      <Button to={tertiaryLink.to} variant="text" size="sm">
+                        {tertiaryLink.label} →
+                      </Button>
+                    </div>
+                  )}
+                </AnimatedSection>
               )}
-            </AnimatedSection>
-          )}
 
-          {children}
-        </div>
+              {children}
+            </div>
+
+            {/* Right: Thematic Image / Showcase Graphic */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <AnimatedSection delay={200} className="w-full max-w-lg lg:max-w-none">
+                {rightElement || (
+                  <div className="relative group flex items-center justify-center">
+                    {/* Glowing ambient backdrop aura */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-[var(--color-accent-primary)]/35 via-[var(--color-accent-secondary)]/25 to-purple-600/30 blur-3xl scale-95 pointer-events-none group-hover:scale-105 transition-transform duration-700" />
+
+                    <img
+                      src={image}
+                      alt={imageAlt}
+                      className="relative z-10 w-full h-auto max-h-[380px] sm:max-h-[440px] lg:max-h-[500px] object-contain drop-shadow-[0_20px_45px_rgba(0,0,0,0.7)] filter brightness-105 contrast-105 animate-float"
+                    />
+                  </div>
+                )}
+              </AnimatedSection>
+            </div>
+          </div>
+        ) : (
+          <div className={isHome ? 'lg:max-w-[58%]' : 'max-w-4xl mx-auto text-center'}>
+            <AnimatedSection>
+              {label && (
+                <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent-secondary mb-4 md:mb-5">
+                  {label}
+                </span>
+              )}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight mb-5 md:mb-6 text-text-primary text-balance drop-shadow-sm">
+                {title}
+              </h1>
+            </AnimatedSection>
+
+            <AnimatedSection delay={150}>
+              <p className={`text-base sm:text-lg md:text-xl text-text-secondary leading-relaxed mb-8 md:mb-10 ${isHome ? 'max-w-2xl' : 'max-w-2xl mx-auto'}`}>
+                {description}
+              </p>
+            </AnimatedSection>
+
+            {(primaryCta || secondaryCta) && (
+              <AnimatedSection delay={300}>
+                <div className={`flex flex-wrap items-center gap-4 ${isHome ? '' : 'justify-center'}`}>
+                  {primaryCta && (
+                    <Button to={primaryCta.to} size="lg">
+                      {primaryCta.label}
+                    </Button>
+                  )}
+                  {secondaryCta && (
+                    <Button to={secondaryCta.to} variant="secondary" size="lg">
+                      {secondaryCta.label}
+                    </Button>
+                  )}
+                </div>
+                {tertiaryLink && (
+                  <div className={`mt-5 ${isHome ? '' : 'text-center'}`}>
+                    <Button to={tertiaryLink.to} variant="text" size="sm">
+                      {tertiaryLink.label} →
+                    </Button>
+                  </div>
+                )}
+              </AnimatedSection>
+            )}
+
+            {children}
+          </div>
+        )}
       </Container>
 
       {/* Bottom fade into canvas background */}

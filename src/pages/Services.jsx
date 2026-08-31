@@ -5,6 +5,7 @@ import Container from '../components/Container';
 import SectionHeading from '../components/SectionHeading';
 import CTASection from '../components/CTASection';
 import AnimatedSection from '../components/AnimatedSection';
+import InteractiveCardAccordion from '../components/InteractiveCardAccordion';
 import Button from '../components/Button';
 
 // Geometric SVG Icons matching reference image
@@ -128,23 +129,31 @@ const engagementModels = [
 
 const techStack = [
   {
-    category: 'Cloud & Infrastructure',
+    title: 'Cloud & Infrastructure',
     icon: Server,
+    image: '/hover-cloud.jpg',
+    description: 'Enterprise-grade cloud architecture, multi-cloud orchestration, and infrastructure-as-code powering mission-critical workloads at global scale.',
     items: ['AWS', 'Microsoft Azure', 'Google Cloud (GCP)', 'Kubernetes', 'Terraform', 'Docker', 'OpenShift'],
   },
   {
-    category: 'AI, ML & Advanced Analytics',
+    title: 'AI, ML & Advanced Analytics',
     icon: Cpu,
+    image: '/hover-data.jpg',
+    description: 'Intelligent data platforms, machine learning pipelines, and AI-powered insights transforming raw data into strategic business advantage.',
     items: ['Python', 'PyTorch / TensorFlow', 'Snowflake', 'Databricks', 'OpenAI / Anthropic APIs', 'Power BI / Tableau', 'Apache Kafka'],
   },
   {
-    category: 'Modern Engineering & DevOps',
+    title: 'Modern Engineering & DevOps',
     icon: Workflow,
+    image: '/hover-devops.jpg',
+    description: 'Full-stack engineering excellence with automated CI/CD, containerized deployments, and modern frameworks accelerating delivery velocity.',
     items: ['Node.js / React / Next.js', 'Go / Rust / Java', 'GitHub Actions / GitLab CI', 'ArgoCD', 'PostgreSQL / MongoDB', 'GraphQL'],
   },
   {
-    category: 'Cybersecurity & Governance',
+    title: 'Cybersecurity & Governance',
     icon: ShieldCheck,
+    image: '/hover-cyber.jpg',
+    description: 'Zero-trust security architecture, regulatory compliance frameworks, and proactive threat intelligence safeguarding enterprise assets.',
     items: ['Zero Trust Architecture', 'SOC 2 Type II', 'HIPAA & GDPR Compliance', 'HashiCorp Vault', 'CrowdStrike', 'Penetration Testing'],
   },
 ];
@@ -643,8 +652,8 @@ export default function Services() {
         </Container>
       </section>
 
-      {/* 2. Engagement Models - 2nd: Vibrant Purple Container */}
-      <section className="py-12 md:py-16 relative overflow-hidden bg-[#5B3FA6] text-white">
+      {/* 2. Engagement Models - 2nd: Vibrant Container */}
+      <section className="py-12 md:py-16 relative overflow-hidden bg-[#5853A9] text-white">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
 
@@ -705,46 +714,20 @@ export default function Services() {
         </Container>
       </section>
 
-      {/* 3. Technology Ecosystem - 3rd: Crisp Clean White Container */}
+      {/* 3. Technology Ecosystem - Interactive Accordion Container */}
       <section className="py-14 md:py-20 relative overflow-hidden bg-white text-slate-900 border-y border-slate-200">
-        <Container className="relative z-10">
+        <Container className="relative z-10 max-w-[1400px]">
           <SectionHeading
             label="Technology Stack"
             title="Enterprise Technology &amp; Toolchain Mastery"
             description="We leverage modern architectures, battle-tested cloud frameworks, and cutting-edge toolchains to build scalable, resilient platforms."
             darkText={true}
-            className="mb-8 md:mb-10"
+            className="mb-10 md:mb-14"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 items-stretch">
-            {techStack.map((stack, idx) => {
-              const Icon = stack.icon;
-              return (
-                <AnimatedSection key={stack.category} delay={idx * 80} className="h-full">
-                  <div className="h-full p-4.5 sm:p-5 rounded-xl bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-[#5B3FA6]/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 flex flex-col justify-between">
-                    <div>
-                      <div className="w-9 h-9 rounded-lg bg-purple-100 border border-purple-200 flex items-center justify-center mb-3 text-[#5B3FA6]">
-                        <Icon size={18} />
-                      </div>
-                      <h4 className="text-sm sm:text-base font-bold text-slate-900 mb-3">
-                        {stack.category}
-                      </h4>
-                      <div className="flex flex-wrap gap-1.5">
-                        {stack.items.map((item) => (
-                          <span
-                            key={item}
-                            className="px-2 py-0.5 text-[11px] font-medium bg-slate-100 text-slate-700 rounded-md border border-slate-200/80"
-                          >
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </AnimatedSection>
-              );
-            })}
-          </div>
+          <AnimatedSection delay={100}>
+            <InteractiveCardAccordion cards={techStack} />
+          </AnimatedSection>
         </Container>
       </section>
 

@@ -19,8 +19,8 @@ export const colorThemes = [
     navy600: '#1C2B56',
     navy500: '#263253',
     // Container (vibrant mid-section)
-    containerBg: '#5B3FA6',
-    containerHover: '#4B2F96',
+    containerBg: '#5853A9',
+    containerHover: '#4D4899',
     // Text on dark
     textPrimary: '#F8FAFF',
     textSecondary: '#A8B1C7',
@@ -156,8 +156,8 @@ export const colorThemes = [
     navy700: '#201A44',
     navy600: '#2A2258',
     navy500: '#352B6E',
-    containerBg: '#5B3FA6',
-    containerHover: '#4B2F96',
+    containerBg: '#5853A9',
+    containerHover: '#4D4899',
     textPrimary: '#FAF5FF',
     textSecondary: '#D8B4FE',
     textMuted: '#A855F7',

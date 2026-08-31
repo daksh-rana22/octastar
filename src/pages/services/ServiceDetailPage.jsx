@@ -117,9 +117,9 @@ export default function ServiceDetailPage({
         </section>
       )}
 
-      {/* 2. Delivery Process - 2nd: Vibrant Purple Container */}
+      {/* 2. Delivery Process - 2nd: Vibrant Container */}
       {process && (
-        <section className="py-12 md:py-16 relative overflow-hidden bg-[#5B3FA6] text-white">
+        <section className="py-12 md:py-16 relative overflow-hidden bg-[#5853A9] text-white">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
 
@@ -178,17 +178,42 @@ export default function ServiceDetailPage({
               const Icon = item.icon;
               return (
                 <AnimatedSection key={item.title} delay={idx * 80} className="h-full">
-                  <div className="h-full p-4.5 sm:p-5 rounded-xl bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-[#5B3FA6]/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 flex flex-col justify-between">
-                    <div>
-                      <div className="w-9 h-9 rounded-lg bg-purple-100 border border-purple-200 text-[#5B3FA6] flex items-center justify-center mb-3">
-                        <Icon size={18} />
+                  <div className="flip-card h-[220px] sm:h-[240px] rounded-xl">
+                    <div className="flip-card-inner">
+                      {/* ── Front Face ── */}
+                      <div className="flip-card-front p-5 sm:p-6 bg-slate-50 border border-slate-200/90 rounded-xl flex flex-col justify-between">
+                        <div>
+                          <div className="w-11 h-11 rounded-xl bg-purple-100 border border-purple-200 text-[#5853A9] flex items-center justify-center mb-4">
+                            <Icon size={20} />
+                          </div>
+                          <h4 className="text-sm sm:text-base font-bold text-slate-900 leading-snug">
+                            {item.title}
+                          </h4>
+                        </div>
+                        <div className="flex justify-end mt-3">
+                          <span className="text-[11px] font-semibold text-[#5853A9] tracking-wide uppercase">Hover to learn more</span>
+                        </div>
                       </div>
-                      <h4 className="text-sm sm:text-base font-bold text-slate-900 mb-1.5">
-                        {item.title}
-                      </h4>
-                      <p className="text-xs text-slate-600 leading-relaxed">
-                        {item.desc}
-                      </p>
+
+                      {/* ── Back Face ── */}
+                      <div className="flip-card-back p-5 sm:p-6 bg-[#5853A9] border border-[#5853A9] rounded-xl flex flex-col justify-between">
+                        <div>
+                          <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/30 text-white flex items-center justify-center mb-4">
+                            <Icon size={18} />
+                          </div>
+                          <h4 className="text-sm sm:text-base font-bold text-white mb-2 leading-snug">
+                            {item.title}
+                          </h4>
+                          <p className="text-xs sm:text-sm text-white/85 leading-relaxed">
+                            {item.desc}
+                          </p>
+                        </div>
+                        <div className="flex justify-end mt-3">
+                          <div className="w-8 h-8 rounded-full bg-white/15 border border-white/25 flex items-center justify-center">
+                            <CheckCircle2 size={14} className="text-white" />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </AnimatedSection>
