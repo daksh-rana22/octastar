@@ -107,12 +107,12 @@ export default function Stats({ lightBg = true, variant }) {
           </h3>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-12">
           {stats.map((stat, index) => (
             <AnimatedSection key={stat.label} delay={index * 120}>
               <div className="text-center">
                 <div
-                  className={`text-4xl md:text-5xl lg:text-6xl font-extrabold mb-2 ${
+                  className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-1 sm:mb-2 ${
                     isPurple
                       ? 'text-white'
                       : isLight
@@ -123,7 +123,7 @@ export default function Stats({ lightBg = true, variant }) {
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </div>
                 <div
-                  className={`text-sm md:text-base font-bold mb-1 ${
+                  className={`text-xs sm:text-sm md:text-base font-bold mb-1 ${
                     isPurple
                       ? 'text-white'
                       : isLight

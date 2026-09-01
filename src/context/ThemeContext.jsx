@@ -174,6 +174,39 @@ export const colorThemes = [
     buttonDark: '#1E1238',
     buttonDarkHover: '#2E1065',
   },
+  {
+    id: 'lime',
+    name: 'Electric Lime',
+    tag: 'Bright Neon',
+    primary: '#A3E635',
+    secondary: '#BEF264',
+    light: '#ECFCCB',
+    glow: 'rgba(163, 230, 53, 0.45)',
+    gradient: 'linear-gradient(135deg, #BEF264 0%, #A3E635 45%, #84CC16 80%, #ECFCCB 100%)',
+    swatch: ['#BEF264', '#A3E635', '#65A30D', '#0F1923'],
+    navy900: '#0F1923',
+    navy800: '#162432',
+    navy700: '#1E3042',
+    navy600: '#283E54',
+    navy500: '#344E68',
+    containerBg: '#65A30D',
+    containerHover: '#4D7C0F',
+    textPrimary: '#FFFFFF',
+    textSecondary: '#E2F8B6',
+    textMuted: '#A3E635',
+    border: '#28422A',
+    borderHover: '#BEF264',
+    surfaceLight: '#FFFFFF',
+    surfaceCard: '#F7FEE7',
+    textOnLight: '#0F172A',
+    textOnLightSecondary: '#365314',
+    textOnLightMuted: '#4D7C0F',
+    borderLight: '#D9F99D',
+    badgeBg: 'rgba(163, 230, 53, 0.22)',
+    badgeText: '#274808',
+    buttonDark: '#0F1923',
+    buttonDarkHover: '#1A2C3C',
+  },
 ];
 
 const ThemeContext = createContext();
@@ -185,7 +218,7 @@ export function ThemeProvider({ children }) {
       if (savedColor && colorThemes.some((t) => t.id === savedColor)) {
         return savedColor;
       }
-    } catch (e) {}
+    } catch (e) { }
     return 'lavender';
   });
 
@@ -242,7 +275,7 @@ export function ThemeProvider({ children }) {
 
     try {
       localStorage.setItem('octastar_color_theme', currentColorTheme);
-    } catch (e) {}
+    } catch (e) { }
   }, [currentColorTheme]);
 
   const selectColorTheme = (themeId) => {

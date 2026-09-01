@@ -6,6 +6,7 @@ import SectionHeading from '../components/SectionHeading';
 import AnimatedSection from '../components/AnimatedSection';
 import CTASection from '../components/CTASection';
 import Button from '../components/Button';
+import PracticeCapabilities from '../components/PracticeCapabilities';
 import { industriesList } from '../data/industries';
 
 export default function IndustryDetail() {
@@ -109,46 +110,21 @@ export default function IndustryDetail() {
         </Container>
       </section>
 
-      {/* Capabilities - Vibrant Container */}
-      <section className="py-16 md:py-24 relative overflow-hidden bg-[#5853A9] text-white">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
-
-        <Container className="relative z-10">
-          <AnimatedSection className="max-w-3xl mb-12 text-center mx-auto">
-            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-purple-200 mb-2">
-              Practice Capabilities
-            </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-3 text-white">
-              End-to-End {industry.title} Engineering
-            </h2>
-            <p className="text-sm md:text-base text-purple-100/90 leading-relaxed">
-              Specialized squads, compliant cloud blueprints, and domain accelerators tailored to {industry.title.toLowerCase()}.
-            </p>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-            {industry.capabilities.map((cap, index) => (
-              <AnimatedSection key={cap} delay={index * 80} className="h-full">
-                <div className="h-full p-6 sm:p-7 bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/40 rounded-2xl backdrop-blur-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between">
-                  <div>
-                    <div className="w-12 h-12 rounded-xl bg-white/15 border border-white/25 flex items-center justify-center mb-5 text-white">
-                      <Icon size={22} />
-                    </div>
-                    <h4 className="text-lg font-bold text-white mb-2">
-                      {cap}
-                    </h4>
-                  </div>
-                  <div className="mt-4 pt-3 border-t border-white/15 text-xs text-purple-200 flex items-center gap-1.5 font-medium">
-                    <Sparkles size={12} /> Domain Standard Verified
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </Container>
-      </section>
+      {/* Capabilities - Practice Capabilities Container matching Proven Results container style */}
+      <PracticeCapabilities
+        variant="vibrant"
+        title="Accelerating Business Goals"
+        label="Practice Capabilities"
+        description={`Specialized squads, compliant cloud blueprints, and domain accelerators tailored to ${industry.title.toLowerCase()}.`}
+        services={industry.capabilities.map((cap) => ({
+          title: cap,
+          icon: Icon,
+          points: [
+            `Enterprise-grade ${cap.toLowerCase()} tailored for ${industry.title}.`,
+            `Engineered to meet industry-specific compliance, scalability, and SLA standards.`,
+          ],
+        }))}
+      />
 
       {/* Measurable Benefits - Crisp Clean White Section */}
       <section className="py-20 md:py-28 relative overflow-hidden bg-white text-slate-900 border-y border-slate-200">

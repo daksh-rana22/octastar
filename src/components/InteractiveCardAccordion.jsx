@@ -163,7 +163,7 @@ export default function InteractiveCardAccordion({ cards = [], className = '' })
       </div>
 
       {/* ── Mobile: Vertical Accordion ── */}
-      <div className="md:hidden rounded-[16px] overflow-hidden border border-white/15 shadow-xl">
+      <div className="md:hidden rounded-[18px] overflow-hidden border border-white/15 shadow-xl bg-navy-900">
         {cards.map((card, index) => {
           const Icon = card.icon;
           const isActive = activeIndex === index;
@@ -171,12 +171,13 @@ export default function InteractiveCardAccordion({ cards = [], className = '' })
           return (
             <div
               key={card.title}
-              className="relative overflow-hidden cursor-pointer"
+              className="relative overflow-hidden cursor-pointer select-none transition-all duration-500 ease-out"
               style={{
-                height: isActive ? '340px' : '72px',
-                transition: 'height 600ms cubic-bezier(0.22, 1, 0.36, 1)',
+                maxHeight: isActive ? '420px' : '76px',
+                minHeight: isActive ? '280px' : '76px',
+                WebkitTapHighlightColor: 'transparent',
               }}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => setActiveIndex(isActive ? -1 : index)}
             >
               {/* Background Image */}
               <div className="absolute inset-0 z-0">
@@ -185,7 +186,7 @@ export default function InteractiveCardAccordion({ cards = [], className = '' })
                   alt={card.title}
                   className="w-full h-full object-cover object-center"
                   style={{
-                    transform: isActive ? 'scale(1.03)' : 'scale(1)',
+                    transform: isActive ? 'scale(1.04)' : 'scale(1)',
                     transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)',
                   }}
                 />
@@ -193,16 +194,16 @@ export default function InteractiveCardAccordion({ cards = [], className = '' })
                   className="absolute inset-0"
                   style={{
                     background: isActive
-                      ? 'linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.25) 100%)'
-                      : 'rgba(0,0,0,0.7)',
-                    transition: 'background 600ms cubic-bezier(0.22, 1, 0.36, 1)',
+                      ? 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.35) 100%)'
+                      : 'rgba(0,0,0,0.72)',
+                    transition: 'background 500ms cubic-bezier(0.22, 1, 0.36, 1)',
                   }}
                 />
               </div>
 
               {/* Separator */}
               {index !== 0 && (
-                <div className="absolute top-0 left-0 right-0 h-[1px] bg-white/10 z-10" />
+                <div className="absolute top-0 left-0 right-0 h-[1px] bg-white/15 z-10" />
               )}
 
               {/* Content */}

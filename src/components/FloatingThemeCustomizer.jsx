@@ -24,7 +24,7 @@ export default function FloatingThemeCustomizer() {
     <aside
       ref={customizerRef}
       aria-label="Theme Customizer"
-      className="fixed bottom-20 right-6 z-40"
+      className="fixed bottom-20 right-4 sm:right-6 z-40"
     >
       {/* Floating Trigger Button - Positioned directly above Scroll Up button */}
       {!isOpen && (
@@ -52,7 +52,7 @@ export default function FloatingThemeCustomizer() {
 
       {/* Floating Theme Panel */}
       {isOpen && (
-        <div className="w-76 sm:w-80 bg-navy-800/98 backdrop-blur-2xl border border-border/90 rounded-3xl shadow-2xl shadow-navy-950/90 p-5 animate-scale-in origin-bottom-right">
+        <div className="w-[calc(100vw-2rem)] max-w-[320px] sm:w-80 bg-navy-800/98 backdrop-blur-2xl border border-border/90 rounded-3xl shadow-2xl shadow-navy-950/90 p-4 sm:p-5 animate-scale-in origin-bottom-right">
           {/* Header */}
           <div className="flex items-center justify-between pb-3 mb-4 border-b border-border/60">
             <div className="flex items-center gap-2.5">

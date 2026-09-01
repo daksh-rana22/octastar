@@ -96,9 +96,9 @@ export default function ContactForm({ variant = 'dark' }) {
   const isLight = variant === 'light';
 
   const inputClasses = (field) =>
-    `w-full rounded-xl px-4 py-3.5 text-sm transition-all duration-200 focus:outline-none ${
+    `w-full rounded-xl px-4 py-3.5 text-base sm:text-sm transition-all duration-200 focus:outline-none ${
       isLight
-        ? `bg-slate-50 border ${errors[field] ? 'border-red-500' : 'border-slate-300'} text-slate-900 placeholder-slate-400 focus:bg-white focus:border-[#5B3FA6] focus:ring-2 focus:ring-[#5B3FA6]/20`
+        ? `bg-slate-50 border ${errors[field] ? 'border-red-500' : 'border-slate-300'} text-slate-900 placeholder-slate-400 focus:bg-white focus:border-[#5853A9] focus:ring-2 focus:ring-[#5853A9]/20`
         : `bg-navy-700/60 border ${errors[field] ? 'border-red-400/80' : 'border-border/80'} text-text-primary placeholder-text-muted focus:bg-navy-700 focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20`
     }`;
 
@@ -213,7 +213,7 @@ export default function ContactForm({ variant = 'dark' }) {
         <Button
           type="submit"
           disabled={status === 'loading'}
-          className="w-full sm:w-auto bg-[#5B3FA6] hover:bg-[#4b2f96] text-white font-bold shadow-lg shadow-purple-900/30 px-8 py-3.5 rounded-xl border-none"
+          className="w-full sm:w-auto bg-[#5853A9] hover:bg-[#4d4899] text-white font-bold shadow-lg shadow-purple-900/30 px-8 py-3.5 rounded-xl border-none"
           size="lg"
           icon={status === 'loading' ? Loader2 : Send}
           iconPosition="right"

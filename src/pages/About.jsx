@@ -200,9 +200,10 @@ export default function About() {
                     <div key={colIdx} className="flex flex-col h-full divide-y divide-white/15">
                       {/* Top Card */}
                       <div
+                        onClick={() => setHoveredValue(isTopHovered ? null : col.topIdx)}
                         onMouseEnter={() => setHoveredValue(col.topIdx)}
                         onMouseLeave={() => setHoveredValue(null)}
-                        className={`group/panel relative p-6 sm:p-7 lg:p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 ease-out cursor-default ${
+                        className={`group/panel relative p-5 sm:p-7 lg:p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 ease-out cursor-pointer md:cursor-default select-none ${
                           isTopHovered
                             ? 'flex-[1.65] bg-white/[0.12]'
                             : isBottomHovered
@@ -250,9 +251,10 @@ export default function About() {
 
                       {/* Bottom Card */}
                       <div
+                        onClick={() => setHoveredValue(isBottomHovered ? null : col.bottomIdx)}
                         onMouseEnter={() => setHoveredValue(col.bottomIdx)}
                         onMouseLeave={() => setHoveredValue(null)}
-                        className={`group/panel relative p-6 sm:p-7 lg:p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 ease-out cursor-default ${
+                        className={`group/panel relative p-5 sm:p-7 lg:p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 ease-out cursor-pointer md:cursor-default select-none ${
                           isBottomHovered
                             ? 'flex-[1.65] bg-white/[0.12]'
                             : isTopHovered

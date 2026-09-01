@@ -7,6 +7,8 @@ export const industriesList = [
   {
     id: 'banking',
     title: 'Banking & Financial Services',
+    subtitle: 'Fintech & Capital Markets',
+    image: '/industries/industry-banking.jpg',
     slug: '/industries/banking',
     icon: Landmark,
     description: 'Driving digital transformation across banking, capital markets, and financial institutions with secure, compliant technology solutions.',
@@ -45,6 +47,8 @@ export const industriesList = [
   {
     id: 'healthcare',
     title: 'Healthcare & Life Sciences',
+    subtitle: 'Clinical AI & Telehealth',
+    image: '/industries/industry-healthcare.jpg',
     slug: '/industries/healthcare',
     icon: HeartPulse,
     description: 'Empowering healthcare organizations and life sciences companies with technology that improves patient outcomes, accelerates research, and ensures compliance.',
@@ -83,6 +87,8 @@ export const industriesList = [
   {
     id: 'insurance',
     title: 'Insurance',
+    subtitle: 'Underwriting & Claims AI',
+    image: '/industries/industry-insurance.jpg',
     slug: '/industries/insurance',
     icon: ShieldCheck,
     description: 'Helping insurance companies modernize operations, enhance customer experiences, and leverage data analytics for better risk assessment and claims management.',
@@ -121,6 +127,8 @@ export const industriesList = [
   {
     id: 'manufacturing',
     title: 'Manufacturing',
+    subtitle: 'Industry 4.0 & Smart IoT',
+    image: '/industries/industry-manufacturing.jpg',
     slug: '/industries/manufacturing',
     icon: Factory,
     description: 'Enabling smart manufacturing with IoT, automation, data analytics, and digital supply chain solutions that improve productivity and reduce costs.',
@@ -159,6 +167,8 @@ export const industriesList = [
   {
     id: 'retail',
     title: 'Retail',
+    subtitle: 'Omnichannel & Smart Commerce',
+    image: '/industries/industry-retail.jpg',
     slug: '/industries/retail',
     icon: ShoppingCart,
     description: 'Transforming retail with omnichannel experiences, personalization, supply chain optimization, and data-driven customer insights.',
@@ -197,6 +207,8 @@ export const industriesList = [
   {
     id: 'media',
     title: 'Media & Communications',
+    subtitle: 'Streaming & Digital Asset Ecosystems',
+    image: '/hover-digital.jpg',
     slug: '/industries/media',
     icon: Radio,
     description: 'Helping media and communications companies deliver compelling digital experiences, optimize content strategies, and manage complex technology ecosystems.',
@@ -234,7 +246,9 @@ export const industriesList = [
   },
   {
     id: 'energy',
-    title: 'Energy',
+    title: 'Energy & Utilities',
+    subtitle: 'Smart Grid & Clean Power Telemetry',
+    image: '/industries/industry-energy.jpg',
     slug: '/industries/energy',
     icon: Zap,
     description: 'Supporting energy companies with technology that enables digital transformation, improves operational efficiency, and drives sustainability.',

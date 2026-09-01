@@ -203,9 +203,8 @@ export default function Hero({
           >
             <source src={videoBg} type="video/mp4" />
           </video>
-          {/* Lighter, clearer ambient gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-900/80 via-navy-900/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-navy-900/20" />
+          {/* Clean luminous ambient gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-navy-900)]/40 via-transparent to-transparent pointer-events-none" />
         </div>
       )}
 
@@ -268,20 +267,20 @@ export default function Hero({
 
               {(primaryCta || secondaryCta) && (
                 <AnimatedSection delay={300}>
-                  <div className="flex flex-wrap items-center gap-4">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
                     {primaryCta && (
-                      <Button to={primaryCta.to} size="lg">
+                      <Button to={primaryCta.to} size="lg" className="w-full sm:w-auto text-center">
                         {primaryCta.label}
                       </Button>
                     )}
                     {secondaryCta && (
-                      <Button to={secondaryCta.to} variant="secondary" size="lg">
+                      <Button to={secondaryCta.to} variant="secondary" size="lg" className="w-full sm:w-auto text-center">
                         {secondaryCta.label}
                       </Button>
                     )}
                   </div>
                   {tertiaryLink && (
-                    <div className="mt-5">
+                    <div className="mt-4 sm:mt-5 text-center sm:text-left">
                       <Button to={tertiaryLink.to} variant="text" size="sm">
                         {tertiaryLink.label} →
                       </Button>
@@ -304,7 +303,7 @@ export default function Hero({
                     <img
                       src={image}
                       alt={imageAlt}
-                      className="relative z-10 w-full h-auto max-h-[380px] sm:max-h-[440px] lg:max-h-[500px] object-contain drop-shadow-[0_20px_45px_rgba(0,0,0,0.7)] filter brightness-105 contrast-105 animate-float"
+                      className="relative z-10 w-full h-auto max-h-[300px] sm:max-h-[440px] lg:max-h-[500px] object-contain drop-shadow-[0_20px_45px_rgba(0,0,0,0.7)] filter brightness-105 contrast-105 animate-float"
                     />
                   </div>
                 )}
@@ -315,37 +314,37 @@ export default function Hero({
           <div className={isHome ? 'lg:max-w-[58%]' : 'max-w-4xl mx-auto text-center'}>
             <AnimatedSection>
               {label && (
-                <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent-secondary mb-4 md:mb-5">
+                <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent-secondary mb-3 sm:mb-4 md:mb-5">
                   {label}
                 </span>
               )}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight mb-5 md:mb-6 text-text-primary text-balance drop-shadow-sm">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight mb-4 sm:mb-5 md:mb-6 text-text-primary text-balance drop-shadow-sm">
                 {title}
               </h1>
             </AnimatedSection>
 
             <AnimatedSection delay={150}>
-              <p className={`text-base sm:text-lg md:text-xl text-text-secondary leading-relaxed mb-8 md:mb-10 ${isHome ? 'max-w-2xl' : 'max-w-2xl mx-auto'}`}>
+              <p className={`text-sm sm:text-base md:text-xl text-text-secondary leading-relaxed mb-6 sm:mb-8 md:mb-10 ${isHome ? 'max-w-2xl' : 'max-w-2xl mx-auto'}`}>
                 {description}
               </p>
             </AnimatedSection>
 
             {(primaryCta || secondaryCta) && (
               <AnimatedSection delay={300}>
-                <div className={`flex flex-wrap items-center gap-4 ${isHome ? '' : 'justify-center'}`}>
+                <div className={`flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 max-w-sm sm:max-w-none mx-auto ${isHome ? '' : 'justify-center'}`}>
                   {primaryCta && (
-                    <Button to={primaryCta.to} size="lg">
+                    <Button to={primaryCta.to} size="lg" className="w-full sm:w-auto text-center">
                       {primaryCta.label}
                     </Button>
                   )}
                   {secondaryCta && (
-                    <Button to={secondaryCta.to} variant="secondary" size="lg">
+                    <Button to={secondaryCta.to} variant="secondary" size="lg" className="w-full sm:w-auto text-center">
                       {secondaryCta.label}
                     </Button>
                   )}
                 </div>
                 {tertiaryLink && (
-                  <div className={`mt-5 ${isHome ? '' : 'text-center'}`}>
+                  <div className={`mt-4 sm:mt-5 ${isHome ? '' : 'text-center'}`}>
                     <Button to={tertiaryLink.to} variant="text" size="sm">
                       {tertiaryLink.label} →
                     </Button>
@@ -358,9 +357,6 @@ export default function Hero({
           </div>
         )}
       </Container>
-
-      {/* Bottom fade into canvas background */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-navy-900 to-transparent pointer-events-none" />
     </section>
   );
 }

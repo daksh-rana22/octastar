@@ -211,6 +211,7 @@
   /* ── 3D Flip Card ── */
   .flip-card {
     perspective: 1000px;
+    -webkit-tap-highlight-color: transparent;
   }
   .flip-card-inner {
     position: relative;
@@ -219,7 +220,8 @@
     transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
     transform-style: preserve-3d;
   }
-  .flip-card:hover .flip-card-inner {
+  .flip-card:hover .flip-card-inner,
+  .flip-card.is-flipped .flip-card-inner {
     transform: rotateY(180deg);
   }
   .flip-card-front,

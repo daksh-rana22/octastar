@@ -8,6 +8,67 @@ import CTASection from '../components/CTASection';
 import Button from '../components/Button';
 import { solutionsList } from '../data/solutions';
 
+// Geometric SVG Icons matching reference layout
+function HexCubeIcon({ className = "w-6 h-6 text-current" }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+      <path d="M12 22V12" />
+    </svg>
+  );
+}
+
+function NodesIcon({ className = "w-6 h-6 text-current" }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="2" y="2" width="6" height="6" rx="1.5" />
+      <rect x="16" y="2" width="6" height="6" rx="1.5" />
+      <rect x="9" y="16" width="6" height="6" rx="1.5" />
+      <path d="M5 8v3a2 2 0 002 2h10a2 2 0 002-2V8" />
+      <path d="M12 13v3" />
+    </svg>
+  );
+}
+
+function StarKnotIcon({ className = "w-6 h-6 text-current" }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14" />
+      <circle cx="12" cy="12" r="3.5" />
+    </svg>
+  );
+}
+
+function WireCubeIcon({ className = "w-6 h-6 text-current" }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" />
+      <path d="M12 12L4 7.5M12 12l8-4.5M12 12v9" />
+      <path d="M8 5.25l8 4.5M8 18.75l8-4.5" />
+    </svg>
+  );
+}
+
+function TrianglePrismIcon({ className = "w-6 h-6 text-current" }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M12 3L2 20h20L12 3z" />
+      <path d="M12 8l-5 9h10l-5-9z" />
+      <path d="M12 12l-2 3.5h4L12 12z" />
+    </svg>
+  );
+}
+
+function TriangularPetalsIcon({ className = "w-6 h-6 text-current" }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M12 2a4 4 0 014 4v2a4 4 0 01-4 4 4 4 0 01-4-4V6a4 4 0 014-4z" />
+      <path d="M6 12a4 4 0 014 4v2a4 4 0 01-4 4 4 4 0 01-4-4v-2a4 4 0 014-4z" />
+      <path d="M18 12a4 4 0 014 4v2a4 4 0 01-4 4 4 4 0 01-4-4v-2a4 4 0 014-4z" />
+    </svg>
+  );
+}
+
 const roiMetrics = [
   {
     metric: '80%',
@@ -65,68 +126,330 @@ export default function Solutions() {
         secondaryCta={{ label: 'View All Services', to: '/services' }}
       />
 
-      {/* Solutions Matrix - Crisp stats-gradient-bg matching Services.jsx */}
-      <section className="py-12 md:py-16 relative overflow-hidden stats-gradient-bg border-y border-slate-350">
+      {/* Solutions Matrix - 4-Column Bento Grid matching reference layout */}
+      <section className="py-14 md:py-20 relative overflow-hidden stats-gradient-bg border-y border-slate-350">
         {/* Subtle Dark Edge Vignette Fades */}
         <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-b from-slate-900/[0.08] to-transparent pointer-events-none" />
         <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-slate-900/[0.10] to-transparent pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.45)_0%,_transparent_65%,_rgba(15,23,42,0.06)_100%)] pointer-events-none" />
 
-        <Container className="relative z-10">
-          <AnimatedSection className="max-w-3xl mb-8 md:mb-10 text-center mx-auto">
+        <Container className="relative z-10 max-w-7xl">
+          <AnimatedSection className="max-w-3xl mb-10 md:mb-14 text-center mx-auto">
             <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-accent-primary mb-1.5 drop-shadow-sm">
               Solution Portfolio
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold leading-tight mb-2 text-slate-900">
-              Purpose-Built for Measurable Business Value
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-slate-900 uppercase leading-[1.15] font-sans">
+              PURPOSE-BUILT FOR MEASURABLE<br className="hidden sm:inline" /> BUSINESS VALUE
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl mx-auto mt-2">
               Combining cutting-edge cloud, automation, and AI frameworks to solve high-stakes enterprise challenges.
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-            {solutionsList.map((solution, index) => {
-              const Icon = solution.icon;
-              return (
-                <AnimatedSection key={solution.id} delay={index * 80} className="h-full">
-                  <Link
-                    to={solution.link}
-                    className="group relative flex flex-col justify-between h-full p-5 sm:p-6 bg-white/85 hover:bg-white border border-slate-300/80 hover:border-accent-primary/60 rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 backdrop-blur-sm overflow-hidden"
-                  >
-                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          {/* 4-Column Bento Grid of 6 Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 items-stretch">
+            {/* Column 1: Left 2 Stacked Cards */}
+            <div className="flex flex-col gap-4 sm:gap-5 justify-between h-full">
+              {/* 1. Digital Transformation (Dark Theme Card) */}
+              <AnimatedSection delay={50} className="h-full">
+                <Link
+                  to="/services/digital-transformation"
+                  className="group relative overflow-hidden bg-[var(--color-navy-900)] text-[var(--color-text-primary)] border border-[var(--color-border)]/60 hover:border-[#A3E635]/80 rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-700 ease-out hover:shadow-2xl hover:-translate-y-1.5 h-full min-h-[230px]"
+                >
+                  {/* Hover Image Crossfade */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out pointer-events-none z-0">
+                    <img
+                      src="/hover-digital.jpg"
+                      alt="Digital Transformation"
+                      className="w-full h-full object-cover object-center scale-110 group-hover:scale-100 transition-transform duration-1000 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/35" />
+                  </div>
 
-                    <div>
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-purple-100 border border-purple-200 text-[#5B3FA6] group-hover:bg-[#5B3FA6] group-hover:text-white group-hover:scale-105 group-hover:shadow-md transition-all duration-300">
-                          <Icon size={22} />
-                        </div>
-                        <span className="text-xs font-mono font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full border border-slate-200">
-                          Solution 0{index + 1}
-                        </span>
-                      </div>
+                  {/* Top: Icon + Original Resting Heading & Info */}
+                  <div className="relative z-10">
+                    <div className="w-11 h-11 rounded-xl bg-[var(--color-accent-primary)]/20 group-hover:bg-black/70 group-hover:border-white/30 border border-[var(--color-accent-primary)]/35 text-[var(--color-accent-light)] group-hover:text-[#A3E635] flex items-center justify-center mb-4 transition-all duration-500 ease-out">
+                      <HexCubeIcon className="w-6 h-6" />
+                    </div>
 
-                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2 group-hover:text-[#5B3FA6] transition-colors">
-                        {solution.title}
-                      </h3>
+                    {/* Original Heading */}
+                    <h3 className="text-lg sm:text-xl font-bold text-[var(--color-text-primary)] mb-0.5 leading-snug group-hover:opacity-0 group-hover:-translate-y-1 group-hover:h-0 group-hover:m-0 overflow-hidden transition-all duration-500 ease-in-out">
+                      Digital Transformation
+                    </h3>
 
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
-                        {solution.description}
+                    {/* Subtitle & Description */}
+                    <div className="group-hover:opacity-0 group-hover:-translate-y-1 group-hover:h-0 group-hover:m-0 overflow-hidden transition-all duration-500 ease-in-out">
+                      <p className="text-xs sm:text-sm font-semibold text-[var(--color-accent-light)] mb-2">
+                        Modernize your business
+                      </p>
+                      <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed">
+                        Optimized processes, cloud-native architectures, and data-driven strategies that create lasting competitive advantage.
                       </p>
                     </div>
+                  </div>
 
-                    <div className="pt-4 border-t border-slate-200/80 flex items-center justify-between mt-auto">
-                      <span className="text-xs font-semibold uppercase tracking-wider text-[#5B3FA6] group-hover:text-accent-primary transition-colors">
-                        Explore Solution
-                      </span>
-                      <div className="w-8 h-8 rounded-full bg-purple-100 border border-purple-200 flex items-center justify-center text-[#5B3FA6] group-hover:bg-[#5B3FA6] group-hover:text-white group-hover:border-transparent transition-all duration-200">
-                        <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
+                  {/* Bottom: Heading (shown ONLY on hover at bottom) + Action Button */}
+                  <div className="relative z-10 mt-auto pt-3 flex items-end justify-between gap-3">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#A3E635] opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-700 ease-out delay-75 leading-snug">
+                      Digital Transformation
+                    </h3>
+                    <div className="w-8 h-8 rounded-full bg-[var(--color-theme-container)] text-white flex-shrink-0 flex items-center justify-center group-hover:scale-110 group-hover:bg-[#A3E635] group-hover:text-black group-hover:border-transparent transition-all duration-500 ease-out shadow-md ml-auto">
+                      <ArrowRight size={14} className="-rotate-45 group-hover:rotate-0 transition-transform duration-500 ease-out" />
+                    </div>
+                  </div>
+                </Link>
+              </AnimatedSection>
+
+              {/* 2. Data & Analytics (Soft Tint Theme Card) */}
+              <AnimatedSection delay={100} className="h-full">
+                <Link
+                  to="/services/data-analytics"
+                  className="group relative overflow-hidden bg-[var(--color-surface-card)] text-[var(--color-text-on-light)] border border-[var(--color-border-light)] hover:border-[#A3E635]/80 rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-700 ease-out hover:shadow-2xl hover:-translate-y-1.5 h-full min-h-[230px]"
+                >
+                  {/* Hover Image Crossfade */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out pointer-events-none z-0">
+                    <img
+                      src="/hover-data.jpg"
+                      alt="Data & Analytics"
+                      className="w-full h-full object-cover object-center scale-110 group-hover:scale-100 transition-transform duration-1000 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/35" />
+                  </div>
+
+                  {/* Top: Icon + Original Resting Heading & Info */}
+                  <div className="relative z-10">
+                    <div className="w-11 h-11 rounded-xl bg-[var(--color-badge-bg)] group-hover:bg-black/70 group-hover:border-white/30 border border-[var(--color-border-light)] text-[var(--color-badge-text)] group-hover:text-[#A3E635] flex items-center justify-center mb-4 transition-all duration-500 ease-out">
+                      <NodesIcon className="w-6 h-6" />
+                    </div>
+
+                    {/* Original Heading */}
+                    <h3 className="text-lg sm:text-xl font-bold text-[var(--color-text-on-light)] mb-0.5 leading-snug group-hover:opacity-0 group-hover:-translate-y-1 group-hover:h-0 group-hover:m-0 overflow-hidden transition-all duration-500 ease-in-out">
+                      Data &amp; Analytics
+                    </h3>
+
+                    {/* Subtitle & Description */}
+                    <div className="group-hover:opacity-0 group-hover:-translate-y-1 group-hover:h-0 group-hover:m-0 overflow-hidden transition-all duration-500 ease-in-out">
+                      <p className="text-xs sm:text-sm font-semibold text-[var(--color-accent-primary)] mb-2">
+                        Insights that drive decisions
+                      </p>
+                      <p className="text-xs text-[var(--color-text-on-light-secondary)] leading-relaxed">
+                        Turn raw enterprise data into actionable intelligence with modern data engineering, feature stores, and visualization.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Bottom: Heading (shown ONLY on hover at bottom) + Action Button */}
+                  <div className="relative z-10 mt-auto pt-3 flex items-end justify-between gap-3">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#A3E635] opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-700 ease-out delay-75 leading-snug">
+                      Data &amp; Analytics
+                    </h3>
+                    <div className="w-8 h-8 rounded-full bg-[var(--color-button-dark)] text-white flex-shrink-0 flex items-center justify-center group-hover:scale-110 group-hover:bg-[#A3E635] group-hover:text-black group-hover:border-transparent transition-all duration-500 ease-out shadow-md ml-auto">
+                      <ArrowRight size={14} className="-rotate-45 group-hover:rotate-0 transition-transform duration-500 ease-out" />
+                    </div>
+                  </div>
+                </Link>
+              </AnimatedSection>
+            </div>
+
+            {/* Column 2: Tall Center AI & Machine Learning Card (Theme Gradient Hero Card) */}
+            <div className="h-full">
+              <AnimatedSection delay={150} className="h-full">
+                <Link
+                  to="/services/ai-ml"
+                  className="group relative overflow-hidden bg-gradient-to-b from-[var(--color-navy-900)] via-[var(--color-navy-800)] to-[var(--color-navy-900)] text-[var(--color-text-primary)] border border-[var(--color-accent-primary)]/40 hover:border-[var(--color-accent-light)]/80 rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-700 ease-out hover:shadow-2xl hover:-translate-y-1.5 h-full min-h-[470px]"
+                >
+                  {/* Top: Icon + Permanent Heading & Info */}
+                  <div className="relative z-10">
+                    <div className="w-11 h-11 rounded-xl bg-[var(--color-accent-primary)]/25 border border-[var(--color-accent-light)]/40 text-[var(--color-accent-light)] flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-500">
+                      <StarKnotIcon className="w-6 h-6" />
+                    </div>
+
+                    <h3 className="text-xl sm:text-2xl font-bold text-[var(--color-text-primary)] mb-0.5 leading-tight group-hover:text-[var(--color-accent-light)] transition-colors duration-500">
+                      AI &amp; Machine Learning
+                    </h3>
+
+                    <p className="text-xs sm:text-sm font-semibold text-[var(--color-accent-light)] mb-2">
+                      Intelligent automation
+                    </p>
+
+                    <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed max-w-xs">
+                      Enterprise solutions designed to accelerate transformation, cognitive automation, and predictive intelligence.
+                    </p>
+                  </div>
+
+                  {/* 3D Pyramid Architectural Graphic */}
+                  <div className="relative mt-auto -mx-7 -mb-7 pt-4 overflow-hidden flex items-end justify-center">
+                    <img
+                      src="/ai-first-pyramid.jpg"
+                      alt="AI & Machine Learning Solutions Architecture"
+                      className="w-full h-auto max-h-[260px] sm:max-h-[280px] object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-105 transition-transform duration-1000 ease-out"
+                    />
+
+                    {/* Floating arrow button bottom-right */}
+                    <div className="absolute bottom-6 right-6 z-10">
+                      <div className="w-8 h-8 rounded-full bg-[var(--color-theme-container)] border border-white/30 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-white group-hover:text-[var(--color-theme-container)] group-hover:border-transparent transition-all duration-500 ease-out shadow-xl">
+                        <ArrowRight size={14} className="-rotate-45 group-hover:rotate-0 transition-transform duration-500 ease-out" />
                       </div>
                     </div>
-                  </Link>
-                </AnimatedSection>
-              );
-            })}
+                  </div>
+                </Link>
+              </AnimatedSection>
+            </div>
+
+            {/* Column 3: Center-Right 2 Stacked Cards */}
+            <div className="flex flex-col gap-4 sm:gap-5 justify-between h-full">
+              {/* 4. Cloud Transformation (Soft Tint Theme Card) */}
+              <AnimatedSection delay={200} className="h-full">
+                <Link
+                  to="/services/cloud"
+                  className="group relative overflow-hidden bg-[var(--color-surface-card)] text-[var(--color-text-on-light)] border border-[var(--color-border-light)] hover:border-[#A3E635]/80 rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-700 ease-out hover:shadow-2xl hover:-translate-y-1.5 h-full min-h-[230px]"
+                >
+                  {/* Hover Image Crossfade */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out pointer-events-none z-0">
+                    <img
+                      src="/hover-cloud.jpg"
+                      alt="Cloud Transformation"
+                      className="w-full h-full object-cover object-center scale-110 group-hover:scale-100 transition-transform duration-1000 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/35" />
+                  </div>
+
+                  {/* Top: Icon + Original Resting Heading & Info */}
+                  <div className="relative z-10">
+                    <div className="w-11 h-11 rounded-xl bg-[var(--color-badge-bg)] group-hover:bg-black/70 group-hover:border-white/30 border border-[var(--color-border-light)] text-[var(--color-badge-text)] group-hover:text-[#A3E635] flex items-center justify-center mb-4 transition-all duration-500 ease-out">
+                      <WireCubeIcon className="w-6 h-6" />
+                    </div>
+
+                    {/* Original Heading */}
+                    <h3 className="text-lg sm:text-xl font-bold text-[var(--color-text-on-light)] mb-0.5 leading-snug group-hover:opacity-0 group-hover:-translate-y-1 group-hover:h-0 group-hover:m-0 overflow-hidden transition-all duration-500 ease-in-out">
+                      Cloud Transformation
+                    </h3>
+
+                    {/* Subtitle & Description */}
+                    <div className="group-hover:opacity-0 group-hover:-translate-y-1 group-hover:h-0 group-hover:m-0 overflow-hidden transition-all duration-500 ease-in-out">
+                      <p className="text-xs sm:text-sm font-semibold text-[var(--color-accent-primary)] mb-2">
+                        Scalable cloud platforms
+                      </p>
+                      <p className="text-xs text-[var(--color-text-on-light-secondary)] leading-relaxed">
+                        Migrate, modernize, and optimize your cloud infrastructure with enterprise architectures designed for speed, security, and resilience.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Bottom: Heading (shown ONLY on hover at bottom) + Action Button */}
+                  <div className="relative z-10 mt-auto pt-3 flex items-end justify-between gap-3">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#A3E635] opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-700 ease-out delay-75 leading-snug">
+                      Cloud Transformation
+                    </h3>
+                    <div className="w-8 h-8 rounded-full bg-[var(--color-button-dark)] text-white flex-shrink-0 flex items-center justify-center group-hover:scale-110 group-hover:bg-[#A3E635] group-hover:text-black group-hover:border-transparent transition-all duration-500 ease-out shadow-md ml-auto">
+                      <ArrowRight size={14} className="-rotate-45 group-hover:rotate-0 transition-transform duration-500 ease-out" />
+                    </div>
+                  </div>
+                </Link>
+              </AnimatedSection>
+
+              {/* 5. RPA & Automation (Dark Theme Card) */}
+              <AnimatedSection delay={250} className="h-full">
+                <Link
+                  to="/solutions/rpa"
+                  className="group relative overflow-hidden bg-[var(--color-navy-900)] text-[var(--color-text-primary)] border border-[var(--color-border)]/60 hover:border-[#A3E635]/80 rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-700 ease-out hover:shadow-2xl hover:-translate-y-1.5 h-full min-h-[230px]"
+                >
+                  {/* Hover Image Crossfade */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out pointer-events-none z-0">
+                    <img
+                      src="/solutions/solution-rpa.jpg"
+                      alt="RPA & Automation"
+                      className="w-full h-full object-cover object-center scale-110 group-hover:scale-100 transition-transform duration-1000 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/35" />
+                  </div>
+
+                  {/* Top: Icon + Original Resting Heading & Info */}
+                  <div className="relative z-10">
+                    <div className="w-11 h-11 rounded-xl bg-[var(--color-accent-primary)]/20 group-hover:bg-black/70 group-hover:border-white/30 border border-[var(--color-accent-primary)]/35 text-[var(--color-accent-light)] group-hover:text-[#A3E635] flex items-center justify-center mb-4 transition-all duration-500 ease-out">
+                      <TrianglePrismIcon className="w-6 h-6" />
+                    </div>
+
+                    {/* Original Heading */}
+                    <h3 className="text-lg sm:text-xl font-bold text-[var(--color-text-primary)] mb-0.5 leading-snug group-hover:opacity-0 group-hover:-translate-y-1 group-hover:h-0 group-hover:m-0 overflow-hidden transition-all duration-500 ease-in-out">
+                      RPA &amp; Automation
+                    </h3>
+
+                    {/* Subtitle & Description */}
+                    <div className="group-hover:opacity-0 group-hover:-translate-y-1 group-hover:h-0 group-hover:m-0 overflow-hidden transition-all duration-500 ease-in-out">
+                      <p className="text-xs sm:text-sm font-semibold text-[var(--color-accent-light)] mb-2">
+                        Autonomous bot workflows
+                      </p>
+                      <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed">
+                        Eliminate repetitive manual bottlenecks with intelligent robotic bots that increase speed, accuracy, and operational capacity.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Bottom: Heading (shown ONLY on hover at bottom) + Action Button */}
+                  <div className="relative z-10 mt-auto pt-3 flex items-end justify-between gap-3">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#A3E635] opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-700 ease-out delay-75 leading-snug">
+                      RPA &amp; Automation
+                    </h3>
+                    <div className="w-8 h-8 rounded-full bg-[var(--color-theme-container)] text-white flex-shrink-0 flex items-center justify-center group-hover:scale-110 group-hover:bg-[#A3E635] group-hover:text-black group-hover:border-transparent transition-all duration-500 ease-out shadow-md ml-auto">
+                      <ArrowRight size={14} className="-rotate-45 group-hover:rotate-0 transition-transform duration-500 ease-out" />
+                    </div>
+                  </div>
+                </Link>
+              </AnimatedSection>
+            </div>
+
+            {/* Column 4: Right Tall Card (Luminous Theme Card) */}
+            <div className="h-full">
+              <AnimatedSection delay={300} className="h-full">
+                <Link
+                  to="/services/cybersecurity"
+                  className="group relative overflow-hidden bg-[var(--color-badge-bg)] text-[var(--color-text-on-light)] border border-[var(--color-border-light)] hover:border-[#A3E635]/80 rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-700 ease-out hover:shadow-2xl hover:-translate-y-1.5 h-full min-h-[470px]"
+                >
+                  {/* Hover Image Crossfade */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out pointer-events-none z-0">
+                    <img
+                      src="/hover-cyber.jpg"
+                      alt="Cybersecurity"
+                      className="w-full h-full object-cover object-center scale-110 group-hover:scale-100 transition-transform duration-1000 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/35" />
+                  </div>
+
+                  {/* Top: Icon + Original Resting Heading & Info */}
+                  <div className="relative z-10">
+                    <div className="w-11 h-11 rounded-xl bg-[var(--color-surface-light)] group-hover:bg-black/70 group-hover:border-white/30 border border-[var(--color-border-light)] text-[var(--color-badge-text)] group-hover:text-[#A3E635] flex items-center justify-center mb-4 transition-all duration-500 ease-out">
+                      <TriangularPetalsIcon className="w-6 h-6" />
+                    </div>
+
+                    {/* Original Heading */}
+                    <h3 className="text-lg sm:text-xl font-bold text-[var(--color-text-on-light)] mb-0.5 leading-snug group-hover:opacity-0 group-hover:-translate-y-1 group-hover:h-0 group-hover:m-0 overflow-hidden transition-all duration-500 ease-in-out">
+                      Cybersecurity
+                    </h3>
+
+                    {/* Subtitle & Description */}
+                    <div className="group-hover:opacity-0 group-hover:-translate-y-1 group-hover:h-0 group-hover:m-0 overflow-hidden transition-all duration-500 ease-in-out">
+                      <p className="text-xs sm:text-sm font-semibold text-[var(--color-accent-primary)] mb-2">
+                        Protect what matters
+                      </p>
+                      <p className="text-xs text-[var(--color-text-on-light-secondary)] leading-relaxed">
+                        Protect what matters most with comprehensive zero-trust architectures, compliance governance, threat telemetry, and identity security.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Bottom: Heading (shown ONLY on hover at bottom) + Action Button */}
+                  <div className="relative z-10 mt-auto pt-3 flex items-end justify-between gap-3">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#A3E635] opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-700 ease-out delay-75 leading-snug">
+                      Cybersecurity
+                    </h3>
+                    <div className="w-8 h-8 rounded-full bg-[var(--color-button-dark)] text-white flex-shrink-0 flex items-center justify-center group-hover:scale-110 group-hover:bg-[#A3E635] group-hover:text-black group-hover:border-transparent transition-all duration-500 ease-out shadow-md ml-auto">
+                      <ArrowRight size={14} className="-rotate-45 group-hover:rotate-0 transition-transform duration-500 ease-out" />
+                    </div>
+                  </div>
+                </Link>
+              </AnimatedSection>
+            </div>
           </div>
         </Container>
       </section>
