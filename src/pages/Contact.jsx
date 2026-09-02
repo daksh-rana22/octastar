@@ -1,21 +1,10 @@
-import { useState } from 'react';
-import { Building2, User, Mail, Phone, MapPin, Clock, ShieldCheck, CheckCircle2, Globe, Sparkles, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, ShieldCheck } from 'lucide-react';
 import Hero from '../components/Hero';
 import Container from '../components/Container';
-import SectionHeading from '../components/SectionHeading';
 import AnimatedSection from '../components/AnimatedSection';
 import ContactForm from '../components/ContactForm';
-import CTASection from '../components/CTASection';
-
-const locations = [
-  { city: 'New York / Global HQ', region: 'North America Hub', contact: '+1 (800) 000-0000', coverage: '24/7 Operations' },
-  { city: 'London / EMEA Center', region: 'European Delivery Hub', contact: '+44 20 0000 0000', coverage: 'Full Timezone Sync' },
-  { city: 'Singapore / APAC Hub', region: 'Asia-Pacific Operations', contact: '+65 6000 0000', coverage: 'High-Velocity Pods' },
-];
 
 export default function Contact() {
-  const [activePathway, setActivePathway] = useState('enterprise'); // 'enterprise' | 'candidate'
-
   return (
     <>
       <title>Contact Us — OctaStar Group</title>
@@ -29,89 +18,6 @@ export default function Contact() {
         description="Whether you require dedicated technology talent, custom engineering squads, or a transformation strategy — our practice leads are here to help."
       />
 
-      {/* Dual Pathway Selector - Vibrant Container */}
-      <section className="py-14 sm:py-16 md:py-20 relative overflow-hidden bg-[#5853A9] text-white">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute inset-0 geometric-grid opacity-10 pointer-events-none" />
-
-        <Container className="relative z-10">
-          <AnimatedSection className="max-w-2xl text-center mx-auto mb-10">
-            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-purple-200 mb-2">
-              Select Your Engagement Path
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-              How Can We Partner With You?
-            </h2>
-            <p className="text-xs sm:text-sm text-purple-100/90">
-              Select your inquiry profile so we can connect you with the right practice director.
-            </p>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {/* Pathway 1: Enterprises */}
-            <AnimatedSection>
-              <div
-                onClick={() => setActivePathway('enterprise')}
-                className={`cursor-pointer p-7 sm:p-8 rounded-2xl border transition-all duration-300 backdrop-blur-md relative overflow-hidden ${activePathway === 'enterprise'
-                    ? 'bg-white/20 border-white shadow-2xl scale-[1.02]'
-                    : 'bg-white/10 hover:bg-white/15 border-white/20 hover:border-white/40'
-                  }`}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-13 h-13 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center text-white">
-                    <Building2 size={24} />
-                  </div>
-                  {activePathway === 'enterprise' && (
-                    <span className="inline-flex items-center gap-1 text-xs font-bold bg-white text-[#5B3FA6] px-2.5 py-1 rounded-full shadow">
-                      <CheckCircle2 size={12} /> Active Selection
-                    </span>
-                  )}
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">For Enterprises &amp; Businesses</h3>
-                <p className="text-xs sm:text-sm text-purple-100/90 leading-relaxed mb-4">
-                  Need on-demand technical talent, autonomous engineering squads, or enterprise cloud transformation?
-                </p>
-                <ul className="space-y-1.5 text-xs text-purple-100 font-medium">
-                  <li className="flex items-center gap-1.5">&bull; 48-Hour Talent Onboarding Bench</li>
-                  <li className="flex items-center gap-1.5">&bull; Custom SLA &amp; Fixed-Price Squads</li>
-                </ul>
-              </div>
-            </AnimatedSection>
-
-            {/* Pathway 2: Candidates */}
-            <AnimatedSection delay={150}>
-              <div
-                onClick={() => setActivePathway('candidate')}
-                className={`cursor-pointer p-7 sm:p-8 rounded-2xl border transition-all duration-300 backdrop-blur-md relative overflow-hidden ${activePathway === 'candidate'
-                    ? 'bg-white/20 border-white shadow-2xl scale-[1.02]'
-                    : 'bg-white/10 hover:bg-white/15 border-white/20 hover:border-white/40'
-                  }`}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-13 h-13 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center text-white">
-                    <User size={24} />
-                  </div>
-                  {activePathway === 'candidate' && (
-                    <span className="inline-flex items-center gap-1 text-xs font-bold bg-white text-[#5B3FA6] px-2.5 py-1 rounded-full shadow">
-                      <CheckCircle2 size={12} /> Active Selection
-                    </span>
-                  )}
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">For Engineers &amp; Candidates</h3>
-                <p className="text-xs sm:text-sm text-purple-100/90 leading-relaxed mb-4">
-                  Looking for your next career challenge, high-impact remote squad, or global enterprise project?
-                </p>
-                <ul className="space-y-1.5 text-xs text-purple-100 font-medium">
-                  <li className="flex items-center gap-1.5">&bull; Access to Fortune 500 tech roles</li>
-                  <li className="flex items-center gap-1.5">&bull; Competitive compensation &amp; benefits</li>
-                </ul>
-              </div>
-            </AnimatedSection>
-          </div>
-        </Container>
-      </section>
-
       {/* Inquiry Form & Direct Hub - Crisp Clean White Section */}
       <section className="py-20 md:py-28 relative overflow-hidden bg-white text-slate-900 border-y border-slate-200">
         <Container className="relative z-10">
@@ -124,7 +30,7 @@ export default function Contact() {
                     Direct Inquiry
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">
-                    {activePathway === 'enterprise' ? 'Start Your Enterprise Consultation' : 'Submit Your Candidate Profile'}
+                    Start Your Enterprise Consultation
                   </h2>
                   <p className="text-sm text-slate-600">
                     Fill out the details below. Our practice director will respond within 24 hours.
@@ -203,54 +109,6 @@ export default function Contact() {
           </div>
         </Container>
       </section>
-
-      {/* Global Delivery Hubs - Crisp stats-gradient-bg */}
-      <section className="py-12 md:py-16 relative overflow-hidden stats-gradient-bg border-y border-slate-350">
-        {/* Subtle Dark Edge Vignette Fades */}
-        <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-b from-slate-900/[0.08] to-transparent pointer-events-none" />
-        <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-slate-900/[0.10] to-transparent pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.45)_0%,_transparent_65%,_rgba(15,23,42,0.06)_100%)] pointer-events-none" />
-
-        <Container className="relative z-10">
-          <SectionHeading
-            label="Global Reach"
-            title="Worldwide Delivery &amp; Support Centers"
-            description="Our distributed squads provide round-the-clock continuity across major tech hubs."
-            darkText={true}
-            className="mb-8 md:mb-10"
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-            {locations.map((loc, idx) => (
-              <AnimatedSection key={loc.city} delay={idx * 80} className="h-full">
-                <div className="h-full p-6 sm:p-7 rounded-2xl bg-white/85 hover:bg-white border border-slate-300/80 hover:border-[#5B3FA6]/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between backdrop-blur-sm">
-                  <div>
-                    <div className="w-10 h-10 rounded-xl bg-purple-100 border border-purple-200 text-[#5B3FA6] flex items-center justify-center mb-4">
-                      <Globe size={20} />
-                    </div>
-                    <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#5B3FA6] block mb-1">
-                      {loc.region}
-                    </span>
-                    <h4 className="text-lg font-bold text-slate-900 mb-2">{loc.city}</h4>
-                    <p className="text-xs text-slate-600 mb-4">{loc.contact}</p>
-                  </div>
-                  <div className="pt-3 border-t border-slate-200/80 text-xs font-medium text-emerald-700 flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> {loc.coverage}
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Signature CTA */}
-      <CTASection
-        title="Ready to Build With OctaStar?"
-        description="Whether you need urgent talent reinforcement or full-lifecycle digital transformation, we're ready to engineer your success."
-        primaryCta={{ label: 'Send an Inquiry', to: '#top' }}
-        secondaryCta={{ label: 'Explore Our Services', to: '/services' }}
-      />
     </>
   );
 }
